@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 gem 'pg'
 gem 'haml', '3.1.7'
 gem 'rake', '0.8.7'
@@ -27,6 +27,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'bootstrap-sass', '2.2.1.1'
   gem 'sass-rails',   '3.2.5'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.3.0'
