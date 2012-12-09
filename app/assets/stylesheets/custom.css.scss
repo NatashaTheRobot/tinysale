@@ -1,6 +1,4 @@
-@import "bootstrap";
-
-@import "bootstrap-responsive.scss";
+//@import "bootstrap";
 
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 /*!
@@ -5136,3 +5134,5 @@ a.badge:hover {
 .affix {
   position: fixed;
 }
+
+@import "bootstrap-responsive.scss";

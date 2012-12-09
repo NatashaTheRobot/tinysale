@@ -5,6 +5,7 @@ gem 'pg'
 gem 'haml', '3.1.7'
 gem 'rake', '0.8.7'
 gem 'sendgrid'
+gem 'typhoeus'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.4'
