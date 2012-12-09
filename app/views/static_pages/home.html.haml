@@ -12,4 +12,13 @@
       %h3 3. Get Payed
       %p Get payed every month. We only take 5% of the sale.
 
+  .email
+    .row-fluid
+      %h1 Enter Your Email
+      %h2 get notified when we launch
+      = label_tag :email, "email"
+      = text_field_tag :email
+      = submit_tag "Go", id: 'submit'
+
+
 
