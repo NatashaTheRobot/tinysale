@@ -4,6 +4,7 @@ gem 'rails', '3.2.9'
 gem 'pg'
 gem 'haml', '3.1.7'
 gem 'rake', '0.8.7'
+gem 'sendgrid'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.4'
