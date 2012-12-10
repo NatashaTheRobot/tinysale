@@ -6,6 +6,7 @@ jQuery ->
   email_form_toggle = ->
     $('.email').toggle()
     $('.confirm').toggle()
+    $('.alert').hide() if $('.alert').is(':visible')
 
   submit_email = ( email ) ->
     request = $.ajax(
@@ -20,3 +21,7 @@ jQuery ->
 
   $('#submit').click ->
     submit_email $('#email').val()
+
+  $('.email').keypress (e)->
+    code = if e.keyCode then e.keyCode else e.which
+    submit_email $('#email').val() if code is 13

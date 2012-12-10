@@ -20,6 +20,10 @@ h3, p {
   margin-top: 5px;
 }
 
+ol{
+  padding: 9px 0 0 4px;
+}
+
 .branding {
   text-align: center;
 }
@@ -36,7 +40,7 @@ h3, p {
   margin-top: 45px;
 }
 
-.email {
+.email, .confirm {
   text-align: center;
   margin-top: 20px;
 }
