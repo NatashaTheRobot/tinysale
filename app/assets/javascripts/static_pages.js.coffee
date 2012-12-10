@@ -3,16 +3,20 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
+  email_form_toggle = ->
+    $('.email').toggle()
+    $('.confirm').toggle()
+
   submit_email = ( email ) ->
     request = $.ajax(
       url: "/emails"
       type: "POST"
       data: { email: email }
       success: (result) ->
-        alert("Success")
+        email_form_toggle()
     )
     request.fail (jqXHR,status) ->
-      alert("This did not work")
+      $('.alert').show()
 
   $('#submit').click ->
     submit_email $('#email').val()

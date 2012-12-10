@@ -2,7 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.howitworks {
+body {
+  border-top: 5px solid;
+  border-color: #d44413;
+}
+
+.landing {
   margin-top: 60px;
 }
 
@@ -12,5 +17,30 @@ h3, p {
 
 .span4 {
   background-color: #eeeeee;
+  margin-top: 5px;
 }
 
+.branding {
+  text-align: center;
+}
+
+.confirm{
+  display: none;
+}
+
+.alert {
+  display: none;
+}
+
+.howitworks {
+  margin-top: 45px;
+}
+
+.email {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#submit {
+  margin-bottom: 10px;
+}

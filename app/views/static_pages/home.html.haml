@@ -1,24 +1,39 @@
-= render "navbar"
-
-.howitworks
+.landing
   .row-fluid
-    .span4
-      %h3 1. Create a Sale
-      %p Upload any digital good and start selling instantly!
-    .span4
-      %h3 2. Optimize
-      %p Track where sales are coming from and set up A/B tests.
-    .span4
-      %h3 3. Get Payed
-      %p Get payed every month. We only take 5% of the sale.
+    .alert The email you entered is incorrect
 
-  .email
-    .row-fluid
-      %h1 Enter Your Email
-      %h2 get notified when we launch
-      = label_tag :email, "email"
-      = text_field_tag :email
-      = submit_tag "Go", id: 'submit'
+  .row-fluid
+    .span6.offset3
+      .branding
+        %h1 tinysale
+        %h2 optimize how you sell
+        %p It's easy as 1-2-3!
+  .row-fluid
+    .span4.offset4
+      %ol
+        %li Create a Sale Landing Page
+        %li Optimize with A/B testing and analytics
+        %li Get Payed!
+  .row-fluid
+    .span6.offset3
+      .email
+        = label_tag :email, "<em>enter your email address for important updates!</em>".html_safe
+        = text_field_tag :email, nil, placeholder: "name@email.com"
+        = submit_tag "Go", class: "btn btn-success", id: "submit"
+      .confirm
+        %h1 Congrats!!
+
+  -#.howitworks
+  -#  .row-fluid
+  -#    .span4
+  -#      %h3 1. Create a Sale
+  -#      %p Upload any digital good and start selling instantly!
+  -#    .span4
+  -#      %h3 2. Optimize
+  -#      %p Track where sales are coming from and set up A/B tests.
+  -#    .span4
+  -#      %h3 3. Get Payed
+  -#      %p Get payed every month. We only take 5% of the sale.
 
 
 
