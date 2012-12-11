@@ -7,12 +7,16 @@ gem 'rake', '0.8.7'
 gem 'sendgrid'
 gem 'typhoeus'
 
+#authentication & roles
+gem 'devise'
+gem "cancan", ">= 1.6.8"
+
 group :development, :test do
   gem 'rspec-rails', '2.11.4'
   gem 'annotate', '2.5.0'
   gem 'quiet_assets', '1.0.1'
   gem 'simplecov', '0.7.1'
-  gem 'capybara', '1.1.2'
+  gem 'capybara'
   gem 'factory_girl_rails', '4.1.0'
   gem 'launchy', '2.1.2'
   gem 'guard-rspec', '2.3.0'
