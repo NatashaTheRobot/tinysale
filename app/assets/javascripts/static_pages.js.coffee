@@ -18,6 +18,7 @@ jQuery ->
     )
     request.fail (jqXHR,status) ->
       $('.alert').show()
+      $('.email').effect('shake', { times:3 }, 200);
 
   $('#submit').click ->
     submit_email $('#email').val()
