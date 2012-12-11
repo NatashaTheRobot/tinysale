@@ -26,3 +26,4 @@ jQuery ->
   $('.email').keypress (e)->
     code = if e.keyCode then e.keyCode else e.which
     submit_email $('#email').val() if code is 13
+
