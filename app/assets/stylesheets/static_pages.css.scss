@@ -1,0 +1,50 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  border-top: 5px solid;
+  border-color: #d44413;
+}
+
+.landing {
+  margin-top: 60px;
+}
+
+h3, p {
+  text-align: center;
+}
+
+.span4 {
+  background-color: #eeeeee;
+  margin-top: 5px;
+}
+
+ol{
+  padding: 9px 0 0 4px;
+}
+
+.branding {
+  text-align: center;
+}
+
+.confirm {
+  display: none;
+}
+
+.alert {
+  display: none;
+}
+
+.howitworks {
+  margin-top: 45px;
+}
+
+.email, .confirm {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#submit {
+  margin-bottom: 10px;
+}
