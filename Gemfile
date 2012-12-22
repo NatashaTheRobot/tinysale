@@ -3,13 +3,17 @@ source :rubygems
 gem 'rails', '3.2.9'
 gem 'pg'
 gem 'haml', '3.1.7'
-gem 'rake', '0.8.7'
-gem 'sendgrid'
-gem 'typhoeus'
+#gem 'rake', '0.8.7'
+gem 'sendgrid', '1.1.0'
+gem 'typhoeus', '0.5.3'
+
+#file storage
+gem 'paperclip', '3.4.0'
+gem 'aws-sdk', '1.8.0'
 
 #authentication & roles
-gem 'devise'
-gem "cancan", ">= 1.6.8"
+gem 'devise', '2.1.2'
+gem "cancan", "1.6.8"
 
 group :development, :test do
   gem 'rspec-rails', '2.11.4'
