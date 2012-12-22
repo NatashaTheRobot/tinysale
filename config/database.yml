@@ -17,7 +17,7 @@ development:
   encoding: unicode
   database: tinysale_development
   pool: 5
-  username: nickoneill
+  username: nataliamurashev
   password:
   host: localhost
 
@@ -44,7 +44,7 @@ test:
   encoding: unicode
   database: tinysale_test
   pool: 5
-  username: nickoneill
+  username: nataliamurashev
   password:
   host: localhost
 
@@ -53,6 +53,6 @@ production:
   encoding: unicode
   database: tinysale_production
   pool: 5
-  username: nickoneill
+  username: nataliamurashev
   password:
   host: localhost
