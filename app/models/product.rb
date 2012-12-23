@@ -18,7 +18,6 @@ class Product < ActiveRecord::Base
   has_many :attachments, dependent: :destroy
   has_many :images, dependent: :destroy
 
-  #validates :permalink, exclusion: {in: %w[signup login home about]}
   validates :title, presence: true
   validates :description, presence: true
   validates :attachments, presence: { message: "Please upload an attachment"}

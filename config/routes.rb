@@ -5,5 +5,5 @@ Tinysale::Application.routes.draw do
 
   resources :emails, only: [:create]
   resources :products, only: [:index, :new, :create]
-  resources :products, path: "", except: [:index, :new, :create]
+  resources :products, path: "sale", except: [:index, :new, :create]
 end
