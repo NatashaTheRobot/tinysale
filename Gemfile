@@ -15,6 +15,8 @@ gem 'aws-sdk', '1.8.0'
 gem 'devise', '2.1.2'
 gem "cancan", "1.6.8"
 
+gem "custom_error_message", '1.1.1'
+
 group :development, :test do
   gem 'rspec-rails', '2.11.4'
   gem 'annotate', '2.5.0'

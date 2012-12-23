@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :image do
-    product nil
+    cover Image.new :photo => File.new(Rails.root + 'spec/fixtures/images/rails.png')
   end
 end

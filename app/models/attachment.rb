@@ -23,4 +23,10 @@ class Attachment < ActiveRecord::Base
 
   validates_attachment_presence :item
   validates_attachment_size :item, less_than: 10.megabytes
+
+  before_create :set_status_to_active
+
+  def set_status_to_active
+    self.status = :active
+  end
 end

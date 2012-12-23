@@ -5,8 +5,11 @@
         = pluralize(@product.errors.count, "error")
         prohibited this poll from being saved:
       %ul
-        - @product.errors.full_messages.each do |msg|
-          %li= msg
+        - @product.errors.each do |attr, msg|
+          - if attr == :attachments or attr == :images
+            %li= msg
+          - else
+            %li= "#{attr.capitalize} #{msg}"
 
   = f.label :title
   = f.text_field :title

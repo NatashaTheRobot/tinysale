@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
   # POST /products
   def create
     @product = Product.new(params[:product])
+    @product.user = current_user
 
     respond_to do |format|
       if @product.save
@@ -71,7 +72,6 @@ class ProductsController < ApplicationController
 
   # DELETE /products/:permalink
   def destroy
-
     @product.destroy
 
     respond_to do |format|

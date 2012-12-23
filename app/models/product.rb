@@ -18,16 +18,16 @@ class Product < ActiveRecord::Base
   has_many :attachments, dependent: :destroy
   has_many :images, dependent: :destroy
 
-  validates :permalink, uniqueness: true, presence: true, exclusion: {in: %w[signup login home about]}
-  validates :title, uniqueness: true, presence: true
+  validates :permalink, exclusion: {in: %w[signup login home about]}
+  validates :title, presence: true
   validates :description, presence: true
+  validates :attachments, presence: { message: "Please upload an attachment"}
+  validates :images, presence: { message: "Please upload an image" }
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :images
 
-  validates_presence_of :attachments, :images
-
-  before_validation :generate_permalink
+  before_create :generate_permalink
 
   # overriding to have :permalink in the routes instead of :id
   def to_param
@@ -35,6 +35,11 @@ class Product < ActiveRecord::Base
   end
 
   def generate_permalink
-    self.permalink ||= title.parameterize
+    self.permalink = title.downcase.parameterize
+    last_matching_slug = Product.where("permalink SIMILAR TO ?","#{permalink}(-[0-9]+)?").order("permalink ASC").last
+    if !similar_permalinks.empty?
+      num = last_matching_slug.split('-').last.to_i + 1
+      self.permalink = "#{permalink}-#{num}"
+    end
   end
 end
