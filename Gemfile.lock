@@ -60,6 +60,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    custom_error_message (1.1.1)
     database_cleaner (0.9.1)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
@@ -161,7 +162,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.0.3)
+    rake (0.8.7)
     rb-fsevent (0.9.2)
     rdoc (3.12)
       json (~> 1.4)
@@ -236,6 +237,7 @@ DEPENDENCIES
   cancan (= 1.6.8)
   capybara
   coffee-rails (= 3.2.2)
+  custom_error_message (= 1.1.1)
   database_cleaner (= 0.9.1)
   devise (= 2.1.2)
   factory_girl_rails (= 4.1.0)
@@ -250,6 +252,7 @@ DEPENDENCIES
   pg
   quiet_assets (= 1.0.1)
   rails (= 3.2.9)
+  rake (= 0.8.7)
   rb-fsevent (= 0.9.2)
   rspec-rails (= 2.11.4)
   sass-rails (= 3.2.5)

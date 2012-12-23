@@ -3,7 +3,7 @@ source :rubygems
 gem 'rails', '3.2.9'
 gem 'pg'
 gem 'haml', '3.1.7'
-#gem 'rake', '0.8.7'
+gem 'rake', '0.8.7'
 gem 'sendgrid', '1.1.0'
 gem 'typhoeus', '0.5.3'
 
@@ -14,6 +14,8 @@ gem 'aws-sdk', '1.8.0'
 #authentication & roles
 gem 'devise', '2.1.2'
 gem "cancan", "1.6.8"
+
+gem "custom_error_message", '1.1.1'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.4'

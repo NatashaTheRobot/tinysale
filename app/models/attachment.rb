@@ -15,9 +15,18 @@
 #
 
 class Attachment < ActiveRecord::Base
-  attr_accessible :price_in_cents, :status
+  attr_accessible :price_in_cents, :status, :item
 
   belongs_to :product
 
   has_attached_file :item
+
+  validates_attachment_presence :item
+  validates_attachment_size :item, less_than: 10.megabytes
+
+  before_create :set_status_to_active
+
+  def set_status_to_active
+    self.status = :active
+  end
 end

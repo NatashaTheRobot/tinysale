@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :attachment do
-    status "MyString"
-    price_in_cents 1
-    references ""
+    status "active"
+    price_in_cents 100
+    item File.new(Rails.root + 'spec/factories/images/rails.png')
   end
 end

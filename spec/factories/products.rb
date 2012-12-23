@@ -2,9 +2,10 @@
 
 FactoryGirl.define do
   factory :product do
-    user nil
-    title "MyString"
-    description "MyText"
-    permalink "MyString"
+    title "My Book"
+    description "This is the best book you'll ever read"
+    user
+    images [FactoryGirl.build(:image)]
+    attachments [FactoryGirl.build(:attachment)]
   end
 end
