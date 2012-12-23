@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :attachment do
     status "active"
     price_in_cents 100
-    item Image.new :photo => File.new(Rails.root + 'spec/fixtures/images/rails.png')
+    item File.new(Rails.root + 'spec/factories/images/rails.png')
   end
 end
