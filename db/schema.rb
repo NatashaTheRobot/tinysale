@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222174529) do
+ActiveRecord::Schema.define(:version => 20121222213215) do
 
   create_table "attachments", :force => true do |t|
     t.string   "status"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20121222174529) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "products", ["permalink"], :name => "index_products_on_permalink", :unique => true
   add_index "products", ["user_id"], :name => "index_products_on_user_id"
 
   create_table "users", :force => true do |t|

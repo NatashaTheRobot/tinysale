@@ -1,0 +1,14 @@
+%h1
+  = @product.title
+= image_tag @product.images.first.cover.url, width: '300', height: '300'
+%ul
+  %li
+    = @product.description
+  %li
+    = @product.attachments.first.item_file_size
+  %li
+    = @product.attachments.first.item_content_type
+  %li
+    = @product.attachments.first.item_file_name
+
+= link_to "download #{@product.title}", (@product.attachments.first.item.url), target: '_blank'

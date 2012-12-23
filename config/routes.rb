@@ -4,4 +4,6 @@ Tinysale::Application.routes.draw do
   root to: "static_pages#home"
 
   resources :emails, only: [:create]
+  resources :products, only: [:index, :new, :create]
+  resources :products, path: "", except: [:index, :new, :create]
 end

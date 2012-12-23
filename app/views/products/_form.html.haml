@@ -1,0 +1,21 @@
+= form_for @product, html: { multipart: true } do |f|
+  - if @product.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@product.errors.count, "error")
+        prohibited this poll from being saved:
+      %ul
+        - @product.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.label :title
+  = f.text_field :title
+  = f.label :description
+  = f.text_area :description
+  = f.fields_for :attachments do |a|
+    = a.label :item
+    = a.file_field :item
+  = f.fields_for :images do |i|
+    = i.label :cover
+    = i.file_field :cover
+  = f.submit

@@ -15,9 +15,15 @@
 class Image < ActiveRecord::Base
   belongs_to :product
 
+  attr_accessible :cover
+
   has_attached_file :cover, styles: {
     thumb: '100x100>',
     square: '200x200#',
     medium: '300x300>'
   }
+
+  validates_attachment_presence :cover
+  validates_attachment_size :cover, less_than: 10.megabytes
+  validates_attachment_content_type :cover, content_type: ['image/jpeg', 'image/png']
 end
