@@ -14,7 +14,7 @@
   = f.label :title
   = f.text_field :title
   = f.label :description
-  = f.text_area :description
+  = f.text_area :description, class: 'wysihtml5'
   = f.fields_for :attachments do |a|
     = a.label :item
     = a.file_field :item

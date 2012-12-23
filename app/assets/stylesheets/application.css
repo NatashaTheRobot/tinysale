@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require custom
+ *= require bootstrap-wysihtml5
  *= require_tree .
  */
