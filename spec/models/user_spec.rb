@@ -20,10 +20,12 @@
 #  avatar_file_size       :integer
 #  avatar_updated_at      :datetime
 #  bio                    :text
-#
+#  username               :string(255)      not null, primary_key
 
 require 'spec_helper'
 
 describe User do
   it { should have_many :products}
+  it { validate_uniqueness_of :username }
+  it { validate_presence_of :username }
 end

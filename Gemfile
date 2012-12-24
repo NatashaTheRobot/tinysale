@@ -14,6 +14,8 @@ gem 'aws-sdk', '1.8.0'
 #authentication & roles
 gem 'devise', '2.1.2'
 gem "cancan", "1.6.8"
+gem 'hpricot'
+gem 'ruby_parser'
 
 gem "custom_error_message", '1.1.1'
 

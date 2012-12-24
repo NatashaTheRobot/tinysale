@@ -1,4 +1,4 @@
 jQuery ->
   $('.wysihtml5').each (i, elem) ->
-    $(elem).wysihtml5()
+    $(elem).wysihtml5("image": false)
 

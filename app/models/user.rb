@@ -20,7 +20,7 @@
 #  avatar_file_size       :integer
 #  avatar_updated_at      :datetime
 #  bio                    :text
-#
+#  username               :string(255)      primary_key
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
@@ -29,7 +29,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :bio
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :avatar, :username
+
+  validate :username, unique: true, presence: true
 
   has_many :products
   has_attached_file :avatar, styles: {
