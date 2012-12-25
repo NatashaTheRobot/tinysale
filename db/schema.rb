@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121224170943) do
+ActiveRecord::Schema.define(:version => 20121224230346) do
 
   create_table "attachments", :force => true do |t|
     t.string   "status"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(:version => 20121224170943) do
   end
 
   add_index "images", ["product_id"], :name => "index_images_on_product_id"
+
+  create_table "payments", :force => true do |t|
+    t.string   "access_token"
+    t.string   "publishable_key"
+    t.integer  "user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
 
   create_table "products", :force => true do |t|
     t.integer  "user_id"

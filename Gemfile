@@ -19,6 +19,10 @@ gem 'ruby_parser'
 
 gem "custom_error_message", '1.1.1'
 
+gem 'stripe', '1.7.8'
+gem 'stripe-rails'
+gem 'stripe_event'
+
 group :development, :test do
   gem 'rspec-rails', '2.11.4'
   gem 'annotate', '2.5.0'

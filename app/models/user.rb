@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
   validate :username, unique: true, presence: true
 
   has_many :products
+  has_one :payment
   has_attached_file :avatar, styles: {
     thumb: '100x100>',
     square: '200x200#',

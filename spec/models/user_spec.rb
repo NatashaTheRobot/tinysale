@@ -26,6 +26,7 @@ require 'spec_helper'
 
 describe User do
   it { should have_many :products}
+  it { should have_one :payment }
   it { validate_uniqueness_of :username }
   it { validate_presence_of :username }
 end
