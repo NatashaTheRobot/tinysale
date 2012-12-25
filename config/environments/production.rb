@@ -75,4 +75,7 @@ Tinysale::Application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
      }
   }
+
+  #stripe
+  config.stripe.api_key = ENV['STRIPE_SECRET']
 end
