@@ -23,7 +23,7 @@ gem 'stripe', '1.7.8'
 gem 'stripe-rails'
 gem 'stripe_event'
 
-gem "bootstrap-wysihtml5-rails", "0.3.1.14"
+gem 'sass-rails',   '3.2.5'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.4'
@@ -47,10 +47,10 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '3.2.5'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.3.0'
   gem 'bootstrap-sass', '2.2.1.1'
+  gem "bootstrap-wysihtml5-rails", "0.3.1.14"
 end
 
 gem 'jquery-rails', '2.1.3'
