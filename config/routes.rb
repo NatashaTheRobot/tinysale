@@ -11,4 +11,6 @@ Tinysale::Application.routes.draw do
   resources :payments
 
   mount StripeEvent::Engine => '/stripe_webhook'
+
+  post "/charge" => "products#charge", as: :charge
 end

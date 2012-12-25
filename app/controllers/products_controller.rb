@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_user!, except: [:show, :index]
+  before_filter :authenticate_user!, except: [:show, :index, :charge]
   before_filter :find_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -78,6 +78,25 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url }
       format.json { head :no_content }
     end
+  end
+
+  def charge
+    product = Product.includes(:attachments).find(params[:id])
+
+    amount = product.attachments.first.price_in_cents
+    Stripe.api_key = STRIPE_API_KEY
+    Stripe::Charge.create(
+        :amount      => amount,
+        :card        => params[:stripeToken],
+        :description =>  "Tinysale Charge",
+        :currency    => 'usd'
+    )
+
+    #error Stripe::CardError do
+    #  "something went wrong!!!"
+    #end
+
+    redirect_to root_path
   end
 
   private
