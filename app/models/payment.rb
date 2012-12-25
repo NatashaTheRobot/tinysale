@@ -25,11 +25,3 @@ class Payment < ActiveRecord::Base
   end
 end
 
-#stripe connect response
-#{"access_token"=>"sk_test_PgQdLXYq138CFKzcotHiBQb6",
-#"refresh_token"=>"rt_0yjiQyzuHLzBPFmzbfDm06GkL90pcOOknVjqrEGO6TE4rJUQ",
-#"token_type"=>"bearer", "scope"=>"read_only",
-#"stripe_user_id"=>"acct_0quRJAW5yVxOwiv4TuzG",
-#"livemode"=>false,
-#"stripe_publishable_key"=>"pk_test_2wSgxfxY09f7MUltpUUhZ9YT"}
-

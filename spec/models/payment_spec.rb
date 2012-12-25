@@ -18,9 +18,9 @@ describe Payment do
       end
       it "stores the user's payment information" do
         expect {
-          payment = Payment.create_from_tokens(@user, "ac_0yk86zbFJvt80SiYZtXNfmO1Bc5GtqgK")
+          Payment.create_from_tokens(@user, "ac_0yk86zbFJvt80SiYZtXNfmO1Bc5GtqgK")
           }.should change(Payment, :count).by(1)
-        payment.should be_an_instance_of Payment
+        payment = Payment.last
         payment.access_token.should eq "sk_test_PgQdLXYq138CFKzcotHiBQb6"
         payment.publishable_key.should eq "pk_test_2wSgxfxY09f7MUltpUUhZ9YT"
       end

@@ -10,14 +10,4 @@ class PaymentsController < ApplicationController
 
   end
 
-  #def create
-  #  amount =
-  #  Stripe::Charge.create(
-  #      :amount      => @amount,
-  #      :card        => params[:stripeToken],
-  #      :description => 'Sinatra Charge',
-  #      :currency    => 'usd'
-  #  )
-  #end
-
 end
