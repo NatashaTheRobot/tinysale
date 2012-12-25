@@ -84,7 +84,8 @@ class ProductsController < ApplicationController
     product = Product.includes(:attachments).find(params[:id])
 
     amount = product.attachments.first.price_in_cents
-    Stripe.api_key = STRIPE_API_KEY
+    #Stripe.api_key = STRIPE_API_KEY
+    Stripe.api_key = product.user.payment.access_token
     Stripe::Charge.create(
         :amount      => amount,
         :card        => params[:stripeToken],

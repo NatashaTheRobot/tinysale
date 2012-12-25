@@ -4,7 +4,7 @@ class Payment < ActiveRecord::Base
 
   def self.create_from_tokens(user, auth_code)
     tokens = self.add_tokens(auth_code)
-    if tokens.has_key?(:access_token)
+    if tokens.has_key?("access_token")
       payment = self.new( access_token: tokens['access_token'],
                           publishable_key: tokens['stripe_publishable_key'])
       payment.user = user

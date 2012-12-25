@@ -1,4 +1,4 @@
 %h1
   Connect To Stripe
 
-= link_to image_tag('stripe_connect.png'), "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=#{ENV['STRIPE_CLIENT_ID']}"
+= link_to image_tag('stripe_connect.png'), "https://connect.stripe.com/oauth/authorize?response_type=code&scope=read_write&client_id=#{ENV['STRIPE_CLIENT_ID']}"
