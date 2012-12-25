@@ -23,8 +23,6 @@ gem 'stripe', '1.7.8'
 gem 'stripe-rails'
 gem 'stripe_event'
 
-gem 'sass-rails'
-
 group :development, :test do
   gem 'rspec-rails', '2.11.4'
   gem 'annotate', '2.5.0'
@@ -47,6 +45,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'sass-rails'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.3.0'
   gem 'bootstrap-sass', '2.2.1.1'
