@@ -23,7 +23,7 @@ gem 'stripe', '1.7.8'
 gem 'stripe-rails'
 gem 'stripe_event'
 
-gem 'sass-rails',   '3.2.5'
+gem 'sass-rails'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.4'
