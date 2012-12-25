@@ -11,14 +11,20 @@
           - else
             %li= "#{attr.capitalize} #{msg}"
 
-  = f.label :title
-  = f.text_field :title
-  = f.label :description
-  = f.text_area :description
-  = f.fields_for :attachments do |a|
-    = a.label :item
-    = a.file_field :item
-  = f.fields_for :images do |i|
-    = i.label :cover
-    = i.file_field :cover
-  = f.submit
+  .row
+    = f.label "Title*"
+    = f.text_field :title, placeholder: "Best product you'll ever buy!"
+  .row
+    = f.fields_for :images do |i|
+      = i.label "Product Image*"
+      = i.file_field :cover
+    = f.fields_for :attachments do |a|
+      = a.label "Product Item*"
+      = a.file_field :item
+      = a.label "Price in US Dollars"
+      = a.text_field :price_in_cents, placeholder: '$25.00'
+  .row
+    = f.label "Description*"
+    = f.text_area :description, class: 'wysihtml5'
+  .row
+    = f.submit class: 'btn btn-success'

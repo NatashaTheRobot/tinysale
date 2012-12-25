@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222213215) do
+ActiveRecord::Schema.define(:version => 20121224230346) do
 
   create_table "attachments", :force => true do |t|
     t.string   "status"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(:version => 20121222213215) do
   end
 
   add_index "images", ["product_id"], :name => "index_images_on_product_id"
+
+  create_table "payments", :force => true do |t|
+    t.string   "access_token"
+    t.string   "publishable_key"
+    t.integer  "user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
 
   create_table "products", :force => true do |t|
     t.integer  "user_id"
@@ -69,9 +79,11 @@ ActiveRecord::Schema.define(:version => 20121222213215) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.text     "bio"
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end
