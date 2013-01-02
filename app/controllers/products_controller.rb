@@ -14,10 +14,8 @@ class ProductsController < ApplicationController
 
   # GET /products/:permalink
   def show
-
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @product }
     end
   end
 
@@ -98,6 +96,13 @@ class ProductsController < ApplicationController
     #end
 
     redirect_to root_path
+  end
+
+  def download
+    id = params[:id]
+    attachment = Attachment.find(id)
+    io = open(URI.parse(attachment.item.expiring_url(10)))
+    send_data io.read, type: io.content_type, filename: attachment.item_file_name
   end
 
   private

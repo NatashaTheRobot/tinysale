@@ -1,3 +1,4 @@
+require 'open-uri'
 # == Schema Information
 #
 # Table name: attachments
@@ -15,11 +16,19 @@
 #
 
 class Attachment < ActiveRecord::Base
+  require 'open-uri'
   attr_accessible :price_in_cents, :status, :item
 
   belongs_to :product
 
-  has_attached_file :item
+  has_attached_file :item,
+                    storage: :s3,
+                    s3_credentials: { :bucket => ENV['AWS_BUCKET'],
+                                      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+                                      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+                    },
+                    s3_permissions: :private,
+                    path: "attachments/:id"
 
   validates :price_in_cents, presence: true, :format => { :with => /^\d+??(?:\.\d{0,2})?$/ }, :numericality => {:greater_than => 0, :less_than => 1000000}
 

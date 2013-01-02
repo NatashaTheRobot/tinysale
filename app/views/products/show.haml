@@ -18,4 +18,4 @@
   %li
     = "$ #{@product.attachments.first.price_in_cents/100}"
 
-= link_to "download #{@product.title}", (@product.attachments.first.item.url), target: '_blank'
+= link_to "download #{@product.title}", download_path(id: @product.attachments.first.id)
