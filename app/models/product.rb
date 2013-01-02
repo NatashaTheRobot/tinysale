@@ -39,6 +39,8 @@ class Product < ActiveRecord::Base
     if !last_matching_links.nil?
       num = last_matching_links.permalink.split('-').last.to_i + 1
       self.permalink = "#{permalink}-#{num}"
+    elsif self.permalink == 'new'
+      self.permalink = "new-1"
     end
   end
 
