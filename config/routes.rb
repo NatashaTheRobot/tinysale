@@ -6,8 +6,7 @@ Tinysale::Application.routes.draw do
   root to: "static_pages#home"
 
   resources :emails, only: [:create]
-  resources :products, only: [:index, :new, :create]
-  resources :products, path: "sale", except: [:index, :new, :create]
+  resources :products, path: 'sale'
   resources :payments
 
   match '/attachments/:id' => "products#download", as: :download
