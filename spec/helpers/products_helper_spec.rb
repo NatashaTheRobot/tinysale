@@ -13,7 +13,7 @@ describe ProductsHelper do
 
   describe "file_size" do
     it "returns the correct file size" do
-      file_size(@product).should == 6
+      file_size(@product).should == 7
     end
   end
 

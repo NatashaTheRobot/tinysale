@@ -5,11 +5,12 @@ module ProductsHelper
   end
 
   def file_size(product)
-    product.attachments.first.item_file_size / 1000
+    size = product.attachments.first.item_file_size / 1000.00
+    size.round
   end
 
   def price_in_dollars(product)
-    price = product.attachments.first.price_in_cents/100
+    price = product.attachments.first.price_in_cents/100.00
     number_to_currency(price)
   end
 end
