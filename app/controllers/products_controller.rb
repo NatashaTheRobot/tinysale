@@ -1,22 +1,16 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_user!, except: [:show, :index, :charge]
+  before_filter :authenticate_user!, except: [:show, :index, :charge, :download]
   before_filter :find_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   def index
     @products = Product.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @products }
-    end
+    render :index
   end
 
   # GET /products/:permalink
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-    end
+    render :show
   end
 
   # GET /products/new
@@ -24,11 +18,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.attachments.build
     @product.images.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @product }
-    end
+    render :new
   end
 
   # GET /products/:permalink/edit
@@ -82,7 +72,6 @@ class ProductsController < ApplicationController
     product = Product.includes(:attachments).find(params[:id])
 
     amount = product.attachments.first.price_in_cents
-    #Stripe.api_key = STRIPE_API_KEY
     Stripe.api_key = product.user.payment.access_token
     Stripe::Charge.create(
         :amount      => amount,
@@ -95,7 +84,8 @@ class ProductsController < ApplicationController
     #  "something went wrong!!!"
     #end
 
-    redirect_to root_path
+    # on success
+    redirect_to download_path(id: product.attachments.first.id)
   end
 
   def download

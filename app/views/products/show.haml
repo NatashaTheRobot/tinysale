@@ -17,5 +17,3 @@
     = @product.attachments.first.item_file_name
   %li
     = "$ #{@product.attachments.first.price_in_cents/100}"
-
-= link_to "download #{@product.title}", download_path(id: @product.attachments.first.id)
