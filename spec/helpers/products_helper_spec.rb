@@ -1,15 +1,25 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the ProductsHelper. For example:
-#
-# describe ProductsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe ProductsHelper do
+  before do
+    @product = FactoryGirl.build :product
+  end
 
+  describe "file_type" do
+    it "returns the correct file type" do
+      file_type(@product).should == "PNG"
+    end
+  end
+
+  describe "file_size" do
+    it "returns the correct file size" do
+      file_size(@product).should == 6
+    end
+  end
+
+  describe "price_in_dollars" do
+    it "returns a correctly formatted price in dollars" do
+      price_in_dollars(@product).should == "$1.00"
+    end
+  end
 end
