@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 
   # GET /products/:permalink
   def show
+    @author = @product.user
     render :show
   end
 
@@ -98,6 +99,6 @@ class ProductsController < ApplicationController
   private
 
   def find_product
-    @product ||= Product.includes(:attachments, :images).find_by_permalink!(params[:id])
+    @product ||= Product.includes(:attachments, :images, :user).find_by_permalink!(params[:id])
   end
 end

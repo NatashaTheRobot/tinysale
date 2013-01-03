@@ -34,7 +34,7 @@ describe Product do
         @product.permalink.should eq 'my-book'
       end
     end
-    context "when a product from another user with a similar title si created" do
+    context "when a product from another user with a similar title is created" do
       before do
         @user2 = FactoryGirl.create :another_user
         @user3 = FactoryGirl.create :another_user, email: "yetanotherone@test.com"
