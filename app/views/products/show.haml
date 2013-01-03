@@ -1,16 +1,25 @@
+
 .row
   .span9.offset3
     %h1= @product.title
 .row
-  .span3
-    = image_tag @product.images.first.cover.url, width: '200', height: '200'
-    %ul
-      %li= "You'll get a #{file_type(@product)}"
-      %li= "Size: #{file_size(@product)} KB"
-      %li= "#{price_in_dollars(@product)}"
-    %form{:action => "/charge?id=#{@product.id}", :method => "post" }
-      %script.stripe-button{"data-key" => @product.user.payment.publishable_key,
-                            "data-amount"=> @product.attachments.first.price_in_cents,
-                            :src => "https://checkout.stripe.com/v2/checkout.js"}
-  .span9
-    = sanitize @product.description
+  #buy
+    .span3
+      = image_tag @product.images.first.cover.url, width: '200', height: '200'
+      %ul
+        %li= "You'll get a #{file_type(@product)}"
+        %li= "Size: #{file_size(@product)} KB"
+        %li= "#{price_in_dollars(@product)}"
+      %form{:action => "/charge?id=#{@product.id}", :method => "post" }
+        %script.stripe-button{"data-key" => @product.user.payment.publishable_key,
+                              "data-amount"=> @product.attachments.first.price_in_cents,
+                              :src => "https://checkout.stripe.com/v2/checkout.js"}
+  #info
+    .span9.offset3
+      = sanitize @product.description
+      %h4= "Meet #{@author.username}"
+      .row
+        .span1
+          = image_tag @author.avatar, width: '120', height: '120'
+        .span8
+          = @author.bio
