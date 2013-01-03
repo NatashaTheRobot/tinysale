@@ -5,10 +5,11 @@
     #buy
       .span3
         = image_tag @product.images.first.cover.url, width: '200', height: '200'
-        %ul
-          %li= "You'll get a #{file_type(@product)}"
-          %li= "Size: #{file_size(@product)} KB"
-          %li= "#{price_in_dollars(@product)}"
+        #quick_info
+          %ul
+            %li= "You'll get a #{file_type(@product)}"
+            %li= "Size: #{file_size(@product)} KB"
+            %li= "#{price_in_dollars(@product)}"
         %form{:action => "/charge?id=#{@product.id}", :method => "post" }
           %script.stripe-button{"data-key" => @product.user.payment.publishable_key,
                                 "data-amount"=> @product.attachments.first.price_in_cents,
