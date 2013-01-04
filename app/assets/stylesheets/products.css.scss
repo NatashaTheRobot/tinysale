@@ -24,6 +24,18 @@
     margin-top: 15px;
     margin-bottom: 15px;
   }
+
+  #social {
+    width: 200px;
+    padding-top: 15px;
+    padding-bottom: 40px;
+    .twitter-share-button{
+      float: left;
+    }
+    .fb-like {
+      float: right;
+    }
+  }
 }
 
 // edit page

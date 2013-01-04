@@ -14,7 +14,7 @@
         = f.text_area :bio, size: "5x5"
     .span4
       %div
-        = f.label :username
+        = f.label :name
         %br/
         = f.text_field :username
       %div
@@ -32,7 +32,6 @@
         = f.password_field :password_confirmation
       %div
         = f.label :current_password
-        %i (we need your current password to confirm your changes)
         %br/
         = f.password_field :current_password
   %div= f.submit "Update", class: "btn btn-success"

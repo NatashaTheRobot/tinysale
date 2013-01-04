@@ -1,7 +1,23 @@
 .row.sales-container
   #info
     .span9.offset3
-      %h1= @product.title
+      .row
+        %h1= @product.title
+      .row
+        = "Created with love by #{@author.username}" # TODO: link to user's shop
+      .row
+        #social
+          %a.twitter-share-button{"data-lang" => "en",
+                                  "data-url" => "http://tinysale.co/#{@product.permalink}",
+                                  "data-counturl" => "http://tinysale.co/#{@product.permalink}",
+                                  "data-via" => "tinysaleco",
+                                  "data-text" => "#{@product.title}",
+                                  "data-related" => 'tinysaleco,natashatherobot',
+                                  :href => "https://twitter.com/share"} Tweet
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          #fb-root
+          <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=479199065425268";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+          .fb-like{"data-href" => "http://tinysale.co/#{@product.permalink}", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
     #buy
       .span3
         = image_tag @product.images.first.cover.url, width: '200', height: '200'
@@ -15,10 +31,12 @@
                                 "data-amount"=> @product.attachments.first.price_in_cents,
                                 :src => "https://checkout.stripe.com/v2/checkout.js"}
     .span9.offset3
-      = sanitize @product.description
-      %h4= "Meet #{@author.username}"
       .row
-        .span1
-          = image_tag @author.avatar, width: '120', height: '120'
-        .span8
-          = @author.bio
+        = sanitize @product.description
+      .row
+        %h4= "Meet #{@author.username}"
+        .row
+          .span1
+            = image_tag @author.avatar, width: '120', height: '120'
+          .span8
+            = @author.bio
