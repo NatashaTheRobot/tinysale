@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :avatar, :username
 
+  letsrate_rater
+
   validate :username, unique: true, presence: true
 
   has_many :products

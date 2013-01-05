@@ -1,4 +1,6 @@
 Tinysale::Application.routes.draw do
+  match '/rate' => 'rater#create', :as => 'rate'
+
   get "payments/new"
 
   devise_for :users

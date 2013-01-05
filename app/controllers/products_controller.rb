@@ -11,6 +11,8 @@ class ProductsController < ApplicationController
   # GET /products/:permalink
   def show
     @author = @product.user
+    @comments = @product.comment_threads
+    @comment = Comment.new
     render :show
   end
 

@@ -15,6 +15,9 @@ class Product < ActiveRecord::Base
   belongs_to :user
   attr_accessible :description, :permalink, :title, :attachments_attributes, :images_attributes
 
+  acts_as_commentable
+  letsrate_rateable "quality"
+
   has_many :attachments, dependent: :destroy
   has_many :images, dependent: :destroy
 

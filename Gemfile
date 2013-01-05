@@ -23,6 +23,11 @@ gem 'stripe', '1.7.8'
 gem 'stripe-rails'
 gem 'stripe_event'
 
+#comments and ratings
+gem 'acts_as_commentable_with_threading', '1.1.2'
+gem 'letsrate', '1.0.7'
+gem 'rakismet', '1.3.0'
+
 group :development, :test do
   gem 'rspec-rails', '2.11.4'
   gem 'annotate', '2.5.0'

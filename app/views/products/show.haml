@@ -4,7 +4,7 @@
       .row
         %h1= @product.title
       .row
-        = "Created with love by #{@author.username}" # TODO: link to user's shop
+        = sanitize "Created with love by <span class='author'>#{@author.username}</span>"
       .row
         #social
           %a.twitter-share-button{"data-lang" => "en",
@@ -40,3 +40,12 @@
             = image_tag @author.avatar, width: '120', height: '120'
           .span8
             = @author.bio
+    .span9.offset3
+      .row
+        %h4= "Reviews"
+      .row
+        = rating_for @product, "quality"
+      .row
+        - @comments.each do |comment|
+          %h5= comment.title
+          = comment.body
