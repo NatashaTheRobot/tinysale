@@ -6,6 +6,13 @@
       .row
         = sanitize "Created with love by <span class='author'>#{@author.username}</span>"
       .row
+        = @product.average_rating
+        -#- (1..5 ).each do |num|
+          -#= star_button( rateable_id: @product.id,
+          -#               rating: @product.average_rating,
+          -#               button_num: num,
+          -#               split: 1,
+          -#               disabled: true )
         #social
           %a.twitter-share-button{"data-lang" => "en",
                                   "data-url" => "http://tinysale.co/#{@product.permalink}",
@@ -25,7 +32,7 @@
           %ul
             %li= "You'll get a #{file_type(@product)}"
             %li= "Size: #{file_size(@product)} KB"
-            %li= "#{price_in_dollars(@product)}"
+            %li= "Price: #{price_in_dollars(@product)}"
         %form{:action => "/charge?id=#{@product.id}", :method => "post" }
           %script.stripe-button{"data-key" => @product.user.payment.publishable_key,
                                 "data-amount"=> @product.attachments.first.price_in_cents,
@@ -46,13 +53,11 @@
       .row
         %h4= "Reviews"
       .row
-        = rating_for @product, "quality"
-      .row
         - if current_user
-          = render partial: 'comments/form', locals: { commentable_id: @product.id, type: "Product" }
+          .submit_comment
+            = render partial: 'comments/form', locals: { commentable_id: @product.id, type: "Product" }
+      .row
         - @comments.each do |comment|
           .comment
-            - rating = Rate.find_by_rater_id(comment.user.id)
-            .star= rating
-            %h5= comment.title
-            = comment.body
+            = render partial: 'comments/show', locals: { comment: comment }
+
