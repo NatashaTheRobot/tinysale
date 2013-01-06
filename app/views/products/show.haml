@@ -29,6 +29,8 @@
         %form{:action => "/charge?id=#{@product.id}", :method => "post" }
           %script.stripe-button{"data-key" => @product.user.payment.publishable_key,
                                 "data-amount"=> @product.attachments.first.price_in_cents,
+                                "data-name" => @product.title,
+                                "data-image" => "http://i50.tinypic.com/1g0v2c.png",
                                 :src => "https://checkout.stripe.com/v2/checkout.js"}
     .span9.offset3
       .row
@@ -46,6 +48,11 @@
       .row
         = rating_for @product, "quality"
       .row
+        - if current_user
+          = render partial: 'comments/form', locals: { commentable_id: @product.id, type: "Product" }
         - @comments.each do |comment|
-          %h5= comment.title
-          = comment.body
+          .comment
+            - rating = Rate.find_by_rater_id(comment.user.id)
+            .star= rating
+            %h5= comment.title
+            = comment.body

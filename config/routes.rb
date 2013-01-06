@@ -10,6 +10,7 @@ Tinysale::Application.routes.draw do
   resources :emails, only: [:create]
   resources :products, path: 'sale'
   resources :payments
+  resources :comments
 
   match '/attachments/:id' => "products#download", as: :download
 
