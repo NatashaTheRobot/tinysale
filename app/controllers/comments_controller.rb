@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
     new_comment.title = comment[:title]
     new_comment.rating = rating.values.first.to_i
     new_comment.save unless new_comment.spam?
-    #commentable.rate_it(rating.values.first.to_i, current_user)
     redirect_to commentable
   end
 end

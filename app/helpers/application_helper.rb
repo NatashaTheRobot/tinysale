@@ -7,17 +7,18 @@ module ApplicationHelper
     image_tag(image_url(user), alt: user.username, class: "gravatar", size: size)
   end
 
-  def star_button(rateable, button_num, rating = nil, split = 1, disabled = true)
-    rating = rating ? rating : 0
+  def star_button(rateable, button_num, rating, split = 1, disabled = true)
+    funword = rateable.class == Comment ? 'trek' : 'bright'
     checked = ( button_num == star_rating_from_rating( rating, split ) * split )
     options = { :class => "star {split:#{split}}" }
     options[:disabled] = 'disabled' if disabled
-    name = split == 1 ? "star3[#{rateable.id}]" : "adv1[#{rateable.id}]"
+    name = split == 1 ? "star3[#{funword}#{rateable.id}]" : "adv1[#{rateable.id}]"
     radio_button_tag( name , nil , checked , options )
   end
 
   def star_button_rate(rateable, value, checked)
-    radio_button_tag("rating[#{rateable.id}]", value, checked, :class => 'star')
+    star_class = value == 1 ? 'star required' : 'star'
+    radio_button_tag("rating[#{rateable.id}]", value, checked, :class => star_class)
   end
 
   private
@@ -30,6 +31,8 @@ module ApplicationHelper
     gravatar_id = Digest::MD5::hexdigest(email)
     "https://secure.gravatar.com/avatar/#{gravatar_id}"
   end
+
+  private
 
   def star_rating_from_rating( rating , split )
     (rating * split.to_f).round / split.to_f

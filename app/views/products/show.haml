@@ -6,9 +6,6 @@
       .row
         = sanitize "Created with love by <span class='author'>#{@author.username}</span>"
       .row
-        -# TODO add as a helper method
-        - ratings = @comments.collect { |comment| comment.rating }
-        - average_rating = ratings.reduce(:+).to_f / ratings.size
         - (1..5).each do |num|
           = star_button(@product, num, average_rating)
         #social
@@ -28,9 +25,9 @@
         = image_tag @product.images.first.cover.url, width: '200', height: '200'
         #quick_info
           %ul
-            %li= "You'll get a #{file_type(@product)}"
-            %li= "Size: #{file_size(@product)} KB"
-            %li= "Price: #{price_in_dollars(@product)}"
+            %li= "You'll get a #{file_type}"
+            %li= "Size: #{file_size} KB"
+            %li= "Price: #{price_in_dollars}"
         %form{:action => "/charge?id=#{@product.id}", :method => "post" }
           %script.stripe-button{"data-key" => @product.user.payment.publishable_key,
                                 "data-amount"=> @product.attachments.first.price_in_cents,
