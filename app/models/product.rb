@@ -16,7 +16,6 @@ class Product < ActiveRecord::Base
   attr_accessible :description, :permalink, :title, :attachments_attributes, :images_attributes
 
   acts_as_commentable
-  acts_as_rateable
 
   has_many :attachments, dependent: :destroy
   has_many :images, dependent: :destroy

@@ -32,7 +32,6 @@ GEM
       activerecord (>= 3.0)
       activesupport (~> 3.0)
       awesome_nested_set (>= 2.0)
-    acts_as_rateable (2.0.1)
     addressable (2.3.2)
     annotate (2.5.0)
       rake
@@ -259,7 +258,6 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_commentable_with_threading (= 1.1.2)
-  acts_as_rateable
   annotate (= 2.5.0)
   aws-sdk (= 1.8.0)
   bootstrap-sass (= 2.2.1.1)

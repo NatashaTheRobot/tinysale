@@ -25,7 +25,6 @@ gem 'stripe_event'
 
 #comments and ratings
 gem 'acts_as_commentable_with_threading', '1.1.2'
-gem "acts_as_rateable"#, :git => "git://github.com/anton-zaytsev/acts_as_rateable.git"
 gem 'jquery-star-rating-rails', '0.0.1'
 gem 'rakismet', '1.3.0'
 

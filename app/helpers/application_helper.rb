@@ -7,19 +7,12 @@ module ApplicationHelper
     image_tag(image_url(user), alt: user.username, class: "gravatar", size: size)
   end
 
-  #star button functions
-  #rateable_id: comment.commentable_id,
-  #    id: comment.id,
-  #    rating: comment.rating,
-  #    button_num: num,
-  #    split: 1,
-  #    disabled: true
-  def star_button(comment, button_num, split = 1, disabled = true)
-    rating = comment.rating ? comment.rating : 0
+  def star_button(rateable, button_num, rating = nil, split = 1, disabled = true)
+    rating = rating ? rating : 0
     checked = ( button_num == star_rating_from_rating( rating, split ) * split )
     options = { :class => "star {split:#{split}}" }
     options[:disabled] = 'disabled' if disabled
-    name = ( split == 1  ) ? "star3[#{comment.id}]" : "adv1[#{comment.id}]"
+    name = split == 1 ? "star3[#{rateable.id}]" : "adv1[#{rateable.id}]"
     radio_button_tag( name , nil , checked , options )
   end
 

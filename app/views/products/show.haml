@@ -6,13 +6,11 @@
       .row
         = sanitize "Created with love by <span class='author'>#{@author.username}</span>"
       .row
-        = @product.average_rating
-        -#- (1..5 ).each do |num|
-          -#= star_button( rateable_id: @product.id,
-          -#               rating: @product.average_rating,
-          -#               button_num: num,
-          -#               split: 1,
-          -#               disabled: true )
+        -# TODO add as a helper method
+        - ratings = @comments.collect { |comment| comment.rating }
+        - average_rating = ratings.reduce(:+).to_f / ratings.size
+        - (1..5).each do |num|
+          = star_button(@product, num, average_rating)
         #social
           %a.twitter-share-button{"data-lang" => "en",
                                   "data-url" => "http://tinysale.co/#{@product.permalink}",

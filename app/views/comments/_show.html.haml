@@ -2,6 +2,5 @@
 = image_for(comment.user, "25x25")
 .star
   - (1..5 ).each do |num|
-    = star_button( comment, num )
+    = star_button( comment, num, comment.rating )
 = comment.body
-= comment.rating
