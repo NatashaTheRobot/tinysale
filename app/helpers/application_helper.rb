@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def image_for(user, size = nil)
-    image_tag(image_url(user), alt: user.username, class: "gravatar", size: size)
+    image_tag(image_url(user), alt: user.username, class: "avatar", size: size)
   end
 
   def star_button(rateable, button_num, rating, split = 1, disabled = true)
@@ -18,17 +18,6 @@ module ApplicationHelper
     radio_button_tag("rating[#{rateable.id}]", value, checked, :class => 'star')
   end
 
-  private
-
-  def image_url(user)
-    user.avatar? ? user.avatar : gravatar_url(user.email.downcase)
-  end
-
-  def gravatar_url(email)
-    gravatar_id = Digest::MD5::hexdigest(email)
-    "https://secure.gravatar.com/avatar/#{gravatar_id}"
-  end
-
   def star_split(rating)
     if rating % 1 != 0
       remainder = rating - rating.round
@@ -38,6 +27,16 @@ module ApplicationHelper
   end
 
   private
+
+  # user image helpers
+  def image_url(user)
+    user.avatar? ? user.avatar : gravatar_url(user.email.downcase)
+  end
+
+  def gravatar_url(email)
+    gravatar_id = Digest::MD5::hexdigest(email)
+    "https://secure.gravatar.com/avatar/#{gravatar_id}"
+  end
 
   # star helper methods
   def star_name(split, rateable)

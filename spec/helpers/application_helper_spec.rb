@@ -1,7 +1,3 @@
-#def title(product)
-#  product.present? ? product.title : 'tinysale'
-#end
-
 describe ApplicationHelper do
   describe "title" do
     context "when there is no product" do
@@ -15,5 +11,24 @@ describe ApplicationHelper do
         title(product).should == "My Book"
       end
     end
+  end
+
+  describe "image_for" do
+    context "when the user has NOT uploaded an avatar" do
+      it "returns an image tag with the gravatar url" do
+        user = FactoryGirl.build :user
+        image_for(user).should =~ /https:\/\/secure.gravatar.com\/avatar/
+      end
+    end
+    context "when the user uploaded an avatar" do
+      it "returns the local image url" do
+        user = FactoryGirl.build :user, avatar: File.new(Rails.root + 'spec/factories/images/rails.png')
+        image_for(user).should =~ /\/system\/users\/avatars\/\/original\/rails.png?/
+      end
+    end
+  end
+
+  describe "star_button" do
+    #star_button(rateable, button_num, rating, split = 1, disabled = true)
   end
 end
