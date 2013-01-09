@@ -16,6 +16,6 @@ module ProductsHelper
 
   def average_rating
     ratings = @comments.collect { |comment| comment.rating }
-    (ratings.reduce(:+).to_f / ratings.size).round
+    (ratings.reduce(:+).to_f / ratings.size)
   end
 end

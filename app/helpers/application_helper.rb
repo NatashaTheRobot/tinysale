@@ -8,6 +8,7 @@ module ApplicationHelper
   end
 
   def star_button(rateable, button_num, rating, split = 1, disabled = true)
+    split = split(rating)
     funword = rateable.class == Comment ? 'trek' : 'bright'
     checked = ( button_num == star_rating_from_rating( rating, split ) * split )
     options = { :class => "star {split:#{split}}" }
@@ -32,9 +33,18 @@ module ApplicationHelper
     "https://secure.gravatar.com/avatar/#{gravatar_id}"
   end
 
+  def split(rating)
+    if rating % 1 != 0
+      remainder = rating - rating.round
+      return (1/remainder).round.abs
+    end
+    return 1
+  end
+
   private
 
   def star_rating_from_rating( rating , split )
     (rating * split.to_f).round / split.to_f
   end
+
 end
