@@ -8,18 +8,14 @@ module ApplicationHelper
   end
 
   def star_button(rateable, button_num, rating, split = 1, disabled = true)
-    split = split(rating)
-    funword = rateable.class == Comment ? 'trek' : 'bright'
-    checked = ( button_num == star_rating_from_rating( rating, split ) * split )
-    options = { :class => "star {split:#{split}}" }
-    options[:disabled] = 'disabled' if disabled
-    name = split == 1 ? "star3[#{funword}#{rateable.id}]" : "adv1[#{rateable.id}]"
-    radio_button_tag( name , nil , checked , options )
+    radio_button_tag( star_name(split, rateable) ,
+                      nil ,
+                      star_checked?(button_num, rating, split) ,
+                      star_options(split, disabled) )
   end
 
   def star_button_rate(rateable, value, checked)
-    star_class = value == 1 ? 'star required' : 'star'
-    radio_button_tag("rating[#{rateable.id}]", value, checked, :class => star_class)
+    radio_button_tag("rating[#{rateable.id}]", value, checked, :class => 'star')
   end
 
   private
@@ -33,7 +29,7 @@ module ApplicationHelper
     "https://secure.gravatar.com/avatar/#{gravatar_id}"
   end
 
-  def split(rating)
+  def star_split(rating)
     if rating % 1 != 0
       remainder = rating - rating.round
       return (1/remainder).round.abs
@@ -43,8 +39,20 @@ module ApplicationHelper
 
   private
 
-  def star_rating_from_rating( rating , split )
-    (rating * split.to_f).round / split.to_f
+  # star helper methods
+  def star_name(split, rateable)
+    funword = rateable.class == Comment ? 'trek' : 'bright'
+    split == 1 ? "star3[#{funword}#{rateable.id}]" : "adv1[#{rateable.id}]"
+  end
+
+  def star_checked?(button_num, rating, split)
+    button_num == (rating * split.to_f).round
+  end
+
+  def star_options(split, disabled)
+    options = { :class => "star {split:#{split}}" }
+    options[:disabled] = 'disabled' if disabled
+    return options
   end
 
 end
