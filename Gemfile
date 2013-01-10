@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
 gem 'pg'
 gem 'haml', '3.1.7'
 gem 'rake', '0.8.7'
@@ -19,6 +19,7 @@ gem 'ruby_parser'
 
 gem "custom_error_message", '1.1.1'
 
+#stripe
 gem 'stripe', '1.7.8'
 gem 'stripe-rails'
 gem 'stripe_event'

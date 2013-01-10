@@ -32,8 +32,7 @@ class Attachment < ActiveRecord::Base
 
   validates :price_in_cents, presence: true, :format => { :with => /^\d+??(?:\.\d{0,2})?$/ }, :numericality => {:greater_than => 0, :less_than => 1000000}
 
-  validates_attachment_presence :item
-  validates_attachment_size :item, less_than: 10.megabytes
+  validates_attachment :item, presence: true, size: { less_than: 10.megabytes }
 
   before_create :set_status_to_active, :convert_price_to_cents
 

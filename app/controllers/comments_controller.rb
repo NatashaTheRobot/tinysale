@@ -1,7 +1,5 @@
 class CommentsController < ApplicationController
-  def new
-    @comment = Comment.new
-  end
+  before_filter :authenticate_user!
 
   def create
     comment = params[:comment]

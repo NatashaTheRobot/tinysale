@@ -6,6 +6,7 @@ require 'spork'
 require 'vcr'
 require 'capybara/rspec'
 require 'database_cleaner'
+require 'paperclip/matchers'
 DatabaseCleaner[:active_record].strategy = :truncation
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
@@ -54,6 +55,9 @@ Spork.prefork do
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
+
+    config.include Devise::TestHelpers, :type => :controller
+    config.include Paperclip::Shoulda::Matchers
   end
 end
 
