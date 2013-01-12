@@ -29,4 +29,48 @@ describe User do
   it { should have_one :payment }
   it { validate_uniqueness_of :username }
   it { validate_presence_of :username }
+  it { should have_attached_file :avatar }
+
+  describe "#update_with_password" do
+    context "to bypasses Devise's requirement to re-enter current password to edit" do
+      before do
+        @user = FactoryGirl.create :user
+      end
+      context "when the user does not want to change their password" do
+        it "returns a successful result" do
+          result = @user.update_with_password(:current_password => nil)
+          result.should be_true
+        end
+      end
+
+      context "when the user changes their password" do
+        context "and does not provide a current password" do
+          it "does not update their password" do
+              result = @user.update_with_password(:current_password => nil,
+                                                  :password => "new_password1",
+                                                  :password_confirmation => "new_password1")
+              result.should be_false
+          end
+        end
+        context "and provides an incorrect current password" do
+          it "does not update their password" do
+            result = @user.update_with_password(:current_password => 'wrong_password',
+                                                :password => "new_password1",
+                                                :password_confirmation => "new_password1")
+            result.should be_false
+          end
+        end
+        context "and provides the correct current password" do
+          it "successfully updates their password" do
+            result = @user.update_with_password(:current_password => 'thisismypassword1',
+                                                :password => "new_password1",
+                                                :password_confirmation => "new_password1")
+            result.should be_true
+          end
+        end
+      end
+
+    end
+  end
+
 end

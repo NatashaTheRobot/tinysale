@@ -15,4 +15,6 @@
 //= require jquery-ui.min
 //= require bootstrap
 //= require bootstrap-wysihtml5
+//= require jquery.metadata
+//= require jquery-star-rating
 //= require_tree .

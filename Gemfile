@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
 gem 'pg'
 gem 'haml', '3.1.7'
 gem 'rake', '0.8.7'
@@ -19,9 +19,15 @@ gem 'ruby_parser'
 
 gem "custom_error_message", '1.1.1'
 
+#stripe
 gem 'stripe', '1.7.8'
 gem 'stripe-rails'
 gem 'stripe_event'
+
+#comments and ratings
+gem 'acts_as_commentable_with_threading', '1.1.2'
+gem 'jquery-star-rating-rails', '0.0.1'
+gem 'rakismet', '1.3.0'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.4'

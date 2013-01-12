@@ -1,4 +1,6 @@
 Tinysale::Application.routes.draw do
+  match '/rate' => 'rater#create', :as => 'rate'
+
   get "payments/new"
 
   devise_for :users
@@ -8,8 +10,8 @@ Tinysale::Application.routes.draw do
   resources :emails, only: [:create]
   resources :products, path: 'sale'
   resources :payments
-
-  match '/attachments/:id' => "products#download", as: :download
+  resources :comments
+  resources :attachments, only: [:show]
 
   mount StripeEvent::Engine => '/stripe_webhook'
 

@@ -11,5 +11,10 @@
  *= require_self
  *= require custom
  *= require bootstrap-wysihtml5
+ *= require jquery-star-rating
  *= require_tree .
  */
+
+.star {
+    float: right;
+}
