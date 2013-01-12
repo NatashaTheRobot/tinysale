@@ -15,6 +15,7 @@ module ProductsHelper
   end
 
   def average_rating
+    return 0 if @comments.empty?
     ratings = @comments.collect { |comment| comment.rating }
     (ratings.reduce(:+).to_f / ratings.size)
   end

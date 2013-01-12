@@ -11,8 +11,7 @@ Tinysale::Application.routes.draw do
   resources :products, path: 'sale'
   resources :payments
   resources :comments
-
-  match '/attachments/:id' => "products#download", as: :download
+  resources :attachments, only: [:show]
 
   mount StripeEvent::Engine => '/stripe_webhook'
 

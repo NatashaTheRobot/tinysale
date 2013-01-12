@@ -2,13 +2,13 @@ class ProductsController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index, :charge, :download]
   before_filter :find_product, only: [:show, :edit, :update, :destroy]
 
-  # GET /products
+  # GET /sale
   def index
     @products = Product.all
     render :index
   end
 
-  # GET /products/:permalink
+  # GET /sale/:permalink
   def show
     @author = @product.user
     @comments = @product.comment_threads
@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     render :show
   end
 
-  # GET /products/new
+  # GET /sale/new
   def new
     @product = Product.new
     @product.attachments.build
@@ -24,12 +24,12 @@ class ProductsController < ApplicationController
     render :new
   end
 
-  # GET /products/:permalink/edit
+  # GET /sale/:permalink/edit
   def edit
-
+    # make sure only the owner of the product can edit it!
   end
 
-  # POST /products
+  # POST /sale
   def create
     @product = Product.new(params[:product])
     @product.user = current_user
@@ -37,31 +37,27 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render json: @product, status: :created, location: @product }
       else
         @product.attachments.build unless @product.attachments.present?
         @product.images.build unless @product.images.present?
         format.html { render action: "new" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /products/:permalink
+  # PUT /sale/:permalink
   def update
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /products/:permalink
+  # DELETE /sale/:permalink
   def destroy
     @product.destroy
 
@@ -88,14 +84,7 @@ class ProductsController < ApplicationController
     #end
 
     # on success
-    redirect_to download_path(id: product.attachments.first.id)
-  end
-
-  def download
-    id = params[:id]
-    attachment = Attachment.find(id)
-    io = open(URI.parse(attachment.item.expiring_url(10)))
-    send_data io.read, type: io.content_type, filename: attachment.item_file_name
+    redirect_to attachment_path(product.attachments.first)
   end
 
   private

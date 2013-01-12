@@ -45,4 +45,5 @@ class Attachment < ActiveRecord::Base
   def convert_price_to_cents
     self.price_in_cents = price_in_cents.to_f * 100
   end
+
 end

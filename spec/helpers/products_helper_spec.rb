@@ -33,5 +33,11 @@ describe ProductsHelper do
     it "calculates the correct average rating" do
       average_rating.should == 3.5
     end
+    context "when there are no comments" do
+      it "returns 0 as the average rating" do
+        @comments = []
+        average_rating.should == 0
+      end
+    end
   end
 end
