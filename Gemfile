@@ -2,10 +2,12 @@ source :rubygems
 
 gem 'rails', '3.2.11'
 gem 'pg'
-gem 'haml', '3.1.7'
 gem 'rake', '0.8.7'
+
 gem 'sendgrid', '1.1.0'
 gem 'typhoeus', '0.5.3'
+
+gem 'haml', '3.1.7'
 
 #file storage
 gem 'paperclip', '3.4.0'
@@ -34,9 +36,7 @@ group :development, :test do
   gem 'annotate', '2.5.0'
   gem 'quiet_assets', '1.0.1'
   gem 'simplecov', '0.7.1'
-  gem 'capybara'
   gem 'factory_girl_rails', '4.1.0'
-  gem 'launchy', '2.1.2'
   gem 'guard-rspec', '2.3.0'
   gem 'guard-spork', '1.4.0'
   gem 'spork', '0.9.2'

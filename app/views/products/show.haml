@@ -59,8 +59,7 @@
           #sign_up.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "add_review", :role => "dialog", :tabindex => "-1"}
             = render partial: "devise/registrations/form"
 
-      .row
+      .row.comments
         - @comments.each do |comment|
           .comment
             = render partial: 'comments/show', locals: { comment: comment }
-
