@@ -16,5 +16,6 @@
 //= require bootstrap
 //= require bootstrap-wysihtml5
 //= require jquery.metadata
+//= require jquery.easing
 //= require jquery-star-rating
 //= require_tree .

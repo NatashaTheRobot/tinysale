@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   # GET /sale/:permalink
   def show
     @author = @product.user
-    @comments = @product.comment_threads
+    @comments = @product.comment_threads.includes(:user).order('created_at DESC')
     @comment = Comment.new
     render :show
   end

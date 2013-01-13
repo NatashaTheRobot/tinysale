@@ -19,4 +19,16 @@ module ProductsHelper
     ratings = @comments.collect { |comment| comment.rating }
     (ratings.reduce(:+).to_f / ratings.size)
   end
+
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
 end

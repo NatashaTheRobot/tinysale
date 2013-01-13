@@ -51,10 +51,15 @@
         %h4= "Reviews"
       .row
         - if current_user
-          .submit_comment
+          = button_tag "Leave a Review", class: 'btn btn-success', id: 'add_review'
+          #submit_comment
             = render partial: 'comments/form', locals: { commentable_id: @product.id, type: "Product" }
-      .row
+        - else
+          %a.btn.btn-success{"data-toggle" => "modal", :href => "#sign_up", :role => "button"} Leave a Review
+          #sign_up.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "add_review", :role => "dialog", :tabindex => "-1"}
+            = render partial: "devise/registrations/form"
+
+      .row.comments
         - @comments.each do |comment|
           .comment
             = render partial: 'comments/show', locals: { comment: comment }
-
