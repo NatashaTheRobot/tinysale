@@ -44,8 +44,9 @@
     border-bottom: 5px;
   }
 
-  .submit_comment {
-    margin-left: 19px;
+  #submit_comment {
+    display: none;
+    padding-left: 30px;
     #comment_title {
       margin-top: 13px;
     }
