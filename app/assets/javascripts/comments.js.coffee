@@ -18,4 +18,6 @@ jQuery ->
       stars = 'stars' + json['rating'] + '.png'
       rating = "<div class='star'><img alt="+stars+" src='/assets/" + stars + "'></div>"
       $('.comments').prepend("<div class='comment'><h5>"+ json['title'] + '</h5>'+json['avatar'] + rating + '            ' + json['body'] + "</div>")
+      $('#comment_title').val('')
+      $('#comment_body').val('')
     false # prevents normal behaviour
