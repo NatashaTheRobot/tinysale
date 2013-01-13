@@ -10,8 +10,7 @@ class CommentsController < ApplicationController
     @new_comment = Comment.build_from(commentable, current_user.id, comment[:body])
     @new_comment.title = comment[:title]
     @new_comment.rating = rating.values.first.to_i
-    #if !@new_comment.spam? and @new_comment.save
-    if @new_comment.save
+    if !@new_comment.spam? and @new_comment.save
       @comment_output = { title: @new_comment.title,
                          avatar: view_context.image_for(@new_comment.user, '25x25'),
                          rating: @new_comment.rating,
