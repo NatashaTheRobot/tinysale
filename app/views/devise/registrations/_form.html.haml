@@ -3,17 +3,14 @@
   = devise_error_messages!
   %div
     = f.label :name
-    = f.text_field :username
+    = f.text_field :username, placeholder: "HELLO, my name is..."
   %div
     = f.label :email
-    %br/
-    = f.email_field :email
+    = f.email_field :email, placeholder: 'you@awesome.com'
   %div
     = f.label :password
-    %br/
-    = f.password_field :password
+    = f.password_field :password, placeholder: "H@rd2H@ck!"
   %div
     = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
+    = f.password_field :password_confirmation, placeholder: "H@rd2H@ck!"
   %div= f.submit "Sign up", class: 'btn btn-success btn-medium'

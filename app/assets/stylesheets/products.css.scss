@@ -60,6 +60,13 @@
     #sign_in_form, #forgot_password_form {
       display: none;
     }
+    .remember {
+      width: 130px;
+      margin-left: 38%;
+      #user_remember_me {
+        float: left;
+      }
+    }
   }
 }
 
