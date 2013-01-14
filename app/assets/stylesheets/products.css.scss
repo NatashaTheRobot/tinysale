@@ -51,6 +51,16 @@
       margin-top: 13px;
     }
   }
+
+  #registration {
+    text-align: center;
+    #sign_in_links, #sign_up_links, #forgot_links {
+      margin-bottom: 15px;
+    }
+    #sign_in_form, #forgot_password_form {
+      display: none;
+    }
+  }
 }
 
 // edit page

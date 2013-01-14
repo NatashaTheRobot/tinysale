@@ -57,7 +57,23 @@
         - else
           %a.btn.btn-success{"data-toggle" => "modal", :href => "#sign_up", :role => "button"} Leave a Review
           #sign_up.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "add_review", :role => "dialog", :tabindex => "-1"}
-            = render partial: "devise/registrations/form"
+            #registration
+              #sign_up_form
+                = render partial: "devise/registrations/form"
+                #sign_in_links
+                  = "Already have an account?"
+                  = link_to "Sign in", '#', id: 'sign_in_link'
+              #sign_in_form
+                = render partial: "devise/sessions/form"
+                #sign_up_links
+                  = "Don't have an account?"
+                  = link_to "Sign up", '#', id: 'sign_up_link'
+                  #forgot_password
+                    = link_to "Forgot your password?", '#', id: 'forgot_password_link'
+              #forgot_password_form
+                = render partial: "devise/passwords/form"
+                #forgot_links
+                  = link_to "Sign in", '#', id: 'forgot_signin_link'
 
       .row.comments
         - @comments.each do |comment|
