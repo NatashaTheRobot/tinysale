@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $("form").submit ->
+  $("#comment_form").submit ->
     valuesToSubmit = $(this).serialize()
     #sumbits it to the given url of the form
     # you want a difference between normal and ajax-calls, and json is standard
