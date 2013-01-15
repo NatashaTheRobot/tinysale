@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
                          avatar: view_context.image_for(@new_comment.user, '25x25'),
                          rating: @new_comment.rating,
                          body: @new_comment.body }
-      respond_with @comment_output, location: @new_comment
+      respond_with @comment_output, location: @new_comment, status: :ok
     else
       respond_with @new_comment.errors, status: :unprocessable_entity
     end
