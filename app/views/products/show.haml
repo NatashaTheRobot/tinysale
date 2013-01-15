@@ -55,10 +55,7 @@
           #submit_comment
             = render partial: 'comments/form', locals: { commentable_id: @product.id, type: "Product" }
         - else
-          %a.btn.btn-success{"data-toggle" => "modal", :href => "#sign_up", :role => "button"} Leave a Review
-          #sign_up.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "add_review", :role => "dialog", :tabindex => "-1"}
-            = render partial: "devise/registrations/form"
-
+          = render 'signup_modal'
       .row.comments
         - @comments.each do |comment|
           .comment
