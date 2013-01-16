@@ -23,3 +23,6 @@ jQuery ->
   $('#forgot_signin_link').click ->
     $('#sign_in_form').show()
     $('#forgot_password_form').hide()
+
+  $('#sign_in_user').submit ->
+    login_user( $(this).serialize )

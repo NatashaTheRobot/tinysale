@@ -18,4 +18,5 @@
 //= require jquery.metadata
 //= require jquery.easing
 //= require jquery-star-rating
+//= require devise
 //= require_tree .
