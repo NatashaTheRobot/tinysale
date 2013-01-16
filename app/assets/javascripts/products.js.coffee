@@ -24,5 +24,10 @@ jQuery ->
     $('#sign_in_form').show()
     $('#forgot_password_form').hide()
 
-  $('#sign_in_user').submit ->
-    login_user( $(this).serialize )
+  $("form#sign_in_user").bind "ajax:success", (e, data, status, xhr) ->
+    console.log data
+    if data.success
+      $('#sign_up').modal('hide')
+      $('#submit_comment').slideToggle(1000, "easeOutBack" )
+    else
+      alert('failure!')
