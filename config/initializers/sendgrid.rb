@@ -6,3 +6,5 @@ ActionMailer::Base.smtp_settings = {
     :user_name => ENV['SENDGRID_USER'],
     :password => ENV['SENDGRID_PASS']
 }
+
+ActionMailer::Base.delivery_method = :smtp
