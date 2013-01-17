@@ -4,6 +4,11 @@ jQuery ->
 
   $('.rating-cancel').remove()
 
+  if $("#add_review").data('user') is 'y'
+    $("#sign_up_button").hide()
+  else
+    $("#add_review").hide()
+
   $('#add_review').click ->
     $('#add_review').hide()
     $('#submit_comment').slideToggle(1000, "easeOutBack" )
@@ -25,9 +30,25 @@ jQuery ->
     $('#forgot_password_form').hide()
 
   $("form#sign_in_user").bind "ajax:success", (e, data, status, xhr) ->
-    console.log data
     if data.success
       $('#sign_up').modal('hide')
+      $('#sign_up_button').hide()
+      $('#submit_comment').slideToggle(1000, "easeOutBack" )
+    else
+      alert('failure!')
+
+  $("form#sign_up_user").bind "ajax:success", (e, data, status, xhr) ->
+    if data.success
+      $('#sign_up').modal('hide')
+      $('#sign_up_button').hide()
+      $('#submit_comment').slideToggle(1000, "easeOutBack" )
+    else
+      alert('failure!')
+
+  $("form#forgot_password_user").bind "ajax:success", (e, data, status, xhr) ->
+    if data.success
+      $('#sign_up').modal('hide')
+      $('#sign_up_button').hide()
       $('#submit_comment').slideToggle(1000, "easeOutBack" )
     else
       alert('failure!')

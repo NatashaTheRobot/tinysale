@@ -31,4 +31,8 @@ module ProductsHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def user_data
+    current_user ? 'y' : 'n'
+  end
 end
