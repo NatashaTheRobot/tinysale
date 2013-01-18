@@ -28,8 +28,8 @@ gem 'stripe_event'
 
 #comments and ratings
 gem 'acts_as_commentable_with_threading', '1.1.2'
-gem 'jquery-star-rating-rails', '0.0.1'
 gem 'rakismet', '1.3.0'
+gem 'jquery-raty-rails', '0.0.1'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.4'

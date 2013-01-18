@@ -4,8 +4,6 @@ jQuery ->
 
   # reviews
 
-  $('.rating-cancel').remove()
-
   if $("#add_review").data('user') is 'y'
     $("#sign_up_button").hide()
   else
@@ -14,6 +12,16 @@ jQuery ->
   $('#add_review').click ->
     $('#add_review').hide()
     $('#submit_comment').slideToggle(1000, "easeOutBack" )
+
+  # ratings
+
+  $('#rating').raty
+    readOnly: true
+    score: $('#rating').data('rating')
+    round:
+      down: 0.25
+      full: 0.6
+      up: 0.76
 
   # sign in
 
