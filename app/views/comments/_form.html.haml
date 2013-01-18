@@ -8,12 +8,12 @@
         - @comment.errors.full_messages.each do |msg|
           %li= msg
   .row
-    - 1.upto(5) do |value|
-      = star_button_rate(type.constantize.find(commentable_id), value, (value==0))
+    #star_rating
   .row
     = f.text_field :title, placeholder: "Your review title"
   .row
     = f.text_area :body, placeholder: "What do you think about this product?"
-    = f.hidden_field :c_type, value: type
+    = f.hidden_field :commentable_type, value: commentable_type
+    = f.hidden_field :commentable_id, value: commentable_id
   .row
     = f.submit "Submit", class: 'btn btn-success'

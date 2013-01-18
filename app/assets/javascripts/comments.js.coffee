@@ -3,21 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-#  create_comment = ( comment_data , callback ) ->
-#    request = $.ajax(
-#      url: '/comments'
-#      type: 'POST'
-#      dataType: 'json'
-#      data: comment_data
-#      success: (result) ->
-#        callback(result)
-#    )
-#    request.fail (msg) ->
-#      alert("Failed to create comment")
-#
-#  $('#new_comment').submit ->
-#    comment_data = $(this).serialize()
-#    create_comment( comment_data , display_comment )
 
   display_comment = (data) ->
     $('#submit_comment').slideUp(1000, "easeOutBack" )
@@ -31,3 +16,5 @@ jQuery ->
 
   $("form#new_comment").bind "ajax:success", (e, data, status, xhr) ->
       display_comment(data)
+
+  $('#star_rating').raty()
