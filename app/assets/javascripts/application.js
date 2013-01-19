@@ -18,5 +18,5 @@
 //= require jquery.metadata
 //= require jquery.easing
 //= require jquery.raty.min
-//= require devise
+//= require global
 //= require_tree .

@@ -14,7 +14,16 @@ jQuery ->
     $('#comment_body').val('')
     false
 
+  calculate_new_average = (rating) ->
+
+  update_average = (rating) ->
+    num_comments = $('#rating').data('comments')
+    sum = $('#rating').data('rating') * num_comments + rating
+    average = sum / (num_comments + 1)
+    @display_rating(average)
+
   $("form#new_comment").bind "ajax:success", (e, data, status, xhr) ->
       display_comment(data)
+      update_average(data["rating"])
 
   $('#star_rating').raty()
