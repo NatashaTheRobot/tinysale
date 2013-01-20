@@ -17,6 +17,7 @@ module ProductsHelper
   def average_rating
     return 0 if @comments.empty?
     ratings = @comments.collect { |comment| comment.rating }
+    ratings.reject! { |r| r == 0 } # 0's don't count as ratings
     (ratings.reduce(:+).to_f / ratings.size)
   end
 

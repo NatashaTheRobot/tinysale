@@ -17,6 +17,7 @@ jQuery ->
   calculate_new_average = (rating) ->
 
   update_average = (rating) ->
+    return if rating is 0
     num_comments = $('#rating').data('comments')
     sum = $('#rating').data('rating') * num_comments + rating
     average = sum / (num_comments + 1)

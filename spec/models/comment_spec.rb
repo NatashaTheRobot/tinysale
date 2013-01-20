@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 describe Comment do
-  it { should validate_presence_of :rating }
+
+  it { should validate_presence_of :title }
+  it { should ensure_length_of(:title).is_at_most(140) }
   it { should validate_presence_of :body }
-  it { should validate_presence_of :rating }
   it { should belong_to :commentable }
+  it { should validate_presence_of :rating }
 
   describe "#has_children?" do
     before do
