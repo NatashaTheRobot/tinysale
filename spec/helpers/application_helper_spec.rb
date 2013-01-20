@@ -28,29 +28,4 @@ describe ApplicationHelper do
     end
   end
 
-  context "star rating" do
-    before do
-      @rateable = FactoryGirl.build :comment, id: 24
-    end
-    describe "#star_button" do
-      it "correctly creates a star" do
-        star_button(@rateable, 3, @rateable.rating).should == "<input class=\"star {split:1}\" disabled=\"disabled\" id=\"star3_trek24_\" name=\"star3[trek24]\" type=\"radio\" />"
-      end
-    end
-
-    describe "#star_button_rate" do
-      it "correctly creates a rateable star" do
-        star_button_rate(@rateable, 4, false).should == "<input class=\"star\" id=\"rating_24_4\" name=\"rating[24]\" type=\"radio\" value=\"4\" />"
-      end
-    end
-
-    describe "#star_split" do
-      it "correctly calculates the split" do
-        star_split(3.25).should == 4
-        star_split(4.33).should == 3
-        star_split(2.5).should == 2
-        star_split(@rateable.rating).should == 1
-      end
-    end
-  end
 end
