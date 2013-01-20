@@ -4,7 +4,6 @@ SimpleCov.start 'rails'
 require 'rubygems'
 require 'spork'
 require 'vcr'
-require 'capybara/rspec'
 require 'database_cleaner'
 require 'paperclip/matchers'
 DatabaseCleaner[:active_record].strategy = :truncation
