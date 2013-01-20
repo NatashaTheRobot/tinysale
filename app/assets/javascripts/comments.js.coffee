@@ -20,7 +20,14 @@ jQuery ->
     num_comments = $('#rating').data('comments')
     sum = $('#rating').data('rating') * num_comments + rating
     average = sum / (num_comments + 1)
-    @display_rating(average)
+    $('#rating').raty
+      readOnly: true
+      score: average
+      round:
+        down: 0.25
+        full: 0.6
+        up: 0.76
+
 
   $("form#new_comment").bind "ajax:success", (e, data, status, xhr) ->
       display_comment(data)

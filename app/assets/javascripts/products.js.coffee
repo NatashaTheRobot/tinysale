@@ -14,7 +14,6 @@ jQuery ->
     $('#submit_comment').slideToggle(1000, "easeOutBack" )
 
   # ratings
-
   @display_rating($('#rating').data('rating'))
 
   # sign in
