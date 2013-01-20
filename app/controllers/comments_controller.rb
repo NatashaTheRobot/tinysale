@@ -8,12 +8,13 @@ class CommentsController < ApplicationController
     commentable = type.constantize.find(comment[:commentable_id].to_i)
     @new_comment = Comment.build_from(commentable, current_user.id, comment[:body])
     @new_comment.title = comment[:title]
-    @new_comment.rating = params[:score]
+    score = params[:score]
+    @new_comment.rating = score.present? ? score : 0
     if !@new_comment.spam? and @new_comment.save
       @comment_output = { title: @new_comment.title,
-                         avatar: view_context.image_for(@new_comment.user, '25x25'),
-                         rating: @new_comment.rating,
-                         body: @new_comment.body }
+                          avatar: view_context.image_for(@new_comment.user, '25x25'),
+                          rating: @new_comment.rating,
+                          body: @new_comment.body }
       respond_with @comment_output, location: @new_comment, status: :ok
     else
       # include what do when comment is spam first
