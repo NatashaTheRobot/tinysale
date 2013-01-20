@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index, :charge, :download]
   before_filter :find_product, only: [:show, :edit, :update, :destroy]
 
+  load_and_authorize_resource
+
   # GET /sale
   def index
     @products = Product.all
@@ -26,7 +28,7 @@ class ProductsController < ApplicationController
 
   # GET /sale/:permalink/edit
   def edit
-    # make sure only the owner of the product can edit it!
+
   end
 
   # POST /sale

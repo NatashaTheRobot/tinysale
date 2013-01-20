@@ -16,7 +16,8 @@ class CommentsController < ApplicationController
                          body: @new_comment.body }
       respond_with @comment_output, location: @new_comment, status: :ok
     else
-      respond_with @new_comment.errors, status: :unprocessable_entity
+      # include what do when comment is spam first
+      respond_with @new_comment.errors, location: @new_comment, status: :unprocessable_entity
     end
   end
 end

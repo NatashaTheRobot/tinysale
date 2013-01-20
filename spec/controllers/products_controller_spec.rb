@@ -55,9 +55,10 @@ describe ProductsController do
 
   describe "edit" do
     before do
-      sign_in FactoryGirl.create :user
+      user = FactoryGirl.create :user
+      sign_in user
       Attachment.any_instance.stub(:save_attached_files).and_return(true)
-      @product = FactoryGirl.create :product
+      @product = FactoryGirl.create :product, user: user
       get 'edit', id: @product.permalink
     end
     it "returns a success response" do
@@ -84,9 +85,10 @@ describe ProductsController do
 
   describe "destroy" do
     before do
-      sign_in FactoryGirl.create :user
+      user = FactoryGirl.create :user
+      sign_in user
       Attachment.any_instance.stub(:save_attached_files).and_return(true)
-      @product = FactoryGirl.create :product
+      @product = FactoryGirl.create :product, user: user
       put 'destroy', id: @product.permalink
     end
     it "successfully updates the product" do
