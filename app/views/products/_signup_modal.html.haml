@@ -2,11 +2,17 @@
 #sign_up.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "add_review", :role => "dialog", :tabindex => "-1"}
   #registration
     #sign_up_form
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h2= "Sign up"
       = render "devise/registrations/form"
       #sign_in_links
         = "Already have an account?"
         = link_to "Sign in", '#', id: 'sign_in_link'
     #sign_in_form
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h2= "Sign in"
       = render "devise/sessions/form"
       #sign_up_links
         = "Don't have an account?"
@@ -14,6 +20,9 @@
         #forgot_password
           = link_to "Forgot your password?", '#', id: 'forgot_password_link'
     #forgot_password_form
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h2= "Forgot your password?"
       = render "devise/passwords/form"
       #forgot_links
         = link_to "Sign in", '#', id: 'forgot_signin_link'

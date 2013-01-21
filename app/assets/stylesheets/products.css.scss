@@ -54,11 +54,19 @@
 
   #registration {
     text-align: center;
+    .modal-header {
+      margin-bottom: 25px;
+    }
     #sign_in_links, #sign_up_links, #forgot_links {
       margin-bottom: 15px;
     }
     #sign_in_form, #forgot_password_form {
       display: none;
+    }
+    #forgot_password_form {
+      #user_email {
+        margin-bottom: 25px;
+      }
     }
     .remember {
       width: 130px;
