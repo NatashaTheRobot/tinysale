@@ -1,26 +1,37 @@
 .landing
   .row-fluid
-    .alert Invalid email address
-
-  .row-fluid
-    .span6.offset3
-      .branding
-        %h1 tinysale
-        %h2 optimize how you sell
-        %p It's easy as 1-2-3!
-  .row-fluid
-    .span4.offset4
-      %ol
-        %li Create a Sale Landing Page
-        %li Optimize with A/B testing and analytics
-        %li Get Paid!
-  .row-fluid
-    .span6.offset3
+    .span6
+      = image_tag 'logo.png', id: 'logo'
+    .span6
       .email
-        = label_tag :email, "<em>enter your email address for important updates!</em>".html_safe
-        = text_field_tag :email, nil, placeholder: "name@email.com"
-        = submit_tag "Go", class: "btn btn-success", id: "submit"
-      .confirm
-        %p Thank you so much for signing up!
-        %p I'm working hard every day to make tinysale happen.
-        %p Meanwhile, you can <strong>follow tinysale on Twitter <a href="https://twitter.com/tinysaleco" target="_blank">here</a></strong>.
+        = label_tag :email, "Enter your email for important updates!", id: 'email-text'
+        .email-form
+          = text_field_tag :email , nil , placeholder: "name@email.com"
+          = image_submit_tag "submit-email.png", id: "submit"
+
+-#.landing
+-#  .row-fluid
+-#    .alert Invalid email address
+-#
+-#  .row-fluid
+-#    .span6.offset3
+-#      .branding
+-#        %h1 tinysale
+-#        %h2 optimize how you sell
+-#        %p It's easy as 1-2-3!
+-#  .row-fluid
+-#    .span4.offset4
+-#      %ol
+-#        %li Create a Sale Landing Page
+-#        %li Optimize with A/B testing and analytics
+-#        %li Get Paid!
+-#  .row-fluid
+-#    .span6.offset3
+-#      .email
+-#        = label_tag :email, "<em>enter your email address for important updates!</em>".html_safe
+-#        = text_field_tag :email, nil, placeholder: "name@email.com"
+-#        = submit_tag "Go", class: "btn btn-success", id: "submit"
+-#      .confirm
+-#        %p Thank you so much for signing up!
+-#        %p I'm working hard every day to make tinysale happen.
+-#        %p Meanwhile, you can <strong>follow tinysale on Twitter <a href="https://twitter.com/tinysaleco" target="_blank">here</a></strong>.
