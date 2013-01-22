@@ -48,10 +48,10 @@
       .row
         %h4= "Reviews"
       .row
-        = button_tag "Leave a Review", class: 'btn btn-success', id: 'add_review', "data-user" => user_data
+        = button_tag "Review", class: 'btn btn-success', id: 'add_review'
+        - button_tag "Comment", class: 'btn btn-primary', id: 'add_comment'
         #submit_comment
           = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product" }
-        = render 'signup_modal'
       .row.comments
         - @comments.each do |comment|
           .comment

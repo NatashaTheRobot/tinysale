@@ -20,20 +20,4 @@ module ProductsHelper
     ratings.reject! { |r| r == 0 } # 0's don't count as ratings
     (ratings.reduce(:+).to_f / ratings.size)
   end
-
-  def resource_name
-    :user
-  end
-
-  def resource
-    @resource ||= User.new
-  end
-
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:user]
-  end
-
-  def user_data
-    current_user ? 'y' : 'n'
-  end
 end

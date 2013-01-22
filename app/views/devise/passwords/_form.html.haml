@@ -1,4 +1,4 @@
-= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, :id => "forgot_password_user"}, format: :json, remote: true ) do |f|
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, :id => "forgot_password_user"} ) do |f|
   = devise_error_messages!
   %div
     = f.email_field :email, placeholder: 'email'
