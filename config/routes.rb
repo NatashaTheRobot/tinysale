@@ -3,7 +3,7 @@ Tinysale::Application.routes.draw do
 
   get "payments/new"
 
-  devise_for :users, :controllers => {sessions: 'sessions', registrations: 'registrations', passwords: 'passwords'}
+  devise_for :users
 
   root to: "static_pages#home"
 

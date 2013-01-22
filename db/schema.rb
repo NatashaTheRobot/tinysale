@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108140934) do
+ActiveRecord::Schema.define(:version => 20130121164552) do
 
   create_table "attachments", :force => true do |t|
     t.string   "status"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20130108140934) do
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.integer  "rating"
+    t.string   "email"
+    t.string   "subtype"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"

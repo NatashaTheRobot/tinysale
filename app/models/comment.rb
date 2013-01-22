@@ -3,12 +3,18 @@ class Comment < ActiveRecord::Base
 
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
-  attr_accessible :rating
+  attr_accessible :rating, :email, :subtype
 
   validates :title, presence: true, length: { maximum: 140 }
-  validates_presence_of :body
-  validates_presence_of :user
-  validates_presence_of :rating
+  validates :body, presence: true
+  validates :subtype, presence: true, inclusion: %w(review comment)
+
+  validates_presence_of :rating, if: :review?
+  validates :rating, inclusion: (1..5)
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, format: { with: VALID_EMAIL_REGEX }, allow_blank: true
+  validates_presence_of :email, unless: lambda { user.present? }
 
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
@@ -19,21 +25,30 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
 
-  rakismet_attrs author: proc { user.username },
-                 author_email: proc { user.email },
+  rakismet_attrs author: proc { user.username if user.present? },
+                 author_email: proc { email_address },
                  content: :body,
                  permalink: proc { commentable.permalink }
 
-  # Helper class method that allows you to build a comment
-  # by passing a commentable object, a user_id, and comment text
-  # example in readme
-  def self.build_from(obj, user_id, comment)
+  def review?
+    self.subtype == 'review'
+  end
+
+  def self.build_from(options)
     c = self.new
-    c.commentable_id = obj.id
-    c.commentable_type = obj.class.base_class.name
-    c.body = comment
-    c.user_id = user_id
+    c.commentable_id = options[:commentable_id]
+    c.commentable_type = options[:commentable_type]
+    c.body = options[:body]
+    c.title = options[:title]
+    c.user_id = options[:user_id] if options[:user_id]
+    c.email = options[:email]
+    c.subtype = options[:subtype]
+    c.rating = options[:rating] if options[:rating]
     c
+  end
+
+  def email_address
+    user.present? ? user.email : self.email
   end
 
   #helper method to check if a comment has children
