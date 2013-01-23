@@ -37,7 +37,7 @@ class Product < ActiveRecord::Base
 
   def generate_permalink
     self.permalink = clean_parameterized_title
-    last_matching_links = Product.where("permalink SIMILAR TO ?","#{permalink}(-[0-9]+)?").order("permalink ASC").last
+    last_matching_links = Product.where("permalink SIMILAR TO ?","#{permalink}(-[0-9]+)?").order("LENGTH(permalink) ASC , permalink ASC").last
     if !last_matching_links.nil?
       num = last_matching_links.permalink.split('-').last.to_i + 1
       self.permalink = "#{permalink}-#{num}"
