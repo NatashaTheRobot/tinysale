@@ -5,7 +5,11 @@ jQuery ->
   # reviews
 
   $('#add_review').click ->
-    $('#add_review').hide()
+    $('#submit_comment').hide()
+    $('#submit_review').slideToggle(1000, "easeOutBack" )
+
+  $('#add_comment').click ->
+    $('#submit_review').hide()
     $('#submit_comment').slideToggle(1000, "easeOutBack" )
 
   # ratings

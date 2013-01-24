@@ -21,8 +21,7 @@
       .span3
         = image_tag @product.images.first.cover.url, width: '200', height: '200'
         #quick_info
-          - num_comments = @comments.size
-          #rating{"data-rating" => average_rating, "data-comments" => num_comments }
+          #rating{"data-rating" => average_rating, "data-comments" => num_ratings }
           %br
           %ul
             %li= "You'll get a #{file_type}"
@@ -49,9 +48,11 @@
         %h4= "Reviews"
       .row
         = button_tag "Review", class: 'btn btn-success', id: 'add_review'
-        - button_tag "Comment", class: 'btn btn-primary', id: 'add_comment'
+        = button_tag "Comment", class: 'btn btn-primary', id: 'add_comment'
+        #submit_review
+          = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "review" }
         #submit_comment
-          = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product" }
+          = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "comment" }
       .row.comments
         - @comments.each do |comment|
           .comment
