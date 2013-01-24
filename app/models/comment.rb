@@ -9,12 +9,11 @@ class Comment < ActiveRecord::Base
   validates :body, presence: true
   validates :subtype, presence: true, inclusion: %w(review comment)
 
-  validates_presence_of :rating, if: :review?
-  validates :rating, inclusion: (1..5)
+  #validates_presence_of :rating, if: :review?
+  validates :rating, presence: true, inclusion: (1..5), if: :review?
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, format: { with: VALID_EMAIL_REGEX }, allow_blank: true
-  validates_presence_of :email, unless: lambda { user.present? }
+  validates :email, format: { with: VALID_EMAIL_REGEX }, presence: true, unless: lambda { user.present? }
 
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
@@ -34,17 +33,22 @@ class Comment < ActiveRecord::Base
     self.subtype == 'review'
   end
 
-  def self.build_from(options)
+  def self.build_from(params, user_id = nil)
+    comment = params[:comment]
     c = self.new
-    c.commentable_id = options[:commentable_id]
-    c.commentable_type = options[:commentable_type]
-    c.body = options[:body]
-    c.title = options[:title]
-    c.user_id = options[:user_id] if options[:user_id]
-    c.email = options[:email]
-    c.subtype = options[:subtype]
-    c.rating = options[:rating] if options[:rating]
+    c.commentable_id = comment[:commentable_id]
+    c.commentable_type = comment[:commentable_type]
+    c.body = comment[:body]
+    c.title = comment[:title]
+    c.user_id = user_id
+    c.email = comment[:email]
+    c.subtype = comment[:subtype]
+    c.rating = self.rating_score(params[:score])
     c
+  end
+
+  def self.rating_score(score)
+    score.present? ? score.to_i : nil
   end
 
   def email_address

@@ -7,17 +7,18 @@ jQuery ->
   display_comment = (data) ->
     $('#submit_comment').slideUp(1000, "easeOutBack" )
     $('#add_review').show(1000)
-    stars = 'stars' + data['rating'] + '.png'
-    rating = "<div class='star'><img alt="+stars+" src='/assets/" + stars + "'></div>"
-    $('.comments').prepend("<div class='comment'><h5>"+ data['title'] + '</h5>'+data['avatar'] + rating + '            ' + data['body'] + "</div>")
+    if data['rating'] is null
+      $('.comments').prepend("<div class='comment'><h5>"+ data['title'] + '</h5>'+data['avatar'] + '            ' + data['body'] + "</div>")
+    else
+      stars = 'stars' + data['rating'] + '.png'
+      rating = "<div class='star'><img alt="+stars+" src='/assets/" + stars + "'></div>"
+      $('.comments').prepend("<div class='comment'><h5>"+ data['title'] + '</h5>'+data['avatar'] + rating + '            ' + data['body'] + "</div>")
     $('#comment_title').val('')
     $('#comment_body').val('')
     false
 
-  calculate_new_average = (rating) ->
-
   update_average = (rating) ->
-    return if rating is 0
+    return if rating is null
     num_comments = $('#rating').data('comments')
     sum = $('#rating').data('rating') * num_comments + rating
     average = sum / (num_comments + 1)
