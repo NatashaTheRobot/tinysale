@@ -92,6 +92,6 @@ class ProductsController < ApplicationController
   private
 
   def find_product
-    @product ||= Product.includes(:attachments, :images, :user).find_by_permalink!(params[:id])
+    @product ||= Product.includes(:attachments, :images, :user, :lead).find_by_permalink!(params[:id])
   end
 end

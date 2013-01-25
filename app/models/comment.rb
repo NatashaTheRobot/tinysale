@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
 
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
-  attr_accessible :rating, :email, :subtype
+  attr_accessible :rating, :subtype
 
   validates :title, presence: true, length: { maximum: 140 }
   validates :body, presence: true
@@ -12,8 +12,7 @@ class Comment < ActiveRecord::Base
   #validates_presence_of :rating, if: :review?
   validates :rating, presence: true, inclusion: (1..5), if: :review?
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, format: { with: VALID_EMAIL_REGEX }, presence: true, unless: lambda { user.present? }
+  validates :lead, presence: true, unless: lambda { user.present? }
 
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
@@ -23,6 +22,7 @@ class Comment < ActiveRecord::Base
 
   # NOTE: Comments belong to a user
   belongs_to :user
+  belongs_to :lead
 
   rakismet_attrs author: proc { user.username if user.present? },
                  author_email: proc { email_address },
@@ -41,7 +41,7 @@ class Comment < ActiveRecord::Base
     c.body = comment[:body]
     c.title = comment[:title]
     c.user_id = user_id
-    c.email = comment[:email]
+    c.lead = Lead.find_by_email(params[:email]) || Lead.build_from(params[:email]) unless user_id.present?
     c.subtype = comment[:subtype]
     c.rating = self.rating_score(params[:score])
     c

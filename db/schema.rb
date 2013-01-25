@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121164552) do
+ActiveRecord::Schema.define(:version => 20130125135401) do
 
   create_table "attachments", :force => true do |t|
     t.string   "status"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(:version => 20130121164552) do
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.integer  "rating"
-    t.string   "email"
     t.string   "subtype"
+    t.integer  "lead_id"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -58,6 +58,16 @@ ActiveRecord::Schema.define(:version => 20130121164552) do
   end
 
   add_index "images", ["product_id"], :name => "index_images_on_product_id"
+
+  create_table "leads", :force => true do |t|
+    t.string   "email"
+    t.string   "token"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "leads", ["email"], :name => "index_leads_on_email", :unique => true
+  add_index "leads", ["token"], :name => "index_leads_on_token", :unique => true
 
   create_table "payments", :force => true do |t|
     t.string   "access_token"
