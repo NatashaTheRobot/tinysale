@@ -17,9 +17,10 @@ require 'open-uri'
 
 class Attachment < ActiveRecord::Base
   require 'open-uri'
-  attr_accessible :price_in_cents, :status, :item
+  attr_accessible :status, :item
 
   belongs_to :product
+  has_one :user, through: :product
 
   has_attached_file :item,
                     storage: :s3,
@@ -30,20 +31,14 @@ class Attachment < ActiveRecord::Base
                     s3_permissions: :private,
                     path: "attachments/:id"
 
-  validates :price_in_cents, presence: true, :format => { :with => /^\d+??(?:\.\d{0,2})?$/ }, :numericality => {:greater_than => 0, :less_than => 1000000}
-
   validates_attachment :item, presence: true, size: { less_than: 10.megabytes }
 
-  before_create :set_status_to_active, :convert_price_to_cents
+  before_create :set_status_to_active
 
   private
 
   def set_status_to_active
     self.status = :active
-  end
-
-  def convert_price_to_cents
-    self.price_in_cents = price_in_cents.to_f * 100
   end
 
 end

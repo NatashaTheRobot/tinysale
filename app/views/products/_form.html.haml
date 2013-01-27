@@ -15,14 +15,15 @@
     = f.label "Title*"
     = f.text_field :title, placeholder: "Best product you'll ever buy!"
   .row
+    = f.label "Price in US Dollars"
+    = f.text_field :price_in_cents, placeholder: '$25.00'
+    = f.label :price_in_cents
     = f.fields_for :images do |i|
       = i.label "Product Image*"
       = i.file_field :cover
     = f.fields_for :attachments do |a|
       = a.label "Product Item*"
       = a.file_field :item
-      = a.label "Price in US Dollars"
-      = a.text_field :price_in_cents, placeholder: '$25.00'
   .row
     = f.label "Description*"
     = f.text_area :description, class: 'wysihtml5'

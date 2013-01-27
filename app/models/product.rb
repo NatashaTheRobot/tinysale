@@ -13,7 +13,7 @@
 
 class Product < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :description, :permalink, :title, :attachments_attributes, :images_attributes
+  attr_accessible :description, :permalink, :title, :attachments_attributes, :images_attributes, :price_in_cents
 
   acts_as_commentable
 
@@ -24,11 +24,12 @@ class Product < ActiveRecord::Base
   validates :description, presence: true
   validates :attachments, presence: { message: "Please upload an attachment"}
   validates :images, presence: { message: "Please upload an image" }
+  validates :price_in_cents, presence: true, :format => { :with => /^\d+??(?:\.\d{0,2})?$/ }, :numericality => {:greater_than => 0, :less_than => 1000000}
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :images
 
-  before_create :generate_permalink
+  before_create :generate_permalink, :convert_price_to_cents
 
   # overriding to have :permalink in the routes instead of :id
   def to_param
@@ -50,5 +51,9 @@ class Product < ActiveRecord::Base
 
   def clean_parameterized_title
     self.title.downcase.parameterize.gsub(/[^0-9A-Za-z-]/, '')
+  end
+
+  def convert_price_to_cents
+    self.price_in_cents = price_in_cents.to_f * 100
   end
 end
