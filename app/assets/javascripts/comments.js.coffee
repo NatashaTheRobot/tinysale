@@ -13,6 +13,7 @@ jQuery ->
       stars = 'stars' + data['rating'] + '.png'
       rating = "<div class='star'><img alt="+stars+" src='/assets/" + stars + "'></div>"
       $('.comments').prepend("<div class='comment'><h5>"+ data['title'] + '</h5>'+data['avatar'] + rating + '            ' + data['body'] + "</div>")
+      $('.review').remove()
     $('#comment_title').val('')
     $('#comment_body').val('')
     false
