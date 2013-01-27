@@ -3,7 +3,7 @@ class Lead < ActiveRecord::Base
   has_many :comments
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, format: { with: VALID_EMAIL_REGEX }, presence: true
+  validates :email, format: { with: VALID_EMAIL_REGEX }, presence: true, uniqueness: true
 
   #validates :token, uniqueness: true, presence: true
 

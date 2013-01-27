@@ -22,10 +22,10 @@ class CommentsController < ApplicationController
   end
 
   def avatar(comment, size)
-    unless comment.user_id.zero?
+    if comment.user.present?
       view_context.image_for(comment.user, size)
     else
-      view_context.gravatar_for(comment.email, size)
+      view_context.gravatar_for(comment.lead.email, size)
     end
   end
 end

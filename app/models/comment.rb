@@ -1,6 +1,14 @@
 class Comment < ActiveRecord::Base
   include Rakismet::Model
 
+  belongs_to :commentable, :polymorphic => true
+
+  # NOTE: Comments belong to a user
+  belongs_to :user
+  belongs_to :lead
+
+  accepts_nested_attributes_for :lead
+
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
 
   attr_accessible :rating, :subtype
@@ -17,12 +25,6 @@ class Comment < ActiveRecord::Base
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
   #acts_as_voteable
-
-  belongs_to :commentable, :polymorphic => true
-
-  # NOTE: Comments belong to a user
-  belongs_to :user
-  belongs_to :lead
 
   rakismet_attrs author: proc { user.username if user.present? },
                  author_email: proc { email_address },
@@ -41,7 +43,8 @@ class Comment < ActiveRecord::Base
     c.body = comment[:body]
     c.title = comment[:title]
     c.user_id = user_id
-    c.lead = Lead.find_by_email(params[:email]) || Lead.build_from(params[:email]) unless user_id.present?
+    email = comment[:lead][:email]
+    c.lead = Lead.find_by_email(email) || Lead.build_from(email) unless user_id.present?
     c.subtype = comment[:subtype]
     c.rating = self.rating_score(params[:score])
     c
@@ -52,7 +55,7 @@ class Comment < ActiveRecord::Base
   end
 
   def email_address
-    user.present? ? user.email : self.email
+    user.present? ? user.email : self.lead.email
   end
 
   #helper method to check if a comment has children
