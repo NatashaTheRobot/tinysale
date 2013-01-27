@@ -32,6 +32,7 @@
                                 "data-amount"=> @product.attachments.first.price_in_cents,
                                 "data-name" => @product.title,
                                 "data-image" => "http://i50.tinypic.com/1g0v2c.png",
+                                "data-description" => "you'll get a #{file_type} (#{file_size} KB)",
                                 :src => "https://checkout.stripe.com/v2/checkout.js"}
     .span9.offset3
       .row
