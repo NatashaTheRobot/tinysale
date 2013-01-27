@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   def create
     @new_comment = Comment.build_from( params, user_id )
     if !@new_comment.spam? and @new_comment.save!
+      cookies[:reviewer] = @new_comment.lead.token unless user_id.present?
       @comment_output = { title: @new_comment.title,
                           avatar: avatar(@new_comment, '25x25'),
                           rating: @new_comment.rating,

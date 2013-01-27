@@ -48,13 +48,15 @@
       .row
         %h4= "Reviews"
       .row
-        - unless current_user == @author
-          = button_tag "Review", class: 'btn btn-success', id: 'add_review'
-          #submit_review
-            = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "review" }
-        = button_tag "Comment", class: 'btn btn-primary', id: 'add_comment'
-        #submit_comment
-          = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "comment" }
+        - unless current_user == @author || cookies[:reviewer].present?
+          .review
+            = button_tag "Review", class: 'btn btn-success', id: 'add_review'
+            #submit_review
+              = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "review" }
+        .comment
+          = button_tag "Comment", class: 'btn btn-primary', id: 'add_comment'
+          #submit_comment
+            = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "comment" }
       .row.comments
         - @comments.each do |comment|
           .comment
