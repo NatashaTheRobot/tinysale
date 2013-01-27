@@ -16,6 +16,7 @@ module ProductsHelper
 
   def average_rating
     return 0 if @comments.empty?
+    return 0 if ratings.size == 0
     ratings.reduce(:+).to_f / ratings.size
   end
 
