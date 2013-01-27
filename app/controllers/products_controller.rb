@@ -13,8 +13,9 @@ class ProductsController < ApplicationController
   # GET /sale/:permalink
   def show
     @author = @product.user
-    @comments = @product.comment_threads.includes(:user).order('created_at DESC')
-    @comment = Comment.new
+    @comments = @product.comment_threads.includes(:user, :lead).order('created_at DESC')
+    @lead = Lead.new
+    @comment = @lead.comments.build
     render :show
   end
 
@@ -92,6 +93,6 @@ class ProductsController < ApplicationController
   private
 
   def find_product
-    @product ||= Product.includes(:attachments, :images, :user).find_by_permalink!(params[:id])
+    @product ||= Product.includes(:attachments, :images, :user, :comment_threads).find_by_permalink!(params[:id])
   end
 end

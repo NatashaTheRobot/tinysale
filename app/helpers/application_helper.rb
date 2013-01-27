@@ -15,7 +15,7 @@ module ApplicationHelper
 
   # user image helpers
   def image_url(user)
-    user.id != 0 && user.avatar? ? user.avatar : gravatar_url(user.email.downcase)
+    user.avatar? ? user.avatar : gravatar_url(user.email.downcase)
   end
 
   def gravatar_url(email)
