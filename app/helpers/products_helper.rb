@@ -10,7 +10,7 @@ module ProductsHelper
   end
 
   def price_in_dollars
-    price = @product.attachments.first.price_in_cents/100.00
+    price = @product.price_in_cents/100.00
     number_to_currency(price)
   end
 

@@ -29,7 +29,7 @@
             %li= "Price: #{price_in_dollars}"
         %form{:action => "/charge?id=#{@product.id}", :method => "post" }
           %script.stripe-button{"data-key" => @product.user.payment.publishable_key,
-                                "data-amount"=> @product.attachments.first.price_in_cents,
+                                "data-amount"=> @product.price_in_cents,
                                 "data-name" => @product.title,
                                 "data-image" => "http://i50.tinypic.com/1g0v2c.png",
                                 "data-description" => "you'll get a #{file_type} (#{file_size} KB)",

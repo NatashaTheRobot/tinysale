@@ -22,6 +22,9 @@ describe Product do
   it { should validate_presence_of :description }
   it { should accept_nested_attributes_for :attachments }
   it { should accept_nested_attributes_for :images }
+  it { should validate_presence_of :price_in_cents }
+  it { should validate_format_of(:price_in_cents).with(500)}
+  it { should validate_numericality_of(:price_in_cents)}
 
   describe "#generate_permalink" do
     before do

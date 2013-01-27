@@ -18,9 +18,6 @@ require 'spec_helper'
 
 describe Attachment do
   it { should belong_to :product }
-  it { should validate_presence_of :price_in_cents }
-  it { should validate_format_of(:price_in_cents).with(500)}
-  it { should validate_numericality_of(:price_in_cents)}
   it { should validate_attachment_presence :item }
   it { should validate_attachment_size :item }
 
@@ -32,9 +29,6 @@ describe Attachment do
     describe "#set_status_to_active" do
       it "sets the status to active" do
         @attachment.status.should == :active
-      end
-      it "correctly coverts the price from dollars to cents" do
-        @attachment.price_in_cents.should == 10000
       end
     end
   end
