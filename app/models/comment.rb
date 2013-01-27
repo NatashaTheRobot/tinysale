@@ -45,7 +45,7 @@ class Comment < ActiveRecord::Base
     c.user_id = user_id
     if user_id.nil?
       email = comment[:lead][:email]
-      c.lead = Lead.find_by_email(email) || Lead.build_from(email) unless user_id.present?
+      c.lead = Lead.find_by_email(email) || Lead.build_from(email)
     end
     c.subtype = comment[:subtype]
     c.rating = self.rating_score(params[:score])
