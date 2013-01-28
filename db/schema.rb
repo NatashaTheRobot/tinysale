@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127181218) do
+ActiveRecord::Schema.define(:version => 20130127234544) do
 
   create_table "attachments", :force => true do |t|
     t.string   "status"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20130127181218) do
     t.string   "token"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "username"
   end
 
   add_index "leads", ["email"], :name => "index_leads_on_email", :unique => true

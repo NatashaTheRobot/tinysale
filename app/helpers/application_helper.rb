@@ -18,9 +18,12 @@ module ApplicationHelper
     user.avatar? ? user.avatar : gravatar_url(user.email.downcase)
   end
 
+  def gravatar_id(email)
+    Digest::MD5::hexdigest(email)
+  end
+
   def gravatar_url(email)
-    gravatar_id = Digest::MD5::hexdigest(email)
-    "https://secure.gravatar.com/avatar/#{gravatar_id}"
+    "https://secure.gravatar.com/avatar/#{gravatar_id(email)}"
   end
 
 end
