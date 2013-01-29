@@ -1,8 +1,7 @@
 jQuery ->
   email_form_toggle = ->
-    $('.email').toggle()
-    $('.confirm').toggle()
-    $('.alert').hide() if $('.alert').is(':visible')
+    $('.email_signup').toggle()
+    $('.social').toggle()
 
   submit_email = ( email ) ->
     request = $.ajax(
@@ -13,10 +12,9 @@ jQuery ->
         email_form_toggle()
     )
     request.fail (jqXHR,status) ->
-      $('.alert').show()
-      $('.email').effect('shake', { times:3 }, 200);
+      $('#email-submit').effect('shake', { times:3 }, 200);
 
-  $('#submit').click ->
+  $('#mc-embedded-subscribe').click ->
     submit_email $('#email').val()
 
   $('.email').keypress (e)->

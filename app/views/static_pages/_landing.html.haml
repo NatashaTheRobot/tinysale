@@ -1,13 +1,92 @@
-.landing
-  .row-fluid
-    .span6
-      = image_tag 'logo.png', id: 'logo'
-    .span6
-      .email
-        = label_tag :email, "Enter your email address for important updates!", id: 'email-text'
-        .email-form
-          = text_field_tag :email , nil , placeholder: "name@email.com"
-          = image_submit_tag "submit-email.png", id: "submit"
+%section.landing_head
+  .container
+    .row.splash
+      .span5
+        / logo
+        = image_tag "ts_logo.png"
+
+      / email signup
+      .email_signup.span7
+        %form.validate{:action => "", :id => "", :method => "post", :name => "", :novalidate => "", :target => "_blank"}
+          %h2 Enter your email address for important updates!
+          %input#email.email{:name => "email", :placeholder => "name@email.com", :required => "", :title => "your email", :type => "email"}
+            %input#mc-embedded-subscribe.button{:name => "subscribe", :type => "submit", :value => "X"}
+
+      .social.span7
+        %h2 Thanks! Also, keep updated by social network!
+        %a{:href => ""}
+          .twitter_button
+            %h3
+              %span.icon-twitter-bird   follow us on twitter
+        .spacer
+        %a{:href => ""}
+          .facebook_button
+            %h3
+              %span.icon-facebook   like us on facebook
+    .row.tagline
+      .rule.span4.offset4
+      %h2.span12
+        %a{:href => ""}> tinysale
+        , Optimize how you sell as easy as 1-2-3
+.wavy_border
+%section.steps
+  .container
+    .rule
+    .rule
+    .row
+      .step.span4
+        %h1 1
+        %h2
+          Create a
+          = succeed "." do
+            %a{:href => ""} landing page
+      .step.span4
+        %h1 2
+        %h2
+          Optimize with
+          %a{:href => ""} A/B testing
+          and
+          %a{:href => ""} analytics
+      .step.span4
+        %h1 3
+        %h2
+          Get your
+          = succeed "." do
+            %a{:href => ""} Pay
+%section.featured
+  .container
+    %h2.span12 Featured products on Tinysale
+    .row
+      .featured_image.span4
+        %img{:src => "http://placehold.it/480x320.jpg"}
+          .price_overlay
+            %h1 $12
+      .featured_image.span4
+        %img{:src => "http://placehold.it/480x320.jpg"}
+          .price_overlay
+            %h1 $10
+      .featured_image.span4
+        %img{:src => "http://placehold.it/480x320.jpg"}
+          .price_overlay
+            %h1 $10
+%footer{:role => "footer"}
+
+
+
+
+
+
+
+-#.landing
+-#  .row-fluid
+-#    .span6
+-#      = image_tag 'logo.png', id: 'logo'
+-#    .span6
+-#      .email
+-#        = label_tag :email, "Enter your email address for important updates!", id: 'email-text'
+-#        .email-form
+-#          = text_field_tag :email , nil , placeholder: "name@email.com"
+-#          = image_submit_tag "submit-email.png", id: "submit"
 
 -#.landing
 -#  .row-fluid
