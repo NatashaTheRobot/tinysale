@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
     <title><%= title(@product) %></title>
     <meta name="description" content="optimize how you sell">
-    <%= stylesheet_link_tag    "application", media: "all" %>
-    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag    "application", controller_name %>
+    <%= javascript_include_tag "application", controller_name %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
     <%= render 'layouts/googleanalytics' %>

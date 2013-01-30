@@ -17,5 +17,4 @@
 //= require bootstrap-wysihtml5
 //= require jquery.raty.min
 //= require global.js.coffee
-//= require_tree .
 //= require jquery.easing
