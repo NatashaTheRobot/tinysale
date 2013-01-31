@@ -318,6 +318,10 @@ a:visited {
   color: #52ae8c;
   text-decoration: none; }
 
+.green {
+  color: #52ae8c;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -326,7 +330,7 @@ body {
   font-weight: 100;
   color: #646964; }
 
-h1, h2, h3, a {
+h1, h2, h3, a, span {
   font-weight: 100; }
 
 section {
@@ -436,7 +440,8 @@ img {
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
   -o-border-radius: 6px;
-  border-radius: 6px; }
+  border-radius: 6px;
+ }
 .social .twitter_button {
   background-color: #89acb4;
   margin-left: 0;
@@ -464,6 +469,10 @@ img {
     width: 55px;
     height: 15px;
     margin: 0; } }
+
+.twitter_button:hover, .facebook_button:hover {
+  opacity: 0.9;
+}
 
 .steps {
   background-image: url("noise_bg.png"); }
