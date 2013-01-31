@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
     <title><%= title(@product) %></title>
-    <%= stylesheet_link_tag    "application", media: "all" %>
-    <%= javascript_include_tag "application" %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="optimize how you sell">
+    <%= stylesheet_link_tag    "application", controller_name %>
+    <%= javascript_include_tag "application", controller_name %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
     <%= render 'layouts/googleanalytics' %>
   </head>
-  <body>
-    <div class="container">
+  <body class="<%= controller.controller_name %>">
       <%= yield %>
-    </div>
   </body>
 </html>

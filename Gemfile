@@ -16,8 +16,6 @@ gem 'aws-sdk', '1.8.0'
 #authentication & roles
 gem 'devise', '2.1.2'
 gem "cancan", "1.6.8"
-gem 'hpricot'
-gem 'ruby_parser'
 
 gem "custom_error_message", '1.1.1'
 
@@ -54,7 +52,6 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.3.0'
-  gem 'bootstrap-sass', '2.2.1.1'
   gem "bootstrap-wysihtml5-rails", "0.3.1.14"
 end
 

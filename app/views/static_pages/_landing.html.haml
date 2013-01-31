@@ -1,37 +1,68 @@
-.landing
-  .row-fluid
-    .span6
-      = image_tag 'logo.png', id: 'logo'
-    .span6
-      .email
-        = label_tag :email, "Enter your email address for important updates!", id: 'email-text'
-        .email-form
-          = text_field_tag :email , nil , placeholder: "name@email.com"
-          = image_submit_tag "submit-email.png", id: "submit"
+%section.landing_head
+  .container
+    .row.splash
+      .span5
+        = image_tag "ts_logo.png", class: 'logo'
 
--#.landing
--#  .row-fluid
--#    .alert Invalid email address
--#
--#  .row-fluid
--#    .span6.offset3
--#      .branding
--#        %h1 tinysale
--#        %h2 optimize how you sell
--#        %p It's easy as 1-2-3!
--#  .row-fluid
--#    .span4.offset4
--#      %ol
--#        %li Create a Sale Landing Page
--#        %li Optimize with A/B testing and analytics
--#        %li Get Paid!
--#  .row-fluid
--#    .span6.offset3
--#      .email
--#        = label_tag :email, "<em>enter your email address for important updates!</em>".html_safe
--#        = text_field_tag :email, nil, placeholder: "name@email.com"
--#        = submit_tag "Go", class: "btn btn-success", id: "submit"
--#      .confirm
--#        %p Thank you so much for signing up!
--#        %p I'm working hard every day to make tinysale happen.
--#        %p Meanwhile, you can <strong>follow tinysale on Twitter <a href="https://twitter.com/tinysaleco" target="_blank">here</a></strong>.
+      .email_signup.span7
+        %h2 Enter your email address for important updates!
+        #email_submit
+          = text_field_tag :email, nil, placeholder: "name@email.com", name: "email", title: "your email"
+          = submit_tag "X", class: "button", id: "mc-embedded-subscribe", name: "subscribe"
+
+      .social.span7
+        %h2 Thanks for signing up! Don't forget to follow us :)
+        %a{href: "http://twitter.com/tinysaleco", target: "_blank"}
+          .twitter_button
+            %h3
+              %span.icon-twitter-bird   follow us on twitter
+        .spacer
+        %a{href: "http://www.facebook.com/tinysaleco", target: "_blank"}
+          .facebook_button
+            %h3
+              %span.icon-facebook   like us on facebook
+    .row.tagline
+      .rule.span4.offset4
+      %h2.span12
+        %span.green tinysale
+        , optimize how you sell in three easy steps
+.wavy_border
+%section.steps
+  .container
+    .rule
+    .rule
+    .row
+      .step.span4
+        %h1 1
+        %h2
+          create a product
+          %span.green sales page
+      .step.span4
+        %h1 2
+        %h2
+          optimize with
+          %span.green analytics
+      .step.span4
+        %h1 3
+        %h2
+          get
+          = succeed "." do
+            %span.green paid
+%section.featured
+  .container
+    %h2.span12 So you can focus on the more important things...
+    .row
+      .featured_image.span4
+        %img{:src => "http://placedog.com/480/320"}
+          -#.price_overlay
+          -#  %h1 $12
+      .featured_image.span4
+        %img{:src => "http://lorempixel.com/480/320/nature/"}
+          -#.price_overlay
+          -#  %h1 $10
+      .featured_image.span4
+        - kitten = rand(2) == 0 ? "http://placekitten.com/480/320" : "http://placekitten.com/g/480/320"
+        %img{:src => kitten}
+          -#.price_overlay
+          -#  %h1 $15
+%footer{:role => "footer"}
