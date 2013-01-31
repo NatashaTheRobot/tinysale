@@ -304,6 +304,9 @@ table {
   font-weight: 100;
   content: "\f303"; }
 
+
+
+
 /* ==========================================================================
    Main CSS
    ========================================================================== */
@@ -363,7 +366,7 @@ img {
   font-size: 1.25em;
   font-family: "casper_italicregular", sans-serif;
   margin-bottom: 1.8em; }
-.email_signup input[type="email"], .social input[type="email"] {
+.email_signup input[type="text"], .social input[type="text"] {
   font-family: "casperregular", sans-serif;
   font-size: 1.2em;
   font-weight: 100;

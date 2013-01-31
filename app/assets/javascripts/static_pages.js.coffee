@@ -12,12 +12,12 @@ jQuery ->
         email_form_toggle()
     )
     request.fail (jqXHR,status) ->
-      $('#email-submit').effect('shake', { times:3 }, 200);
+      $('#email_submit').effect('shake', { times:3 }, 200);
 
   $('#mc-embedded-subscribe').click ->
     submit_email $('#email').val()
 
-  $('.email').keypress (e)->
+  $('#email').keypress (e)->
     code = if e.keyCode then e.keyCode else e.which
     submit_email $('#email').val() if code is 13
 
