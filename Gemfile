@@ -53,6 +53,9 @@ group :assets do
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.3.0'
   gem "bootstrap-wysihtml5-rails", "0.3.1.14"
+  gem 'compass'
+  gem "compass-rails", '1.0.3'
+  gem 'oily_png', '1.0.3'
 end
 
 gem 'jquery-rails', '2.1.3'

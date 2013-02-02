@@ -1,3 +1,7 @@
+.star {
+  float: right;
+}
+
 // show page
 .sales-container{
   margin-top: 20px;
@@ -78,6 +82,8 @@
   }
 }
 
+
+@import "bootstrap-wysihtml5";
 // edit page
 [class^="icon-"],
 [class*=" icon-"] {

@@ -1,0 +1,124 @@
+@import "compass/utilities/sprites/base";
+
+// General Sprite Defaults
+// You can override them before you import this file.
+$static-sprite-base-class: ".static-sprite" !default;
+$static-sprite-dimensions: false !default;
+$static-position: 0% !default;
+$static-spacing: 0 !default;
+$static-repeat: no-repeat !default;
+$static-prefix: '' !default;
+$static-clean-up: true !default;
+$static-layout:vertical !default;
+$static-inline: false !default;
+
+  
+ // These variables control the generated sprite output
+ // You can override them selectively before you import this file.
+ 
+   $static-div-symbol-position: $static-position !default;
+   $static-div-symbol-spacing:  $static-spacing !default;
+   $static-div-symbol-repeat:   $static-repeat !default;
+ 
+   $static-line_noise-position: $static-position !default;
+   $static-line_noise-spacing:  $static-spacing !default;
+   $static-line_noise-repeat:   repeat-x;
+ 
+   $static-noise_bg-position: $static-position !default;
+   $static-noise_bg-spacing:  $static-spacing !default;
+   $static-noise_bg-repeat:   $static-repeat !default;
+ 
+   $static-ribbon-position: $static-position !default;
+   $static-ribbon-spacing:  $static-spacing !default;
+   $static-ribbon-repeat:   $static-repeat !default;
+ 
+   $static-wavyb-position: $static-position !default;
+   $static-wavyb-spacing:  $static-spacing !default;
+   $static-wavyb-repeat:   repeat-x;
+ 
+   $static-wavyborder-position: $static-position !default;
+   $static-wavyborder-spacing:  $static-spacing !default;
+   $static-wavyborder-repeat:   repeat-x;
+ 
+
+ $static-sprites: sprite-map("static/*.png",
+ 
+   $static-div-symbol-position: $static-div-symbol-position, 
+   $static-div-symbol-spacing:  $static-div-symbol-spacing, 
+   $static-div-symbol-repeat:   $static-div-symbol-repeat,
+ 
+   $static-line_noise-position: $static-line_noise-position, 
+   $static-line_noise-spacing:  $static-line_noise-spacing, 
+   $static-line_noise-repeat:   $static-line_noise-repeat,
+ 
+   $static-noise_bg-position: $static-noise_bg-position, 
+   $static-noise_bg-spacing:  $static-noise_bg-spacing, 
+   $static-noise_bg-repeat:   $static-noise_bg-repeat,
+ 
+   $static-ribbon-position: $static-ribbon-position, 
+   $static-ribbon-spacing:  $static-ribbon-spacing, 
+   $static-ribbon-repeat:   $static-ribbon-repeat,
+ 
+   $static-wavyb-position: $static-wavyb-position, 
+   $static-wavyb-spacing:  $static-wavyb-spacing, 
+   $static-wavyb-repeat:   $static-wavyb-repeat,
+ 
+   $static-wavyborder-position: $static-wavyborder-position, 
+   $static-wavyborder-spacing:  $static-wavyborder-spacing, 
+   $static-wavyborder-repeat:   $static-wavyborder-repeat,
+ 
+ $layout: $static-layout,
+ $cleanup: $static-clean-up
+ );
+
+
+// All sprites should extend this class
+// The static-sprite mixin will do so for you.
+@if $static-inline {
+  #{$static-sprite-base-class} {
+    background-image: inline-sprite($static-sprites);
+  } 
+} @else {
+  #{$static-sprite-base-class} {
+    background: $static-sprites no-repeat;
+  }
+}
+//sass functions to return the dimensions of a sprite image as units
+
+  @function static-sprite-width($name) {
+    $file: sprite_file($static-sprites, $name);
+    @return image-width($file);
+  }
+
+  @function static-sprite-height($name) {
+    $file: sprite_file($static-sprites, $name);
+    @return image-height($file);
+  }
+
+
+// Use this to set the dimensions of an element
+// based on the size of the original image.
+@mixin static-sprite-dimensions($name) {
+  @include sprite-dimensions($static-sprites, $name)
+}
+
+// Move the background position to display the sprite.
+@mixin static-sprite-position($name, $offset-x: 0, $offset-y: 0) {
+  @include sprite-background-position($static-sprites, $name, $offset-x, $offset-y)
+}
+
+// Extends the sprite base class and set the background position for the desired sprite.
+// It will also apply the image dimensions if $dimensions is true.
+@mixin static-sprite($name, $dimensions: $static-sprite-dimensions, $offset-x: 0, $offset-y: 0) {
+  @extend #{$static-sprite-base-class};
+  @include sprite($static-sprites, $name, $dimensions, $offset-x, $offset-y)
+}
+
+@mixin static-sprites($sprite-names, $dimensions: $static-sprite-dimensions, $prefix: sprite-map-name($static-sprites), $offset-x: 0, $offset-y: 0) {
+  @include sprites($static-sprites, $sprite-names, $static-sprite-base-class, $dimensions, $prefix, $offset-x, $offset-y)
+}
+
+// Generates a class for each sprited image.
+@mixin all-static-sprites($dimensions: $static-sprite-dimensions, $prefix: sprite-map-name($static-sprites), $offset-x: 0, $offset-y: 0) {
+  @include static-sprites(div-symbol line_noise noise_bg ribbon wavyb wavyborder, $dimensions, $prefix, $offset-x, $offset-y);
+}
