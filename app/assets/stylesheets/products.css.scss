@@ -427,27 +427,6 @@ section {
   background-repeat: no-repeat;
   height: 40px; }
 
-.author_bio {
-  width: 80%;
-  margin: 0 auto; }
-.author_bio .author_image {
-  display: inline-block;
-  width: 60px;
-  height: 60px;
-  margin-right: 10px; }
-.author_bio .author_name {
-  display: inline-block;
-  position: relative; }
-@media screen and (min-width: 960px) {
-  .author_bio .author_name {
-    bottom: 25px; } }
-.author_bio .author_name:before {
-  content: "Meet "; }
-.author_bio .author_description {
-  font-size: .8em;
-  line-height: 1.3em;
-  margin-top: 1em; }
-
 hgroup {
   display: block;
   width: 100%; }
