@@ -1,63 +1,221 @@
-.row.sales-container
-  #info
-    .span9.offset3
-      .row
-        %h1= @product.title
-      .row
-        = sanitize "Created with love by <span class='author'>#{@author.username}</span>"
-        #social
-          %a.twitter-share-button{"data-lang" => "en",
-                                  "data-url" => "http://tinysale.co/#{@product.permalink}",
-                                  "data-counturl" => "http://tinysale.co/#{@product.permalink}",
-                                  "data-via" => "tinysaleco",
-                                  "data-text" => "#{@product.title}",
-                                  "data-related" => 'tinysaleco,natashatherobot',
-                                  :href => "https://twitter.com/share"} Tweet
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-          #fb-root
-          <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=479199065425268";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
-          .fb-like{"data-href" => "http://tinysale.co/#{@product.permalink}", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
-    #buy
-      .span3
-        = image_tag @product.images.first.cover.url, width: '200', height: '200'
-        #quick_info
-          #rating{"data-rating" => average_rating, "data-comments" => num_ratings }
-          %br
+%section.product_main
+  .container
+    .row{:role => "main"}
+      .span3{:role => "sidebar"}
+        .product_box
+          = image_tag @product.images.first.cover.url, class: "product_image"
+          .box_details
+            .star_rating
+              #star1
+                #rating{"data-rating" => average_rating, "data-comments" => num_ratings }
+            %p.download_sample
+              = image_tag "product/download-hover.png"
+              = link_to "Download a sample PDF", "#"
+            %p Includes a .pdf file
+            %p.size 521 KB
+            %p.price 15.00
+          = link_to (image_tag 'product/buy-top.png'), '#', class: ".buy-now"
+        .product-border
+        .author_bio
+          %img.author_image{:src => "http://placehold.it/60x60.jpg"}
+            %a{:href => ""}
+              %span.author_name Natasha The Robot
+            %p.author_description Learning to code and blogging at natashatherobot.com. Currently learning #RubyOnRails, #Backbone.js, #TDD, #JavaScript, and anything else to get the job done. Software Engineer at @manilla. @devbootcamp graduate.
+      .description.span9
+        %hgroup.product_header
+          .row
+            %header.span6
+              %h1 How To Learn To Code
+              %h2 created with love by Natasha The Robot
+            .social_box.span3
+              .social_link
+                .count 868
+                %a{:href => ""}
+                  .tweet Tweet
+              .social_link
+                .count 1.3K
+                %a{:href => ""}
+                  .fb-like Like
+              .social_link
+                .count 28
+                %a{:href => ""}
+                  .g-plus +1
+        .clearfix
+        .description_copy
+          %p Hi there "idea guy", "business gal", "product person", "non-technical co-founder"! Are you ready to take it to the next level?!!
+          %p I was in your position about a year ago, always standing in the sidelines waiting for someone else to help me make my dreams come true. That is why I decided to get my hands dirty and learn to code. It's been the best decision I've ever made.
+          %h3 Coding will enable you to:
           %ul
-            %li= "You'll get a #{file_type}"
-            %li= "Size: #{file_size} KB"
-            %li= "Price: #{price_in_dollars}"
-        %form{:action => "/charge?id=#{@product.id}", :method => "post" }
-          %script.stripe-button{"data-key" => @product.user.payment.publishable_key,
-                                "data-amount"=> @product.price_in_cents,
-                                "data-name" => @product.title,
-                                "data-image" => "http://i50.tinypic.com/1g0v2c.png",
-                                "data-description" => "you'll get a #{file_type} (#{file_size} KB)",
-                                :src => "https://checkout.stripe.com/v2/checkout.js"}
-    .span9.offset3
-      .row
-        = sanitize @product.description
-      .row
-        %h4= "Meet #{@author.username}"
-        .row
-          .span1
-            = image_tag @author.avatar, width: '120', height: '120'
-          .span8
-            = @author.bio
-    .span9.offset3
-      .row
-        %h4= "Reviews"
-      .row
-        - unless current_user == @author || cookies[:reviewer].present?
-          .review
-            = button_tag "Review", class: 'btn btn-success', id: 'add_review'
-            #submit_review
-              = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "review" }
-        .comment
-          = button_tag "Comment", class: 'btn btn-primary', id: 'add_comment'
-          #submit_comment
-            = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "comment" }
-      .row.comments
-        - @comments.each do |comment|
-          .comment
-            = render partial: 'comments/show', locals: { comment: comment }
+            %li Create Your Own Ideas
+            %li Get The Job Of Your Dreams
+            %li Increase Your Earning Potential
+            %li Be Part Of A Passionate Community
+            %li Work From Anywhere In The World
+          %p This book is meant to inspire you to learn to code and change your life. I’m going to provide you with all the available tools out there, most of which I’ve personally tried, to put you on your own journey to success, in the fast lane.If you are not completely happy with this book, just email me at natasha [at] natashatherobot.com and I will refund your money!
+          %h3 Table of Contents:
+          %p
+            Hello World! 8
+            %br
+              Part I: The Mindset Of Success 13
+          %ul
+            %li 10 Reasons You Need To Learn To Code 14
+            %li Goal new 17
+    .clearfix
+%section.buy_it_now
+  .container
+    .row
+      .span3
+      .span6
+        = link_to (image_tag "product/buy-now-middle.png"), '#', class: "buy_it_now_button"
+        %h1.title How to Learn To Code
+        %p.price 15.00
+        #star2
+        %a{:href => ""}
+          %p.read_all_reviews
+            read all
+            %span.review_count 203
+            reviews >
+      .span3
+        %ul.bullets
+          %li Create Your Own Ideas
+          %li Get the Job of Your Dreams
+          %li Increase Your Earning Potential
+          %li Be Part of A Passionate Community
+          %li Work From Anywhere in the World
+%section.comments
+  .container
+    .row
+      .star_rating_feedback.span11.offset1
+        %p Enter a Rating
+        #star3
+        %p#number_of_stars_text 4 of 5
+    .row
+      .span6.offset1
+        %form#comment_submit{:action => "", :method => "post"}
+          %input#name{:placeholder => "Please Enter Name", :type => "text"}/
+          %textarea#comment{:placeholder => "Enter A Comment", :rows => "15"}
+          %input#comment_submit.span2{:type => "submit", :value => "Submit"}/
+      .span5
+        %a{:href => ""}
+          .comment_toggle Leave A Comment
+        %a{:href => ""}
+          .review_toggle Leave A Review
+    .row
+      .comment_display.span10.offset1
+        %h1
+          %span#comment_count> 203
+          \ Reviews and Comments
+        .clearfix
+        .comment_author
+          %img{:src => "http://placehold.it/120x120.jpg"}
+            .comment_author_details
+              %p.comment_author_name C. Ronaldo
+              %p.comment_author_date Jan 21st, 2012
+              %p.comment_author_status Bought
+        .comment_archived_first.span7
+          %p My Rating
+          .star_rating
+            #star2
+          .comment_copy.span6
+            %p No More Time Wasted "Ummming" & "Ahhhhing" Drafting Emails
+            %p It's a winner. They're fantastic email templates with the added benefit of knowing the backstory behind them, to make sure it's the right fit.
+            %p Now, if you're new around here, they've got Noah's flavor of copy (which I love) and set the right tone, respect and courtesy when needed (such as dealing with customers). Back to my point - if you're new around here, and say, work in a stuffy bank, don't expect to get a "Dear Sir/Madam, Per the correspondence bigword fancyword blah blah..." style templates. They're boring anyway.
+            %p I give this 5 tacos, but I would give it 10 tacos if there was some Chrome Extension that let me choose a template straight out of GMail (a big, crazy ask I know). That would just crush it. However I should point out, there is a fancy link you click to use the mail template in your default email client - just gotta go through AppSumo first, which is cool.
+            %p Thanks Natasha!
+          %a{:href => ""}
+            .reply_button.span2
+              %span.icon-share-arrow Reply This
+          %p.useful_count.span3
+            %span.count_out_of 321
+            out of
+            %span.count_total 321
+            people found this review useful, did you?
+          %form.span2{:action => "", :method => "post"}
+            %input#comment_useful_yes{:type => "submit", :value => "Yes"}/
+            %input#comment_useful_no{:type => "submit", :value => "No"}/
+        .comment_reply_box.span8.offset1.clearfix
+          .comment_author
+            %img{:src => "http://placehold.it/120x120.jpg"}
+              .comment_author_details
+                %p.comment_author_name C. Ronaldo
+                %p.comment_author_date Jan 21st, 2012
+                %p.comment_author_status Bought
+          %form.reply_form{:action => "", :method => "post"}
+            %textarea#reply.span6{:placeholder => "Enter A Reply"}
+            %input#reply_submit{:type => "submit", :value => "POST"}/
+            %input#reply_cancel{:type => "reset", :value => "CANCEL"}/
+        .comment_reply_box.span8.offset1.clearfix
+          .comment_author
+            %img{:src => "http://placehold.it/120x120.jpg"}
+              .comment_author_details
+                %p.comment_author_name C. Ronaldo
+                %p.comment_author_date Jan 21st, 2012
+                %p.comment_author_status Bought
+          %p.reply_copy
+            was going to write a review but this user said it all. There's some genuinely good ideas in there, and I guess a single good idea COULD easily be worth way more than $35 if you go all value pricing, but at the same time you can also buy a lot more info for $35 elsewhere (that's enough for two books). More templates, and more variations on each one, would have made a much more complete product. Same with the e-mail deconstructions, maybe you will add more and that's great, but woulda been cool to see more.
+%footer{:role => "footer"}
+
+
+-#.row.sales-container
+-#  #info
+-#    .span9.offset3
+-#      .row
+-#        %h1= @product.title
+-#      .row
+-#        = sanitize "Created with love by <span class='author'>#{@author.username}</span>"
+-#        #social
+-#          %a.twitter-share-button{"data-lang" => "en",
+-#                                  "data-url" => "http://tinysale.co/#{@product.permalink}",
+-#                                  "data-counturl" => "http://tinysale.co/#{@product.permalink}",
+-#                                  "data-via" => "tinysaleco",
+-#                                  "data-text" => "#{@product.title}",
+-#                                  "data-related" => 'tinysaleco,natashatherobot',
+-#                                  :href => "https://twitter.com/share"} Tweet
+-#          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+-#          #fb-root
+-#          <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=479199065425268";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+-#          .fb-like{"data-href" => "http://tinysale.co/#{@product.permalink}", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
+-#    #buy
+-#      .span3
+-#        = image_tag @product.images.first.cover.url, width: '200', height: '200'
+-#        #quick_info
+-#          #rating{"data-rating" => average_rating, "data-comments" => num_ratings }
+-#          %br
+-#          %ul
+-#            %li= "You'll get a #{file_type}"
+-#            %li= "Size: #{file_size} KB"
+-#            %li= "Price: #{price_in_dollars}"
+-#        %form{:action => "/charge?id=#{@product.id}", :method => "post" }
+-#          %script.stripe-button{"data-key" => @product.user.payment.publishable_key,
+-#                                "data-amount"=> @product.price_in_cents,
+-#                                "data-name" => @product.title,
+-#                                "data-image" => "http://i50.tinypic.com/1g0v2c.png",
+-#                                "data-description" => "you'll get a #{file_type} (#{file_size} KB)",
+-#                                :src => "https://checkout.stripe.com/v2/checkout.js"}
+-#    .span9.offset3
+-#      .row
+-#        = sanitize @product.description
+-#      .row
+-#        %h4= "Meet #{@author.username}"
+-#        .row
+-#          .span1
+-#            = image_tag @author.avatar, width: '120', height: '120'
+-#          .span8
+-#            = @author.bio
+-#    .span9.offset3
+-#      .row
+-#        %h4= "Reviews"
+-#      .row
+-#        - unless current_user == @author || cookies[:reviewer].present?
+-#          .review
+-#            = button_tag "Review", class: 'btn btn-success', id: 'add_review'
+-#            #submit_review
+-#              = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "review" }
+-#        .comment
+-#          = button_tag "Comment", class: 'btn btn-primary', id: 'add_comment'
+-#          #submit_comment
+-#            = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "comment" }
+-#      .row.comments
+-#        - @comments.each do |comment|
+-#          .comment
+-#            = render partial: 'comments/show', locals: { comment: comment }
