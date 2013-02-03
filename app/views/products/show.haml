@@ -2,59 +2,9 @@
   .container
     .row{:role => "main"}
       .span4{:role => "sidebar"}
-        .product_box
-          = image_tag @product.images.first.cover.url, class: "product_image"
-          .box_details
-            .star_rating
-              #star1
-                #rating{"data-rating" => average_rating, "data-comments" => num_ratings }
-            %p.download_sample
-              = image_tag "product/download-hover.png"
-              = link_to "Download a sample PDF", "#"
-            %p Includes a .pdf file
-            %p.size 521 KB
-            %p.price 15.00
-          = link_to (image_tag 'product/buy-top.png'), '#', class: ".buy-now"
-        .product-border
+        = render "product_box"
       .description.span8
-        %hgroup.product_header
-          .row
-            %header.span6
-              %h1 How To Learn To Code
-              %h2 created with love by Natasha The Robot
-            .social_box.span3
-              .social_link
-                .count 868
-                %a{:href => ""}
-                  .tweet Tweet
-              .social_link
-                .count 1.3K
-                %a{:href => ""}
-                  .fb-like Like
-              .social_link
-                .count 28
-                %a{:href => ""}
-                  .g-plus +1
-        .clearfix
-        .description_copy
-          %p Hi there "idea guy", "business gal", "product person", "non-technical co-founder"! Are you ready to take it to the next level?!!
-          %p I was in your position about a year ago, always standing in the sidelines waiting for someone else to help me make my dreams come true. That is why I decided to get my hands dirty and learn to code. It's been the best decision I've ever made.
-          %h3 Coding will enable you to:
-          %ul
-            %li Create Your Own Ideas
-            %li Get The Job Of Your Dreams
-            %li Increase Your Earning Potential
-            %li Be Part Of A Passionate Community
-            %li Work From Anywhere In The World
-          %p This book is meant to inspire you to learn to code and change your life. I’m going to provide you with all the available tools out there, most of which I’ve personally tried, to put you on your own journey to success, in the fast lane.If you are not completely happy with this book, just email me at natasha [at] natashatherobot.com and I will refund your money!
-          %h3 Table of Contents:
-          %p
-            Hello World! 8
-            %br
-              Part I: The Mindset Of Success 13
-          %ul
-            %li 10 Reasons You Need To Learn To Code 14
-            %li Goal new 17
+        = render "product_description"
     .clearfix
 %section.buy_it_now
   .container

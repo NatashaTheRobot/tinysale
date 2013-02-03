@@ -1,0 +1,14 @@
+.product_box
+  = image_tag @product.images.first.cover.url, class: "product_image"
+  .box_details
+    .star_rating
+      #star1
+        #rating{"data-rating" => average_rating, "data-comments" => num_ratings }
+    %p.download_sample
+      = image_tag "product/download-hover.png"
+      = link_to "Download a sample PDF", "#"
+    %p Includes a .pdf file
+    %p.size 521 KB
+    %p.price 15.00
+  = link_to (image_tag 'product/buy-top.png'), '#', class: ".buy-now"
+.product-border
