@@ -1,7 +1,7 @@
 %section.product_main
   .container
     .row{:role => "main"}
-      .span3{:role => "sidebar"}
+      .span4{:role => "sidebar"}
         .product_box
           = image_tag @product.images.first.cover.url, class: "product_image"
           .box_details
@@ -21,7 +21,7 @@
             %a{:href => ""}
               %span.author_name Natasha The Robot
             %p.author_description Learning to code and blogging at natashatherobot.com. Currently learning #RubyOnRails, #Backbone.js, #TDD, #JavaScript, and anything else to get the job done. Software Engineer at @manilla. @devbootcamp graduate.
-      .description.span9
+      .description.span8
         %hgroup.product_header
           .row
             %header.span6
@@ -85,23 +85,24 @@
 %section.comments
   .container
     .row
-      .star_rating_feedback.span11.offset1
+      .span3
+      .star_rating_feedback.span4
         %p Enter a Rating
         #star3
         %p#number_of_stars_text 4 of 5
     .row
-      .span6.offset1
+      .span6.offset3
         %form#comment_submit{:action => "", :method => "post"}
           %input#name{:placeholder => "Please Enter Name", :type => "text"}/
           %textarea#comment{:placeholder => "Enter A Comment", :rows => "15"}
           %input#comment_submit.span2{:type => "submit", :value => "Submit"}/
-      .span5
+      .span4.offset3
         %a{:href => ""}
           .comment_toggle Leave A Comment
         %a{:href => ""}
           .review_toggle Leave A Review
     .row
-      .comment_display.span10.offset1
+      .comment_display.span9.offset3
         %h1
           %span#comment_count> 203
           \ Reviews and Comments
