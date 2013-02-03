@@ -71,18 +71,20 @@ section {
     text-align: center;
     font-family: "casper_italicregular", sans-serif;
     border-top: 1px dashed #cacaca;
-    margin-top: 15px;
+    margin-top: 0.8em;
     margin-left: 13%;
+    padding-bottom: 0.8em;
     p {
       margin: 0 auto;
-      font-size: .9em;
+      font-size: 0.8em;
       letter-spacing: 1px;
     }
     .download_sample {
       font-size: .7em;
       font-family: "casper_italicregular", sans-serif;
       position: relative;
-      margin-bottom: 1.2em;
+      margin-top: 0.8em;
+      margin-bottom: 0.8em;
       color: #646964;
       img {
         margin-bottom: 2px;

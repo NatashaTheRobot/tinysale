@@ -28,3 +28,6 @@
 .clearfix
 .description_copy
   = sanitize @product.description
+  &nbsp
+  %h3= "About #{@author.username}"
+  = sanitize @author.bio
