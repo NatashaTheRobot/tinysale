@@ -2,7 +2,8 @@
   .row
     %header.span5
       %h1= @product.title
-      %h2= "created with love by #{@author.username}"
+      #subtitle
+        = "created with love by #{@author.username}"
     .social_box.span3
       .social_link
         #tweet

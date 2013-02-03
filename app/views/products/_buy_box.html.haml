@@ -1,6 +1,6 @@
 .product_box
   = image_tag @product.images.first.cover.url, class: "product_image"
-  .box_details
+  .box_details.span3
     .star_rating
       #star1
         #rating{"data-rating" => average_rating, "data-comments" => num_ratings }
