@@ -9,24 +9,7 @@
 %section.buy_it_now
   .container
     .row
-      .span3
-      .span6
-        = link_to (image_tag "product/buy-now-middle.png"), '#', class: "buy_it_now_button"
-        %h1.title How to Learn To Code
-        %p.price 15.00
-        #star2
-        %a{:href => ""}
-          %p.read_all_reviews
-            read all
-            %span.review_count 203
-            reviews >
-      .span3
-        %ul.bullets
-          %li Create Your Own Ideas
-          %li Get the Job of Your Dreams
-          %li Increase Your Earning Potential
-          %li Be Part of A Passionate Community
-          %li Work From Anywhere in the World
+      = render 'buy_middle'
 %section.comments
   .container
     .row

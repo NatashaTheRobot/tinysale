@@ -103,8 +103,10 @@ section {
   button{
     border: 0;
     background: transparent;
-    img:hover{
-      opacity: 0.9;
+    img{
+      &:hover{
+        opacity: 0.9
+      }
     }
   }
 }
@@ -198,19 +200,27 @@ hgroup {
   background-image: url("product/swirlybg.png");
   margin: 2em auto 0 auto;
   padding: 2.5em 0;
-  .span6 {
+  .buy-overview {
     text-align: left;
     color: #f8f8f8;
+    margin-left: 0;
+    padding-left: 10px;
   }
-  .buy_it_now_button:hover {
+  .buy_it_now_button{
+    border: 0;
+    padding: 0;
+    background: transparent;
+    &:hover {
     opacity: 0.9;
+    }
   }
   h1 {
     text-align: left;
     font-family: "casper_italicregular", sans-serif;
-    margin: 0.5em auto 0 auto;
+    margin: 1em auto 0.2em auto;
   }
   p {
+    margin: 0 0 0.7em;
     &.read_all_reviews {
       font-family: "casper_italicregular", sans-serif;
       text-align: left;
@@ -221,17 +231,19 @@ hgroup {
       text-align: left;
       font-family: "casper_italicregular", sans-serif;
       letter-spacing: 1px;
-      &:before {
-        content: "$";
-      }
+      font-size: 16px;
     }
   }
+  #star2{
+    margin-bottom: 0.2em;
+  }
   .span3 {
-    text-align: center;
+    float: right;
     margin: 0 auto;
   }
   .bullets {
     text-align: left;
+    float: right;
     padding-left: 0;
     margin: 10% auto 0 auto;
     font-size: .8em;

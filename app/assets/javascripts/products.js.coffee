@@ -13,4 +13,5 @@ jQuery ->
     $('#submit_comment').slideToggle(1000, "easeOutBack" )
 
   # ratings
-  @display_rating($('#rating').data('rating'))
+  @display_rating('#rating', $('#rating').data('rating'), 'green')
+  @display_rating('#rating-white', $('#rating-white').data('rating'), 'white')
