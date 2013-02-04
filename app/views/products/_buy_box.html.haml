@@ -2,13 +2,30 @@
   = image_tag @product.images.first.cover.url, class: "product_image"
   .box_details.span3
     .star_rating
-      #star1
-        #rating{"data-rating" => average_rating, "data-comments" => num_ratings }
+      #rating{"data-rating" => average_rating, "data-comments" => num_ratings }
     %p.download_sample
       = image_tag "product/download-hover.png"
       = link_to "Download a sample PDF", "#"
-    %p Includes a .pdf file
-    %p.size 521 KB
-    %p.price 15.00
-  = link_to (image_tag 'product/buy-top.png'), '#', class: ".buy-now"
+    %p= "You'll get a #{file_type}"
+    %p.size= "#{file_size} KB"
+    %p.price= price_in_dollars
+  .checkout
+    %script{:src => "https://checkout.stripe.com/v2/checkout.js"}
+    %button{action: "/charge?id=#{@product.id}", method: 'post', :type => "submit", class: 'buy-now'}
+      = image_tag 'product/buy-top.png'
+    :javascript
+      $('.buy-now').click(function(){
+        var token = function(res){
+                    console.log('Got token ID:', res.id);
+                    };
+        StripeCheckout.open({
+          key: "#{@product.user.payment.publishable_key}",
+          amount: "#{@product.price_in_cents}",
+          name: "#{@product.title}",
+          image: "http://i50.tinypic.com/1g0v2c.png",
+          description: "you'll get a #{file_type} (#{file_size} KB)"
+        });
+
+        return false;
+      });
 .product-border

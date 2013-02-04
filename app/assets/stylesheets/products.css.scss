@@ -90,14 +90,21 @@ section {
         margin-bottom: 2px;
       }
     }
+    .price {
+      font-family: "casper_bold_italicregular", sans-serif;
+      &:before {
+        content: "Price: ";
+      }
+    }
     .size:before {
       content: "Size: ";
     }
   }
-  .price {
-    font-family: "casper_bold_italicregular", sans-serif;
-    &:before {
-      content: "Price: ";
+  button{
+    border: 0;
+    background: transparent;
+    img:hover{
+      opacity: 0.9;
     }
   }
 }
