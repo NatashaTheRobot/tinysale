@@ -3,7 +3,6 @@ jQuery ->
     $(elem).wysihtml5("image": false)
 
   # reviews
-
   $('#add_review').click ->
     $('#submit_comment').hide()
     $('#submit_review').slideToggle(1000, "easeOutBack" )

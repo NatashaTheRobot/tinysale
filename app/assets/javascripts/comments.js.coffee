@@ -25,6 +25,9 @@ jQuery ->
     average = sum / (num_comments + 1)
     $('#rating').raty
       readOnly: true
+      starHalf: '../product/star-half.png'
+      starOff: '../product/black-star.png'
+      starOn: '../product/green-star.png'
       score: average
       round:
         down: 0.25
