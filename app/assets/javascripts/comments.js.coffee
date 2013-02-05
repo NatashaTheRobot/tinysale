@@ -38,5 +38,3 @@ jQuery ->
   $("form#new_comment").bind "ajax:success", (e, data, status, xhr) ->
       display_comment(data)
       update_average(data["rating"])
-
-  $('#star_rating').raty()

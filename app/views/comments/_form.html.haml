@@ -1,24 +1,18 @@
 = form_for @comment, remote: true, format: :json do |f|
-  - if @comment.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@comment.errors.count, "error")
-        prohibited this review from being saved:
-      %ul
-        - @comment.errors.full_messages.each do |msg|
-          %li= msg
-  .row
-    - if subtype == "review"
-      #star_rating
-  .row
-    = f.text_field :title, placeholder: "title"
+  - if subtype == "review"
+    .row
+      .star_rating_feedback
+        %p Enter a Rating
+        #star_rating
+  .row.input-fields
+    = f.text_field :title, placeholder: "title", id: 'name'
     - if !current_user.present?
       = f.fields_for @lead do |l|
-        = l.text_field :email, placeholder: "email"
-  .row
-    = f.text_area :body, placeholder: "What do you think about this product?"
+        = l.text_field :email, placeholder: "email", id: 'name'
+    = f.text_area :body, placeholder: "What do you think about this product?", id: 'comment'
     = f.hidden_field :commentable_type, value: commentable_type
     = f.hidden_field :commentable_id, value: commentable_id
     = f.hidden_field :subtype, value: subtype
   .row
-    = f.submit "Submit", class: 'btn btn-success'
+    .span2.offset6
+      = f.submit "Submit", id: 'comment_submit'

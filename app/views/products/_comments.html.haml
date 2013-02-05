@@ -1,5 +1,6 @@
 .row.reviews-comments
-  .span4.offset4
+  .span4
+  .span4.comment-count
     %h1= "#{@comments.size} Reviews and Comments"
   .span4.buttons
     .row
@@ -9,15 +10,17 @@
         .span2
           #add_comment
 
--#.row
--#  .span4.offset4
--#    #submit_review
--#      = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "review" }
--#    #submit_comment
--#      = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "comment" }
+.row
+  .span4
+  .span8
+    #submit_review
+      = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "review" }
+    #submit_comment
+      = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "comment" }
 
 .row
-  .span8.offset4
+  .span4
+  .span8
     - @comments.each do |comment|
       .comment
         = render partial: 'comments/show', locals: { comment: comment }
