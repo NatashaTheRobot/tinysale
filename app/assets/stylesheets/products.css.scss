@@ -361,6 +361,11 @@ hgroup {
           background-image: url('product/comment-clicked.png');
         }
       }
+      .just-comment{
+        #add_comment {
+          float: right;
+        }
+      }
       #add_review{
         background-image: url('product/review.png');
         background-repeat: no-repeat;
@@ -383,7 +388,11 @@ hgroup {
     letter-spacing: 1px;
   }
   .star_rating_feedback {
-    margin-bottom: 1.5em;
+    margin: 0;
+    padding-left: 10px;
+    #star_rating{
+      width: 200px;
+    }
   }
   #number_of_stars_text {
     display: inline-block;

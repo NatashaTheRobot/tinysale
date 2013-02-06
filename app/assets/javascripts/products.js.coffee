@@ -18,6 +18,6 @@ jQuery ->
   @display_rating('#rating-white', $('#rating-white').data('rating'), 'white')
 
   $('#star_rating').raty(
-    starOff: '../product/black-star.png'
-    starOn: '../product/green-star.png'
+    starOff: '../product/black-star-big.png'
+    starOn: '../product/green-star-big.png'
   )

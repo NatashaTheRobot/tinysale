@@ -1,8 +1,8 @@
 = form_for @comment, remote: true, format: :json do |f|
   - if subtype == "review"
     .row
-      .star_rating_feedback
-        %p Enter a Rating
+      .span8.star_rating_feedback
+        %p Your Rating
         #star_rating
   .row.input-fields
     = f.text_field :title, placeholder: "title", id: 'name'
