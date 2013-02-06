@@ -3,7 +3,11 @@
     .row
       .span8.star_rating_feedback
         %p Your Rating
+    .row
+      .span2.star_rating_feedback
         #star_rating
+      .span1.rating-target
+        %p#number_of_stars_text
   .row.input-fields
     = f.text_field :title, placeholder: "title", id: 'name'
     - if !current_user.present?

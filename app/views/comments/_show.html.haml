@@ -1,11 +1,14 @@
-%h5= comment.title
-- if comment.user.present?
-  = image_for(comment.user, "25x25")
-  = comment.user.username
-- else
-  = gravatar_for(comment.lead.email, "25x25")
-  = comment.lead.username if comment.lead.username.present?
-.star
-  - if comment.rating.present?
-    = image_tag "stars#{comment.rating}.png"
-= comment.body
+.row
+  .comment_author.span1
+    = author_image(comment)
+    .comment_author_details
+      %p.comment_author_name= author_name(comment)
+      %p.comment_author_date= comment.created_at.strftime("%b %d, %Y")
+  .comment_archived_first
+    - if comment.rating.present?
+      .star_rating
+        %p My Rating
+        #star2
+          = image_tag "product/stars#{comment.rating}.png"
+    .comment_copy.span6
+      = comment.body

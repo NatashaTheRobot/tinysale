@@ -390,9 +390,10 @@ hgroup {
   .star_rating_feedback {
     margin: 0;
     padding-left: 10px;
-    #star_rating{
-      width: 200px;
-    }
+  }
+  .rating-target {
+    position: absolute;
+    margin-left: 110px;
   }
   #number_of_stars_text {
     display: inline-block;
@@ -405,9 +406,13 @@ hgroup {
   .comment_display {
     margin-top: 1em;
     padding-top: 1em;
+    padding-left: 10px;
     font-family: "casperregular", sans-serif;
     border-top: 1px dashed #cacaca;
     text-align: center;
+    .comment{
+      margin-bottom: 1.8em;
+    }
     p {
       text-align: left;
       font-size: .8em;
@@ -439,6 +444,8 @@ hgroup {
     }
     .comment_copy {
       margin-left: 0;
+      margin-top: 1.8em;
+      text-align: left;
       p {
         margin-bottom: 1em;
       }

@@ -23,68 +23,7 @@
 
 .row
   .span4
-  .span8
+  .span8.comment_display
     - @comments.each do |comment|
       .comment
         = render partial: 'comments/show', locals: { comment: comment }
-
-
--#.row
--#  .span3
--#  .star_rating_feedback.span4
--#    %p Enter a Rating
--#    #star3
--#    %p#number_of_stars_text 4 of 5
--#.row
--#  .span6.offset3
--#    %form#comment_submit{:action => "", :method => "post"}
--#      %input#name{:placeholder => "Please Enter Name", :type => "text"}/
--#      %textarea#comment{:placeholder => "Enter A Comment", :rows => "15"}
--#      %input#comment_submit.span2{:type => "submit", :value => "Submit"}/
--#  .span4.offset3
--#    %a{:href => ""}
--#      .comment_toggle Leave A Comment
--#    %a{:href => ""}
--#      .review_toggle Leave A Review
--#.row
--#  .comment_display.span9.offset3
--#    %h1
--#      %span#comment_count> 203
--#      \ Reviews and Comments
--#    .clearfix
--#    .comment_author
--#      %img{:src => "http://placehold.it/120x120.jpg"}
--#        .comment_author_details
--#          %p.comment_author_name C. Ronaldo
--#          %p.comment_author_date Jan 21st, 2012
--#          %p.comment_author_status Bought
--#    .comment_archived_first.span7
--#      %p My Rating
--#      .star_rating
--#        #star2
--#      .comment_copy.span6
--#        %p No More Time Wasted "Ummming" & "Ahhhhing" Drafting Emails
--#        %p It's a winner. They're fantastic email templates with the added benefit of knowing the backstory behind them, to make sure it's the right fit.
--#        %p Now, if you're new around here, they've got Noah's flavor of copy (which I love) and set the right tone, respect and courtesy when needed (such as dealing with customers). Back to my point - if you're new around here, and say, work in a stuffy bank, don't expect to get a "Dear Sir/Madam, Per the correspondence bigword fancyword blah blah..." style templates. They're boring anyway.
--#        %p I give this 5 tacos, but I would give it 10 tacos if there was some Chrome Extension that let me choose a template straight out of GMail (a big, crazy ask I know). That would just crush it. However I should point out, there is a fancy link you click to use the mail template in your default email client - just gotta go through AppSumo first, which is cool.
--#        %p Thanks Natasha!
-
-
-
--#    .span9.offset3
--#      .row
--#        %h4= "Reviews"
--#      .row
--#        - unless current_user == @author || cookies[:reviewer].present?
--#          .review
--#            = button_tag "Review", class: 'btn btn-success', id: 'add_review'
--#            #submit_review
--#              = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "review" }
--#        .comment
--#          = button_tag "Comment", class: 'btn btn-primary', id: 'add_comment'
--#          #submit_comment
--#            = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "comment" }
--#      .row.comments
--#        - @comments.each do |comment|
--#          .comment
--#            = render partial: 'comments/show', locals: { comment: comment }
