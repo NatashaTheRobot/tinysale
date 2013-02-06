@@ -1,63 +1,16 @@
-.row.sales-container
-  #info
-    .span9.offset3
-      .row
-        %h1= @product.title
-      .row
-        = sanitize "Created with love by <span class='author'>#{@author.username}</span>"
-        #social
-          %a.twitter-share-button{"data-lang" => "en",
-                                  "data-url" => "http://tinysale.co/#{@product.permalink}",
-                                  "data-counturl" => "http://tinysale.co/#{@product.permalink}",
-                                  "data-via" => "tinysaleco",
-                                  "data-text" => "#{@product.title}",
-                                  "data-related" => 'tinysaleco,natashatherobot',
-                                  :href => "https://twitter.com/share"} Tweet
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-          #fb-root
-          <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=479199065425268";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
-          .fb-like{"data-href" => "http://tinysale.co/#{@product.permalink}", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
-    #buy
-      .span3
-        = image_tag @product.images.first.cover.url, width: '200', height: '200'
-        #quick_info
-          #rating{"data-rating" => average_rating, "data-comments" => num_ratings }
-          %br
-          %ul
-            %li= "You'll get a #{file_type}"
-            %li= "Size: #{file_size} KB"
-            %li= "Price: #{price_in_dollars}"
-        %form{:action => "/charge?id=#{@product.id}", :method => "post" }
-          %script.stripe-button{"data-key" => @product.user.payment.publishable_key,
-                                "data-amount"=> @product.price_in_cents,
-                                "data-name" => @product.title,
-                                "data-image" => "http://i50.tinypic.com/1g0v2c.png",
-                                "data-description" => "you'll get a #{file_type} (#{file_size} KB)",
-                                :src => "https://checkout.stripe.com/v2/checkout.js"}
-    .span9.offset3
-      .row
-        = sanitize @product.description
-      .row
-        %h4= "Meet #{@author.username}"
-        .row
-          .span1
-            = image_tag @author.avatar, width: '120', height: '120'
-          .span8
-            = @author.bio
-    .span9.offset3
-      .row
-        %h4= "Reviews"
-      .row
-        - unless current_user == @author || cookies[:reviewer].present?
-          .review
-            = button_tag "Review", class: 'btn btn-success', id: 'add_review'
-            #submit_review
-              = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "review" }
-        .comment
-          = button_tag "Comment", class: 'btn btn-primary', id: 'add_comment'
-          #submit_comment
-            = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "comment" }
-      .row.comments
-        - @comments.each do |comment|
-          .comment
-            = render partial: 'comments/show', locals: { comment: comment }
+%section.product_main
+  .container
+    .row{:role => "main"}
+      .span4{:role => "sidebar"}
+        = render "buy_box"
+      .description.span8
+        = render "product_description"
+    .clearfix
+%section.buy_it_now
+  .container
+    .row
+      = render 'buy_middle'
+%section.comments
+  .container
+    = render "comments"
+%footer{:role => "footer"}

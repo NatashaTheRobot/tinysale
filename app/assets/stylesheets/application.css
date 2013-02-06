@@ -13,6 +13,381 @@
  *= require bootstrap-wysihtml5
  */
 
-.star {
-    float: right;
-}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+    display: block; }
+
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1; }
+
+audio:not([controls]) {
+    display: none;
+    height: 0; }
+
+[hidden] {
+    display: none; }
+
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%; }
+
+html, button, input, select, textarea {
+    font-family: sans-serif; }
+
+body {
+    margin: 0; }
+
+a:focus {
+    outline: thin dotted; }
+
+a:active, a:hover {
+    outline: 0; }
+
+h1 {
+    font-size: 1.6em;
+    margin: 0.67em 0; }
+
+h2 {
+    font-size: 1.36em;
+    margin: 0.83em 0; }
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0; }
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0; }
+
+h5 {
+    font-size: .83em;
+    margin: 1.67em 0; }
+
+h6 {
+    font-size: .75em;
+    margin: 2.33em 0; }
+
+abbr[title] {
+    border-bottom: 1px dotted; }
+
+b, strong {
+    font-weight: bold; }
+
+blockquote {
+    margin: 1em 40px; }
+
+dfn {
+    font-style: italic; }
+
+mark {
+    background: #ff0;
+    color: #000; }
+
+p, pre {
+    margin: 0 0 1.2em; }
+
+code, kbd, pre, samp {
+    font-family: monospace,serif;
+    _font-family: 'courier new',monospace;
+    font-size: 1em; }
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word; }
+
+q {
+    quotes: none; }
+
+q:before, q:after {
+    content: '';
+    content: none; }
+
+small {
+    font-size: 80%; }
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline; }
+
+sup {
+    top: -0.5em; }
+
+sub {
+    bottom: -0.25em; }
+
+dl, menu, ol, ul {
+    margin: 1em 0; }
+
+dd {
+    margin: 0 0 0 40px; }
+
+ul, nav ul, nav ol {
+    list-style: none;
+    list-style-image: none; }
+
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic; }
+
+svg:not(:root) {
+    overflow: hidden; }
+
+figure {
+    margin: 0; }
+
+form {
+    margin: 0; }
+
+fieldset {
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em; }
+
+legend {
+    border: 0;
+    padding: 0;
+    white-space: normal;
+    *margin-left: -7px; }
+
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+    *vertical-align: middle; }
+
+button, input {
+    line-height: normal; }
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    *overflow: visible; }
+
+button[disabled], input[disabled] {
+    cursor: default; }
+
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+    *height: 13px;
+    *width: 13px; }
+
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box; }
+
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none; }
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+
+textarea {
+    overflow: auto;
+    vertical-align: top; }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; }
+
+/* ==========================================================================
+   Fonts
+   ========================================================================== */
+@font-face {
+    font-family: 'casperregular';
+    src: url("casper-webfont.eot");
+    src: url("casper-webfont.eot?#iefix") format("embedded-opentype"),
+    url("casper-webfont.woff") format("woff"),
+    url("casper-webfont.ttf") format("truetype"),
+    url("casper-webfont.svg#casperregular") format("svg");
+    font-weight: normal;
+    font-style: normal; }
+
+@font-face {
+    font-family: 'casper_italicregular';
+    src: url("casper_italic-webfont.eot");
+    src: url("casper_italic-webfont.eot?#iefix") format("embedded-opentype"),
+    url("casper_italic-webfont.woff") format("woff"),
+    url("casper_italic-webfont.ttf") format("truetype"),
+    url("casper_italic-webfont.svg#casper_italicregular") format("svg");
+    font-weight: normal;
+    font-style: normal; }
+
+@font-face {
+    font-family: 'casper_boldregular';
+    src: url("casper_bold-webfont.eot");
+    src: url("casper_bold-webfont.eot?#iefix") format("embedded-opentype"),
+    url("casper_bold-webfont.woff") format("woff"),
+    url("casper_bold-webfont.ttf") format("truetype"),
+    url("casper_bold-webfont.svg#casper_boldregular") format("svg");
+    font-weight: normal;
+    font-style: normal; }
+
+@font-face {
+    font-family: 'casper_bold_italicregular';
+    src: url("casper_bold_italic-webfont.eot");
+    src: url("casper_bold_italic-webfont.eot?#iefix") format("embedded-opentype"),
+    url("casper_bold_italic-webfont.woff") format("woff"),
+    url("casper_bold_italic-webfont.ttf") format("truetype"),
+    url("casper_bold_italic-webfont.svg#casper_bold_italicregular") format("svg");
+    font-weight: normal;
+    font-style: normal; }
+
+@font-face {
+    font-family: 'neo_sans_regular';
+    src: url("neosans-webfont.eot");
+    src: url("neosans-webfont.eot?#iefix") format("embedded-opentype"),
+    url("neosans-webfont.woff") format("woff"),
+    url("neosans-webfont.ttf") format("truetype"),
+    url("neosans-webfont.svg#neosansregular") format("svg");
+    font-weight: normal;
+    font-style: normal; }
+
+@font-face {
+    font-family: 'neo_sans_medium';
+    src: url("neosans-medium-webfont.eot");
+    src: url("neosans-medium-webfont.eot?#iefix") format("embedded-opentype"),
+    url("neosans-medium-webfont.woff") format("woff"),
+    url("neosans-medium-webfont.ttf") format("truetype"),
+    url("neosans-medium-webfont.svg#neosansregular") format("svg");
+    font-weight: normal;
+    font-style: normal; }
+
+@font-face {
+    font-family: 'proxima_nova_rgregular';
+    src: url("proximanova-regular-webfont.eot");
+    src: url("proximanova-regular-webfont.eot?#iefix") format("embedded-opentype"),
+    url("proximanova-regular-webfont.woff") format("woff"),
+    url("proximanova-regular-webfont.ttf") format("truetype"),
+    url("proximanova-regular-webfont.svg#proxima_nova_rgregular") format("svg");
+    font-weight: normal;
+    font-style: normal; }
+
+@font-face {
+    font-family: 'proxima_nova_ltregular';
+    src: url("proximanova-light-webfont.eot");
+    src: url("proximanova-light-webfont.eot?#iefix") format("embedded-opentype"),
+    url("proximanova-light-webfont.woff") format("woff"),
+    url("proximanova-light-webfont.ttf") format("truetype"),
+    url("proximanova-light-webfont.svg#proxima_nova_ltregular") format("svg");
+    font-weight: normal;
+    font-style: normal; }
+
+@font-face {
+    font-family: 'pulsarjsregular';
+    src: url("pulsarjs-webfont.eot");
+    src: url("pulsarjs-webfont.eot?#iefix") format("embedded-opentype"),
+    url("pulsarjs-webfont.woff") format("woff"),
+    url("pulsarjs-webfont.ttf") format("truetype"),
+    url("pulsarjs-webfont.svg#pulsarjsregular") format("svg");
+    font-weight: normal;
+    font-style: normal; }
+
+@font-face {
+    font-family: 'brandico';
+    src: url("brandico.eot");
+    src: url("brandico.eot?#iefix") format("embedded-opentype"),
+    url("brandico.woff") format("woff"),
+    url("brandico.ttf") format("truetype"),
+    url("brandico.svg#brandico") format("svg");
+    font-weight: normal;
+    font-style: normal; }
+
+/* ==========================================================================
+   Main CSS
+   ========================================================================== */
+a{ color: #6d93bc;}
+a:hover{ text-decoration: underline; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("background.png");
+    font-family: "casperregular", sans-serif;
+    font-weight: 100;
+    color: #646964; }
+
+h1, h2, h3, a {
+    font-weight: 100; }
+
+section {
+    width: 100%;
+    margin: 0;
+    padding: 0; }
+
+.container {
+    margin: 0 auto; }
+
+[role="main"] {
+    width: 100%; }
+
+
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+@media print {
+    * {
+        background: transparent !important;
+        color: black !important;
+        /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important; }
+
+    a,
+    a:visited {
+        text-decoration: underline; }
+
+    a[href]:after {
+        content: " (" attr(href) ")"; }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")"; }
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: ""; }
+
+    pre,
+    blockquote {
+        border: 1px solid #999999;
+        page-break-inside: avoid; }
+
+    thead {
+        display: table-header-group;
+        /* h5bp.com/t */ }
+
+    tr,
+    img {
+        page-break-inside: avoid; }
+
+    img {
+        max-width: 100% !important; }
+
+    @page {
+        margin: 0.5cm; }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3; }
+
+    h2,
+    h3 {
+        page-break-after: avoid; } }

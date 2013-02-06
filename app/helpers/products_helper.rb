@@ -1,4 +1,8 @@
 module ProductsHelper
+  def product_url
+    "#{root_url}sale/#{@product.permalink}"
+  end
+
   def file_type
     content_type = @product.attachments.first.item_content_type
     content_type.split('/').last.upcase

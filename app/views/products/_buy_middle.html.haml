@@ -1,0 +1,37 @@
+.span4
+.span5.buy-overview
+  %script{:src => "https://checkout.stripe.com/v2/checkout.js"}
+  %button{action: "/charge?id=#{@product.id}", method: 'post', :type => "submit", class: 'buy_it_now_button'}
+    = image_tag 'product/buy-now-middle.png'
+  :javascript
+    $('.buy_it_now_button').click(function(){
+      var token = function(res){
+                  console.log('Got token ID:', res.id);
+                  };
+      StripeCheckout.open({
+        key: "#{@product.user.payment.publishable_key}",
+        amount: "#{@product.price_in_cents}",
+        name: "#{@product.title}",
+        image: "http://i50.tinypic.com/1g0v2c.png",
+        description: "you'll get a #{file_type} (#{file_size} KB)"
+      });
+
+      return false;
+    });
+
+  %h1.title= @product.title
+  %p.price= price_in_dollars
+  #star2
+    #rating-white{"data-rating" => average_rating, "data-comments" => num_ratings}
+  %a{:href => ""}
+    %p.read_all_reviews
+      read all
+      %span.review_count 203
+      reviews >
+.span3
+  %ul.bullets
+    %li Create Your Own Ideas
+    %li Get the Job of Your Dreams
+    %li Increase Your Earning Potential
+    %li Be Part of A Passionate Community
+    %li Work From Anywhere in the World

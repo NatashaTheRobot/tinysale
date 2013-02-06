@@ -1,0 +1,33 @@
+%hgroup.product_header
+  .row
+    %header.span5
+      %h1= @product.title
+      #subtitle
+        = "created with love by #{@author.username}"
+    .social_box.span3
+      .social_link
+        #tweet
+          %a.twitter-share-button{"data-lang" => "en",
+                                  "data-url" => "#{product_url}",
+                                  "data-count" => "vertical",
+                                  "data-counturl" => "#{product_url}",
+                                  "data-via" => "tinysaleco",
+                                  "data-text" => "#{@product.title}",
+                                  "data-related" => 'tinysaleco,natashatherobot',
+                                  :href => "https://twitter.com/share"} Tweet
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      .social_link
+        #like
+          <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=479199065425268";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+          .fb-like{"data-href" => product_url,
+                   "data-layout" => "box_count",
+                   "data-send" => "false",
+                   "data-show-faces" => "false",
+                   "data-width" => "450"}
+
+.clearfix
+.description_copy
+  = sanitize @product.description
+  &nbsp
+  %h3= "About #{@author.username}"
+  = sanitize @author.bio

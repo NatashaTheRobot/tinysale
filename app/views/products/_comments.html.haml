@@ -1,0 +1,29 @@
+.row.reviews-comments
+  .span4
+  .span4.comment-count
+    %h1= "#{@comments.size} Reviews and Comments"
+  .span4.buttons
+    .row
+      - unless current_user == @author || cookies[:reviewer].present?
+        .span2
+          #add_review
+        .span2
+          #add_comment
+      - else
+        .span4.just-comment
+          #add_comment
+
+.row
+  .span4
+  .span8
+    #submit_review
+      = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "review" }
+    #submit_comment
+      = render partial: 'comments/form', locals: { commentable_id: @product.id, commentable_type: "Product", subtype: "comment" }
+
+.row
+  .span4
+  .span8.comment_display
+    - @comments.each do |comment|
+      .comment
+        = render partial: 'comments/show', locals: { comment: comment }
