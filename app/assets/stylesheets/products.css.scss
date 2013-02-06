@@ -415,7 +415,7 @@ hgroup {
     }
     p {
       text-align: left;
-      font-size: .8em;
+      font-size: 1.5em;
     }
     .comment_archived_first {
       margin-bottom: 2em;
@@ -436,11 +436,24 @@ hgroup {
         font-size: .5em;
         padding: 4px 6px;
         margin: 0;
+
+        .comment_author_name{
+          color: #52ae8c;
+          line-height: 0;
+          letter-spacing: 0;
+        }
+
+        .comment_author_date{
+          letter-spacing: 0;
+        }
       }
     }
     .star_rating {
       display: block;
       margin-bottom: 1em;
+      p{
+        font-size: 0.8em;
+      }
     }
     .comment_copy {
       margin-left: 0;

@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def gravatar_url(email)
-    "https://secure.gravatar.com/avatar/#{gravatar_id(email)}"
+    "https://secure.gravatar.com/avatar/#{gravatar_id(email)}?d=#{URI.escape('https://s3.amazonaws.com/tinysale/mrdefault.png')}"
   end
 
 end

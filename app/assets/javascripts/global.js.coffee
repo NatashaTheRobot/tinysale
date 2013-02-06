@@ -15,7 +15,7 @@ jQuery ->
 
   star_half = (startype) ->
     if startype is 'green'
-      return '../product/star-half.png'
+      return '../product/half-star.png'
     else
       return '../product/white-half-star.png'
 
