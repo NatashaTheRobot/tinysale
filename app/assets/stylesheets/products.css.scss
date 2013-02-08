@@ -39,7 +39,18 @@ section {
    Product Page CSS
    ========================================================================== */
 .product_main {
-  border-top: 5px solid #52ae8c; }
+  border-top: 5px solid #52ae8c;
+}
+
+.sidebar{
+  width:  300px;
+}
+
+@media(max-width: 767px) {
+  .sidebar {
+    margin-left:  14%;
+  }
+}
 
 .product_box {
   text-align: center;
@@ -98,6 +109,12 @@ section {
     }
     .size:before {
       content: "Size: ";
+    }
+  }
+  @media(max-width: 767px) {
+    .box_details {
+      margin-left:  8;
+      width:  220px;
     }
   }
   button{
@@ -159,6 +176,11 @@ hgroup {
       letter-spacing: 1px;
     }
   }
+  @media(max-width: 767px) {
+    header {
+      text-align:  center;
+    }
+  }
   .social_box {
     text-align: right;
     margin: 0 auto;
@@ -172,6 +194,12 @@ hgroup {
       #tweet{
         float: left;
       }
+    }
+  }
+  @media(max-width: 767px) {
+    .social_box {
+      margin-top:  0.8em;
+      text-align: center;
     }
   }
   .description_copy {
@@ -261,6 +289,13 @@ hgroup {
         position: relative;
         top: 5px;
       }
+    }
+  }
+  @media(max-width: 767px) {
+    .bullets {
+      float: left;
+      padding-left: 10px;
+      margin-top: 0.8em;
     }
   }
 }
@@ -378,6 +413,19 @@ hgroup {
       }
     }
   }
+  @media(max-width: 767px) {
+    .buttons{
+      padding-left: 10px;
+    }
+    #add_review {
+      float: left;
+      margin-left: 157px;
+    }
+    .reviews-comments .buttons .just-comment #add_comment {
+        float: left;
+    }
+  }
+
   h1{
     font-family: "casper_italicregular", sans-serif;
     text-align: left;
