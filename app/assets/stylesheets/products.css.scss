@@ -362,6 +362,11 @@ hgroup {
         outline: none;
       }
     }
+    @media(max-width: 767px) {
+      .input-fields {
+        width:  100%;
+      }
+    }
     #comment_submit {
       color: #f8f8f8;
       background-color: #52ae8c;
@@ -377,6 +382,12 @@ hgroup {
       &:hover{
         opacity: 0.9;
       }
+    }
+  }
+  @media(max-width: 767px) {
+    #comment_submit {
+      float: right;
+      margin-right: 10px;
     }
   }
   .reviews-comments{
@@ -442,6 +453,11 @@ hgroup {
   .rating-target {
     position: absolute;
     margin-left: 110px;
+  }
+  @media(max-width: 767px) {
+    .rating-target{
+      margin-top: -20px;
+    }
   }
   #number_of_stars_text {
     display: inline-block;
