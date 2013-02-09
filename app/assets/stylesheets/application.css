@@ -316,7 +316,6 @@ a:hover{ text-decoration: underline; }
 body {
     margin: 0;
     padding: 0;
-    background-image: url("background.png");
     font-family: "casperregular", sans-serif;
     font-weight: 100;
     color: #646964; }

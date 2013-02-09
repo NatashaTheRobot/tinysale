@@ -23,11 +23,14 @@
   %p.price= price_in_dollars
   #star2
     #rating-white{"data-rating" => average_rating, "data-comments" => num_ratings}
-  %a{:href => ""}
-    %p.read_all_reviews
-      read all
-      %span.review_count 203
-      reviews >
+  - if num_ratings.zero?
+    %a{:href => "#leave_review"}
+      %p.read_all_reviews
+        leave the first review >
+  - else
+    %a{:href => "#comments"}
+      %p.read_all_reviews
+        = "read all #{num_ratings} reviews >"
 .span3
   %ul.bullets
     %li Create Your Own Ideas

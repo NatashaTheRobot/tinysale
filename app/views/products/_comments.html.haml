@@ -1,4 +1,4 @@
-.row.reviews-comments
+.row.reviews-comments#leave_review
   .span4
   .span4.comment-count
     %h1= "#{@comments.size} Reviews and Comments"
@@ -23,7 +23,7 @@
 
 .row
   .span4
-  .span8.comment_display
+  .span8.comment_display#comments
     - @comments.each do |comment|
       .comment
         = render partial: 'comments/show', locals: { comment: comment }
