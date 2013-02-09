@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate_user!, except: [:show, :index, :charge, :download]
+  before_filter :authenticate_user!, except: [:show, :index, :charge, :download_sample]
   before_filter :find_product, only: [:show, :edit, :update, :destroy]
 
   load_and_authorize_resource
@@ -88,6 +88,12 @@ class ProductsController < ApplicationController
 
     # on success
     redirect_to attachment_path(product.attachments.first)
+  end
+
+  def download_sample
+    @product = Product.find_by_permalink!(params[:permalink])
+    io = open(URI.parse(@product.sample.expiring_url(10)))
+    send_data io.read, type: io.content_type, filename: @product.sample_file_name
   end
 
   private

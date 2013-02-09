@@ -8,6 +8,6 @@ class Ability
 
     #Product
     can [:edit, :destroy, :update], Product, :user_id => user.id
-    can [:create, :charge], Product
+    can [:create, :charge, :download_sample], Product
   end
 end

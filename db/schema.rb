@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127234544) do
+ActiveRecord::Schema.define(:version => 20130209181008) do
 
   create_table "attachments", :force => true do |t|
     t.string   "status"
@@ -85,9 +85,13 @@ ActiveRecord::Schema.define(:version => 20130127234544) do
     t.string   "title"
     t.text     "description"
     t.string   "permalink"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "price_in_cents"
+    t.string   "sample_file_name"
+    t.string   "sample_content_type"
+    t.integer  "sample_file_size"
+    t.datetime "sample_updated_at"
   end
 
   add_index "products", ["permalink"], :name => "index_products_on_permalink", :unique => true
