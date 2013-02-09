@@ -9,6 +9,7 @@ Tinysale::Application.routes.draw do
 
   resources :emails, only: [:create]
   resources :products, path: 'sale'
+  get 'sale/:permalink/download_sample' => 'products#download_sample'
   resources :payments
   resources :comments
   resources :attachments, only: [:show]

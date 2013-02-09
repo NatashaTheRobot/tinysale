@@ -13,7 +13,7 @@
 
 class Product < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :description, :permalink, :title, :attachments_attributes, :images_attributes, :price_in_cents
+  attr_accessible :description, :permalink, :title, :attachments_attributes, :images_attributes, :price_in_cents, :sample
 
   acts_as_commentable
 
@@ -30,6 +30,9 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :images
 
   before_create :generate_permalink, :convert_price_to_cents
+
+  has_attached_file :sample,
+                    path: 'sale/:permalink/download_attachment'
 
   # overriding to have :permalink in the routes instead of :id
   def to_param

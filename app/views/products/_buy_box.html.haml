@@ -5,7 +5,7 @@
       #rating{"data-rating" => average_rating, "data-comments" => num_ratings }
     %p.download_sample
       = image_tag "product/download-hover.png"
-      = link_to "Download a sample PDF", "#"
+      = link_to "Download a free sample", download_sample_product_path(@product)
     %p= "You'll get a #{file_type}"
     %p.size= "#{file_size} KB"
     %p.price= price_in_dollars
