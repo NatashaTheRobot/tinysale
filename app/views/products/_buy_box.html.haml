@@ -10,22 +10,6 @@
     %p.size= "#{file_size} KB"
     %p.price= price_in_dollars
   .checkout
-    %script{:src => "https://checkout.stripe.com/v2/checkout.js"}
-    %button{action: "/charge?id=#{@product.id}", method: 'post', :type => "submit", class: 'buy-now'}
+    %button{id: 'buy-top', class: 'buy'}
       = image_tag 'product/buy-top.png'
-    :javascript
-      $('.buy-now').click(function(){
-        var token = function(res){
-                    console.log('Got token ID:', res.id);
-                    };
-        StripeCheckout.open({
-          key: "#{@product.user.payment.publishable_key}",
-          amount: "#{@product.price_in_cents}",
-          name: "#{@product.title}",
-          image: "http://i50.tinypic.com/1g0v2c.png",
-          description: "you'll get a #{file_type} (#{file_size} KB)"
-        });
-
-        return false;
-      });
 .product-border

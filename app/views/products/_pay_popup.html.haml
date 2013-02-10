@@ -1,0 +1,23 @@
+%a{:href => "#"}
+  .overlay
+.pay_popup
+  %h1.title= @product.title
+  %h2.price= price_in_dollars
+  .close
+    = link_to (image_tag 'product/close-payment.png'), 'javascript:void(0)'
+  %form#payment{:action => ""}
+    %fieldset
+      %ul
+        %li
+          %label{:for => "card_number"} Card Number
+          %input#card_number{:name => "card_number", :placeholder => "4444-4444-4444-4444", :required => "", :size => "19", :type => "number"}/
+        %li
+          %label{:for => "expiration_date"} Expiration Date
+          %input#expiration_date{:name => "expiration_date", :placeholder => "04/12", :required => "", :size => "5", :type => "number"}/
+        %li
+          %label{:for => "name_on_card"} Name On Card
+          %input#name_on_card{:autofocus => "", :name => "name", :required => "", :type => "text"}/
+        %li
+          %label{:for => "cvc"} Card Code
+          %input#cvc{:name => "cvc", :placeholder => "CVC", :required => "", :size => "3", :type => "number"}/
+      %input#make_payment.button{:name => "make_payment", :type => "submit", :value => "Pay #{price_in_dollars}"}/

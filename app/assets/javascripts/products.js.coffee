@@ -54,7 +54,15 @@ jQuery ->
         full: 0.6
         up: 0.76
 
-
   $("form#new_comment").bind "ajax:success", (e, data, status, xhr) ->
     display_comment(data)
     update_average(data["rating"])
+
+  # purchasing
+  $('.buy').click ->
+    $('.popup').fadeIn 'fast'
+    false
+
+  $('.overlay, .close').click ->
+    $('.popup').fadeOut()
+    false
