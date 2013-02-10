@@ -617,6 +617,7 @@ hgroup {
     top: 0px;
     left: 0px;
     background-color: rgba(0,0,0,0.4);
+    z-index: 2;
   }
 
   .pay_popup{
@@ -644,9 +645,10 @@ hgroup {
       font-size: 1.4em;
       color:  #333333;
     }
-    .price{
-      margin: .2em 1em;
-      font-size: 1.4em;
+    p{
+      margin: .2em 2em;
+      font-family: "casper_italicregular", sans-serif;
+      font-size: 0.8em;
       color: #797979;
       @include prefix(text-shadow, 0px 1px 2px $white);
     }
@@ -662,6 +664,14 @@ hgroup {
       border-top: 1px dotted #bdbdbd;
       padding-top: 1em;
       font-family: $casper;
+      .billing_errors{
+        padding-bottom: 1em;
+        p {
+          width: 100%;
+          margin:  0;
+          color:  #d21e1e;
+        }
+      }
     }
     fieldset{
       padding: 0;
@@ -691,7 +701,7 @@ hgroup {
       @include prefix(box-shadow, inset 0px 3px 6px 0px rgba(2,2,2,.1));
       border: 1px solid #bdbdbd;
       background: $white;
-      color: #9a9a9a;
+      color: #333333;
       font-size: .8em;
       padding: 0 10px;
       width: 85%;
@@ -701,8 +711,14 @@ hgroup {
     #make_payment{
       background-image: url('product/pay.png');
       background-repeat: no-repeat;
+      background-color: transparent;
+      border-radius: 6px;
+      border:  0;
+      width:  98%;
+      height: 44px;
       margin-top: 1em;
       font-size: 1.1em;
+      font-family: $casper;
       color: $white;
       @include prefix(text-shadow, 0px -1px 1px rgba(2,2,2,.6));
       &:hover{

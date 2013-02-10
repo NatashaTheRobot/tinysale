@@ -66,3 +66,7 @@ jQuery ->
   $('.overlay, .close').click ->
     $('.popup').fadeOut()
     false
+
+  $('#card_number').payment('formatCardNumber')
+  $('#cvc').payment('formatCardCVC')
+  $('#expiration_date').payment('formatCardExpiry')

@@ -1,23 +1,59 @@
-%a{:href => "#"}
-  .overlay
+.overlay
 .pay_popup
   %h1.title= @product.title
-  %h2.price= price_in_dollars
+  %p= "You'll get a #{file_type} (#{file_size} KB)" #TODO make same font at Downlaod a free sample
   .close
     = link_to (image_tag 'product/close-payment.png'), 'javascript:void(0)'
-  %form#payment{:action => ""}
-    %fieldset
-      %ul
-        %li
-          %label{:for => "card_number"} Card Number
-          %input#card_number{:name => "card_number", :placeholder => "4444-4444-4444-4444", :required => "", :size => "19", :type => "number"}/
-        %li
-          %label{:for => "expiration_date"} Expiration Date
-          %input#expiration_date{:name => "expiration_date", :placeholder => "04/12", :required => "", :size => "5", :type => "number"}/
-        %li
-          %label{:for => "name_on_card"} Name On Card
-          %input#name_on_card{:autofocus => "", :name => "name", :required => "", :type => "text"}/
-        %li
-          %label{:for => "cvc"} Card Code
-          %input#cvc{:name => "cvc", :placeholder => "CVC", :required => "", :size => "3", :type => "number"}/
-      %input#make_payment.button{:name => "make_payment", :type => "submit", :value => "Pay #{price_in_dollars}"}/
+
+  %form#payment{:action => "/charge?id=#{@product.id}", :method => "post" }
+    .billing_errors
+    = hidden_field_tag :credit_card_token, value: ""
+
+    %ul
+      %li
+        = label_tag :card_number
+        = text_field_tag :card_number, nil, placeholder: "1234 5678 9123 4567"
+      %li
+        = label_tag :expiration_date
+        = text_field_tag :expiration_date, nil, placeholder: 'MM / YYYY'
+      %li
+        = label_tag :email
+        = text_field_tag :email, nil, placeholder: 'name@email.com'
+      %li
+        = label_tag :cvc
+        = text_field_tag :cvc, nil, placeholder: "123"
+
+    = submit_tag "Pay #{price_in_dollars}", id: 'make_payment', name: 'make_payment'
+
+
+  %script{:src => "https://js.stripe.com/v1/", :type => "text/javascript"}
+  :javascript
+    Stripe.setPublishableKey("#{@product.user.payment.publishable_key}");
+
+    $(document).ready(function() {
+      $("form#payment").submit(function(event) {
+        var form = $(this);
+        form.find(".billing-errors").html("");
+        if(form.find('#card_number').val()) {
+          form.find('[type=submit]').attr("disabled", "disabled");
+          var expiration_date = $('#expiration_date').val().split(' / ');
+          Stripe.createToken({
+            number: $("#card_number").val(),
+            exp_month: expiration_date[0],
+            exp_year: expiration_date[1],
+            cvc: $('#cvc').val()
+          }, function(status, response) {
+            if (response.error) {
+              console.log(response.error.message);
+              form.find(".billing_errors").prepend('<p>' + response.error.message + '</p>');
+              form.find('[type=submit]').removeAttr("disabled");
+            } else {
+              $('#credit_card_token').val(response['id']);
+              form.get(0).submit();
+              $('.popup').fadeOut();
+            }
+          });
+          return false;
+        }
+      });
+    });
