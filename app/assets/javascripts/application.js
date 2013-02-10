@@ -18,3 +18,4 @@
 //= require jquery.raty.min
 //= require global.js.coffee
 //= require jquery.easing
+//= require jquery.payment.coffee

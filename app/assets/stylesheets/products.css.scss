@@ -1,3 +1,74 @@
+$casper: 'casperregular', sans-serif;
+$casper_i: 'casper_italicregular', sans-serif;
+$casper_b: 'casper_boldregular', sans-serif;
+$casper_bi: 'casper_bold_italicregular', sans-serif;
+$pale_green: #f9fbee;
+$light_grey: #a0a0a0;
+$white: #f8f8f8;
+$black: #222;
+$green: #52ae8c;
+$neo: 'neo_sans_regular', sans-serif;
+$neo_m: 'neo_sans_medium', sans-serif;
+$proxima: 'proxima_nova_rgregular', sans-serif;
+$proxima_l: 'proxima_nova_ltregular', sans-serif;
+$icon: 'pulsarjsregular';
+
+@mixin ir {
+  display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0;
+  br { display: none; }
+}
+
+@mixin hidden {
+  display: none !important; visibility: hidden;
+}
+
+@mixin clearfix {
+  *zoom: 1;
+  &:before { content: ""; display: table; }
+  &:after { content: ""; display: table; clear: both; }
+}
+@mixin prefix($property, $value){
+
+  -webkit-#{$property}: #{$value};
+  -moz-#{$property}:  #{$value};
+  -ms-#{$property}:  #{$value};
+  -o-#{$property}:  #{$value};
+  #{$property}: #{$value};
+}
+
+@mixin animate_slow {
+  @include prefix(transition, all 600ms cubic-bezier(0, 0.82, 1, 0.77))
+}
+
+@mixin animate_fast {
+  @include prefix(transition, all 300ms cubic-bezier(.14,.82,.17,.99))
+}
+
+@mixin gradient{
+  background: -moz-linear-gradient(top, rgba(34,34,34,0) 25%, rgba(34,34,34,0.2) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(25%,rgba(34,34,34,0)), color-stop(100%,rgba(34,34,34,0.2))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(34,34,34,0) 25%,rgba(34,34,34,0.2) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(34,34,34,0) 25%,rgba(34,34,34,0.2) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(34,34,34,0) 25%,rgba(34,34,34,0.2) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(34,34,34,0) 25%,rgba(34,34,34,0.2) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00222222', endColorstr='#33222222',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin box-shadow($shadow1, $shadow2:false, $shadow3:false, $shadow4:false, $shadow5:false) {
+  $params: $shadow1;
+  @if $shadow2
+  { $params: $shadow1, $shadow2; }
+  @if $shadow3 != false
+  { $params: $shadow1, $shadow2, $shadow3; }
+  @if $shadow4 != false
+  { $params: $shadow1, $shadow2, $shadow3, $shadow4; }
+  @if $shadow5 != false
+  { $params: $shadow1, $shadow2, $shadow3, $shadow4, $shadow5; }
+  -webkit-box-shadow: $params;
+  -moz-box-shadow: $params;
+  box-shadow: $params;
+}
+
 /* ==========================================================================
    Main CSS
    ========================================================================== */
@@ -54,7 +125,6 @@ section {
 
 .product_box {
   text-align: center;
-  position: relative;
   margin: -15% auto 0 auto;
   background-image: url("product/product-back.png");
   background-size: 85%;
@@ -70,7 +140,6 @@ section {
     }
   }
   .product_image {
-    position: relative;
     margin-top: 17%;
     right: .5%;
     max-width: 70%;
@@ -93,7 +162,6 @@ section {
     .download_sample {
       font-size: .7em;
       font-family: "casper_italicregular", sans-serif;
-      position: relative;
       margin-top: 0.8em;
       margin-bottom: 0.8em;
       color: #646964;
@@ -234,7 +302,7 @@ hgroup {
     margin-left: 0;
     padding-left: 10px;
   }
-  .buy_it_now_button{
+  #buy_middle{
     border: 0;
     padding: 0;
     background: transparent;
@@ -537,6 +605,126 @@ hgroup {
 @media screen and (min-width: 767px) {
   .comments .comment_display .comment_author {
     margin-bottom: 0;
+  }
+}
+
+.popup{
+  display: none;
+  .overlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 2;
+  }
+
+  .pay_popup{
+    position:absolute;
+    z-index: 3;
+    font-family: $neo;
+    font-weight: 100;
+    margin-top: 15%;
+    margin-left: 35%;
+    width: 100%;
+    height: 400px;
+    max-width: 440px;
+    background-image: url('product/card-pop-up.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      /* display: none; <- Crashes Chrome on hover */
+      -webkit-appearance: none;
+      margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+    padding: 40px;
+    .title{
+      margin: 0 1em;
+      font-size: 1.4em;
+      color:  #333333;
+    }
+    p{
+      margin: .2em 2em;
+      font-family: "casper_italicregular", sans-serif;
+      font-size: 0.8em;
+      color: #797979;
+      @include prefix(text-shadow, 0px 1px 2px $white);
+    }
+    .close{
+      color: $black;
+      font-size: 3em;
+      font-family: $icon;
+      position: absolute;
+      top: .5em;
+      right: .5em;
+    }
+    form{
+      border-top: 1px dotted #bdbdbd;
+      padding-top: 1em;
+      font-family: $casper;
+      .billing_errors{
+        padding-bottom: 1em;
+        p {
+          width: 100%;
+          margin:  0;
+          color:  #d21e1e;
+        }
+      }
+    }
+    fieldset{
+      padding: 0;
+      border: none;
+    }
+    ul{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      margin: 0;
+      padding: 0;
+      float: left;
+      width: 65%;
+      &:nth-child(even){
+        width: 30%;
+      }
+    }
+    label{
+      display: block;
+      color: #797979;
+      font-size: .8em;
+      margin-bottom: .5em;
+    }
+    input{
+      height: 40px;
+      @include prefix(box-shadow, inset 0px 3px 6px 0px rgba(2,2,2,.1));
+      border: 1px solid #bdbdbd;
+      background: $white;
+      color: #333333;
+      font-size: .8em;
+      padding: 0 10px;
+      width: 85%;
+      margin-bottom: 1.5em;
+      outline-color: #81cfe9;
+    }
+    #make_payment{
+      background-image: url('product/pay.png');
+      background-repeat: no-repeat;
+      background-color: transparent;
+      border-radius: 6px;
+      border:  0;
+      width:  98%;
+      height: 44px;
+      margin-top: 1em;
+      font-size: 1.1em;
+      font-family: $casper;
+      color: $white;
+      @include prefix(text-shadow, 0px -1px 1px rgba(2,2,2,.6));
+      &:hover{
+        opacity: 0.9;
+      }
+    }
   }
 }
 

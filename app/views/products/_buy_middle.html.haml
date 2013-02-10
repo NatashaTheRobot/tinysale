@@ -1,23 +1,7 @@
 .span4
 .span5.buy-overview
-  %script{:src => "https://checkout.stripe.com/v2/checkout.js"}
-  %button{action: "/charge?id=#{@product.id}", method: 'post', :type => "submit", class: 'buy_it_now_button'}
+  %button{id: 'buy_middle', class: 'buy'}
     = image_tag 'product/buy-now-middle.png'
-  :javascript
-    $('.buy_it_now_button').click(function(){
-      var token = function(res){
-                  console.log('Got token ID:', res.id);
-                  };
-      StripeCheckout.open({
-        key: "#{@product.user.payment.publishable_key}",
-        amount: "#{@product.price_in_cents}",
-        name: "#{@product.title}",
-        image: "http://i50.tinypic.com/1g0v2c.png",
-        description: "you'll get a #{file_type} (#{file_size} KB)"
-      });
-
-      return false;
-    });
 
   %h1.title= @product.title
   %p.price= price_in_dollars

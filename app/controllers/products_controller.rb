@@ -77,16 +77,12 @@ class ProductsController < ApplicationController
     Stripe.api_key = product.user.payment.access_token
     Stripe::Charge.create(
         :amount      => amount,
-        :card        => params[:stripeToken],
-        :description =>  "Tinysale Charge",
+        :card        => params[:credit_card_token],
+        :description =>  "tinysale: #{product.title}",
         :currency    => 'usd'
     )
 
-    #error Stripe::CardError do
-    #  "something went wrong!!!"
-    #end
 
-    # on success
     redirect_to attachment_path(product.attachments.first)
   end
 
