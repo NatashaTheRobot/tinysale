@@ -33,18 +33,55 @@
     $(document).ready(function() {
       $("form#payment").submit(function(event) {
         var form = $(this);
-        form.find(".billing-errors").html("");
-        if(form.find('#card_number').val()) {
+        form.find(".billing_errors").html("");
+        var card_number = $('#card_number').val()
+        var exp_date = $('#expiration_date').val()
+        var email = $('#email').val()
+        var cvc = $('#cvc').val()
+        var exp_date_split = $('#expiration_date').val().split(' / ');
+        var exp_month = exp_date_split[0]
+        var exp_year = exp_date_split[1]
+        // validate that all fields are present
+        if(card_number === "" || exp_date === "" || email === "" || cvc === ""){
+          form.find(".billing_errors").prepend('<p>Please fill out all the fields below</p>')
+          return false
+        }
+        // validate that the value in each field is correct
+
+        //card number
+        else if(Stripe.validateCardNumber(card_number) === false){
+          form.find(".billing_errors").prepend('<p>Please enter a valid credit card number</p>')
+          return false
+        }
+
+        // expiration date
+        else if(Stripe.validateExpiry(exp_month, exp_year) === false){
+          form.find(".billing_errors").prepend('<p>Please enter a valid expiration date</p>')
+          return false
+        }
+
+        // email
+        else if(validateEmail(email) === false) {
+          form.find(".billing_errors").prepend('<p>Please enter a valid email address</p>')
+          return false
+        }
+
+        // cvc
+        else if(Stripe.validateCVC(cvc) === false){
+          form.find(".billing_errors").prepend('<p>Please enter a valid CVC code</p>')
+          return false
+        }
+
+        // submit the form to stripe
+        else {
           form.find('[type=submit]').attr("disabled", "disabled");
-          var expiration_date = $('#expiration_date').val().split(' / ');
           Stripe.createToken({
-            number: $("#card_number").val(),
-            exp_month: expiration_date[0],
-            exp_year: expiration_date[1],
-            cvc: $('#cvc').val()
+            number: card_number,
+            exp_month: exp_month,
+            exp_year: exp_year,
+            cvc: cvc
           }, function(status, response) {
             if (response.error) {
-              console.log(response.error.message);
               form.find(".billing_errors").prepend('<p>' + response.error.message + '</p>');
               form.find('[type=submit]').removeAttr("disabled");
             } else {
@@ -56,4 +93,9 @@
           return false;
         }
       });
+
+      function validateEmail(email) {
+          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(email);
+      }
     });
