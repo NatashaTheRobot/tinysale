@@ -20,7 +20,7 @@
         = label_tag :email
         = text_field_tag :email, nil, placeholder: 'name@email.com'
       %li
-        = label_tag :cvc
+        = label_tag :field_name, "CVC code"
         = text_field_tag :cvc, nil, placeholder: "123"
 
     = submit_tag "Pay #{price_in_dollars}", id: 'make_payment', name: 'make_payment'
