@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'pg'
 gem 'rake', '0.8.7'
 
@@ -15,7 +15,7 @@ gem 'aws-sdk', '1.8.0'
 
 #authentication & roles
 gem 'devise', '2.2.3'
-gem "cancan", "1.6.8"
+gem "cancan", "1.6.9"
 
 gem "custom_error_message", '1.1.1'
 
