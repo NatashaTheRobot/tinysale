@@ -7,7 +7,7 @@ gem 'rake', '0.8.7'
 gem 'sendgrid', '1.1.0'
 gem 'typhoeus', '0.5.3'
 
-gem 'haml', '3.1.7'
+gem 'haml', '4.0.0'
 
 #file storage
 gem 'paperclip', '3.4.0'
