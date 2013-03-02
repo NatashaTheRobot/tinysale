@@ -12,7 +12,7 @@
     <%= render 'layouts/shim' %>
     <%= render 'layouts/googleanalytics' %>
   </head>
-  <body class="<%= controller.controller_name %>">
+  <body class="<%= controller_name %> <%= action_name %>">
       <%= yield %>
   </body>
 </html>

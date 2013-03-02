@@ -1,4 +1,4 @@
-= form_for @comment, remote: true, format: :json do |f|
+= form_for @comment, remote: true do |f|
   - if subtype == "review"
     .row
       .span8.star_rating_feedback

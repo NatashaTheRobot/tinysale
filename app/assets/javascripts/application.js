@@ -19,3 +19,4 @@
 //= require global.js.coffee
 //= require jquery.easing
 //= require jquery.payment.coffee
+//= require jquery.readyselector.js.coffee

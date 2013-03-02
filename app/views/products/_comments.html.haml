@@ -25,5 +25,4 @@
   .span4
   .span8.comment_display#comments
     - @comments.each do |comment|
-      .comment
-        = render partial: 'comments/show', locals: { comment: comment }
+      = render partial: 'comments/show', locals: { comment: comment }
