@@ -1,8 +1,8 @@
-source :rubygems
+source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'pg'
-gem 'rake', '0.8.7'
+gem 'rake', '10.0.3'
 
 gem 'sendgrid', '1.1.0'
 gem 'typhoeus', '0.5.3'

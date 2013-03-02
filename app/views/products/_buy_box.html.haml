@@ -2,7 +2,7 @@
   = image_tag @product.images.first.cover.url, class: "product_image"
   .box_details.span3
     .star_rating
-      #rating{"data-rating" => average_rating, "data-comments" => num_ratings }
+      #rating{"data-rating" => average_rating, "data-reviews" => num_ratings }
     %p.download_sample
       = image_tag "product/download-hover.png"
       = link_to "Download a free sample", "#{@product.permalink}/download_sample"

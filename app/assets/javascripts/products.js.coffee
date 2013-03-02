@@ -66,10 +66,11 @@ jQuery ->
     false
 
   update_average = (rating) ->
-    return if rating is null
-    num_comments = $('#rating').data('comments')
-    sum = $('#rating').data('rating') * num_comments + rating
-    average = sum / (num_comments + 1)
+    return if isNaN(rating)
+    num_reviews = $('#rating').data('reviews')
+    initial_average = $('#rating').data('rating')
+    sum = (initial_average * num_reviews) + rating
+    average = sum / (num_reviews + 1)
     display_rating('#rating', average, 'green')
     display_rating('#rating-white', average, 'white')
 
@@ -83,7 +84,7 @@ jQuery ->
     clear_and_hide_form()
     display_comment(comment)
     rating = $('.star_rating', comment).attr('data-rating')
-    update_average(rating)
+    update_average(parseInt(rating))
 
   # purchasing
   configure_payment_form = ->
