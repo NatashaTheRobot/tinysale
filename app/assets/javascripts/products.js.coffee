@@ -75,8 +75,11 @@ jQuery ->
     display_rating('#rating-white', average, 'white')
 
   clear_and_hide_form = ->
-    $('#submit_comment').slideUp(1000, "easeOutBack" )
-    $('#submit_review').slideUp(1000, "easeOutBack" )
+    if $('#submit_comment').is(':visible')
+      $('#submit_comment').slideUp(1000, "easeOutBack" )
+    else if $('#submit_review').is(':visible')
+      $('#submit_review').slideUp(1000, "easeOutBack" )
+      $('#add_review').hide()
     $('#name').val('')
     $('#comment').val('')
 
