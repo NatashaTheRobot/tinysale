@@ -25,6 +25,10 @@
 
     = submit_tag "Pay #{price_in_dollars}", id: 'make_payment', name: 'make_payment'
 
+  %p.pay_thanks
+    = "Thanks for purchasing #{@product.title} from #{@author.username}."
+    = "The #{file_type} will begin downloading momentarily. You will also receive a copy of it in your email."
+    = 'Enjoy!'
 
   %script{:src => "https://js.stripe.com/v1/", :type => "text/javascript"}
   :javascript
@@ -87,7 +91,8 @@
             } else {
               $('#credit_card_token').val(response['id']);
               form.get(0).submit();
-              $('.popup').fadeOut();
+              $(form).hide();
+              $('.pay_thanks').fadeIn('fast')
             }
           });
           return false;
