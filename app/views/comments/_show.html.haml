@@ -6,10 +6,11 @@
         %p.comment_author_name= author_name(comment)
         %p.comment_author_date= comment.created_at.strftime("%b %d, %Y")
     .comment_archived_first
-      - if comment.rating.present?
-        .star_rating{ "data-rating" => comment.rating }
-          %p My Rating
-          #star2
-            = image_tag "product/stars#{comment.rating}.png"
-      .comment_copy.span6
-        = comment.body
+      .span6
+        .comment_title= comment.title
+        - if comment.rating.present?
+          .star_rating{ "data-rating" => comment.rating }
+            #star2
+              = image_tag "product/stars#{comment.rating}.png"
+        .comment_copy
+          = comment.body
