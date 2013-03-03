@@ -29,6 +29,8 @@ gem 'acts_as_commentable_with_threading', '1.1.2'
 gem 'rakismet', '1.3.0'
 gem 'jquery-raty-rails', '0.0.1'
 
+gem 'newrelic_rpm', '3.5.8.70'
+
 group :development, :test do
   gem 'rspec-rails', '2.11.4'
   gem 'annotate', '2.5.0'

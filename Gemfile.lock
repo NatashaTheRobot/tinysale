@@ -120,6 +120,7 @@ GEM
     mime-types (1.21)
     multi_json (1.6.1)
     multi_xml (0.5.1)
+    newrelic_rpm (3.5.8.70)
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
     paperclip (3.4.0)
@@ -247,6 +248,7 @@ DEPENDENCIES
   haml (= 4.0.0)
   jquery-rails (= 2.1.3)
   jquery-raty-rails (= 0.0.1)
+  newrelic_rpm (= 3.5.8.70)
   paperclip (= 3.4.0)
   pg
   quiet_assets (= 1.0.1)
