@@ -81,8 +81,7 @@ class ProductsController < ApplicationController
         :description =>  "tinysale: #{product.title}",
         :currency    => 'usd'
     )
-
-
+    Transaction.create( :email => params[:email] , :product => product )
     redirect_to attachment_path(product.attachments.first)
   end
 
