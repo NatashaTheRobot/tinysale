@@ -51,6 +51,11 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def price_in_dollars
+    price = self.price_in_cents/100.00
+    "$#{'%.2f' % price}"
+  end
+
   private
 
   def clean_parameterized_title
