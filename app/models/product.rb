@@ -19,6 +19,7 @@ class Product < ActiveRecord::Base
 
   has_many :attachments, dependent: :destroy
   has_many :images, dependent: :destroy
+  has_many :transactions
 
   validates :title, presence: true
   validates :description, presence: true

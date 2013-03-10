@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209181008) do
+ActiveRecord::Schema.define(:version => 20130310040919) do
 
   create_table "attachments", :force => true do |t|
     t.string   "status"
@@ -96,6 +96,16 @@ ActiveRecord::Schema.define(:version => 20130209181008) do
 
   add_index "products", ["permalink"], :name => "index_products_on_permalink", :unique => true
   add_index "products", ["user_id"], :name => "index_products_on_user_id"
+
+  create_table "transactions", :force => true do |t|
+    t.integer  "product_id"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "transactions", ["email"], :name => "index_transactions_on_email"
+  add_index "transactions", ["product_id"], :name => "index_transactions_on_product_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
