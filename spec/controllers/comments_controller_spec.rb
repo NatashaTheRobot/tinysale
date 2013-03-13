@@ -24,7 +24,14 @@ describe CommentsController do
       end
     end
     context "TODO: when comment is spam"
-    context "TODO: when the comment is not saved"
+    context "when the comment is not saved" do
+      it "responds with error status" do
+        Comment.any_instance.stub(:spam?).and_return(false)
+        Comment.any_instance.stub(:save!).and_return(false)
+        post 'create', comment: @comment
+        response.status.should == 406
+      end
+    end
     context "when a lead creates a comment" do
       before do
         sign_out @user
