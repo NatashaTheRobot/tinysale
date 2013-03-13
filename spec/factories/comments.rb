@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :comment do
-    title "My review"
+    title "My comment"
     body "This is a great product"
-    rating 5
+    subtype "comment"
   end
 end

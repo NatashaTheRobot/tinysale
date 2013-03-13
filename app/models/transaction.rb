@@ -4,6 +4,8 @@ class Transaction < ActiveRecord::Base
 
   after_save :send_product_emails
 
+  private
+
   def send_product_emails
     ProductMailer.product_purchase_email(self).deliver
     ProductMailer.product_sold_email(self).deliver

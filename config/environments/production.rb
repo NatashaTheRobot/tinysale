@@ -79,4 +79,6 @@ Tinysale::Application.configure do
 
   #stripe
   config.stripe.api_key = ENV['STRIPE_SECRET']
+
+  ActionMailer::Base.delivery_method = :smtp
 end

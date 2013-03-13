@@ -6,6 +6,7 @@ require 'spork'
 require 'vcr'
 require 'database_cleaner'
 require 'paperclip/matchers'
+
 DatabaseCleaner[:active_record].strategy = :truncation
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'

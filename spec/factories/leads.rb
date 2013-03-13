@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :lead do
-    email "MyString"
-    token "MyString"
+    email "natasha@tinysale.com"
   end
 end

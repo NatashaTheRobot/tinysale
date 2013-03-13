@@ -6,8 +6,6 @@ class Lead < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX }, presence: true, uniqueness: true
 
-  #validates :token, uniqueness: true, presence: true
-
   before_create :generate_token, :get_username
 
   def self.build_from(email)

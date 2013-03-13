@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :transaction do
-    product nil
-    email "MyString"
+    email "natasha@natashatherobot.com"
   end
 end
