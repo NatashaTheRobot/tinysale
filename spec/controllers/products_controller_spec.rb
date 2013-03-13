@@ -45,11 +45,23 @@ describe ProductsController do
     before do
       sign_in FactoryGirl.create :user
       Attachment.any_instance.stub(:save_attached_files).and_return(true)
-      @product = FactoryGirl.build :product
-      post :create, product: @product
+      @product = { title: "My Book",
+                   description: "This is the best book you'll ever read",
+                   price_in_cents: 100,
+                   images_attributes: [cover: fixture_file_upload('/files/rails.png', 'image/png')],
+                   attachments_attributes: [item: fixture_file_upload('/files/rails.png', 'image/png')]
+                 }
     end
     it "successfully creates the product" do
-      response.should be_success
+      post :create, product: @product
+      response.should redirect_to "http://test.host/sale/my-book"
+    end
+    context "when the product is not saved" do
+      it "takes the user back to the product form" do
+        Product.any_instance.stub(:save!).and_return(false)
+        post :create, product: @product
+        response.should render_template :new
+      end
     end
   end
 
@@ -67,19 +79,32 @@ describe ProductsController do
     it "renders the edit page successfully" do
       response.should render_template "edit"
     end
+    context "when a user is unauthorized" do
+      it "rescues from CanCan::AccessDenied" do
+        controller.stub(:authorize!) { raise CanCan::AccessDenied}
+        get :edit, id: @product.permalink
+        response.should redirect_to "/"
+        flash[:alert] == "You do not have the necessary roles to access this page"
+      end
+    end
   end
 
   describe "update" do
     before do
-      sign_in FactoryGirl.create :user
+      user = FactoryGirl.create :user
+      sign_in user
       Attachment.any_instance.stub(:save_attached_files).and_return(true)
-      @product = FactoryGirl.create :product
-      @product.title = "my other book"
-      put :update, id: @product.permalink
+      @product = FactoryGirl.create :product, user: user
     end
-    it "successfully updates the product" do
-      response.should be_true
-      @product.title.should == "my other book"
+    it "redirects to the product page when it successfully updates the product" do
+      Product.any_instance.stub(:update_attributes).and_return(true)
+      put :update, id: @product.permalink, product: { title: "my other book" }
+      response.should redirect_to @product
+    end
+    it "renders the edit action when the product is not successfully updated" do
+      Product.any_instance.stub(:update_attributes).and_return(false)
+      put :update, id: @product.permalink
+      response.should render_template :edit
     end
   end
 
@@ -111,6 +136,21 @@ describe ProductsController do
         get 'charge', id: @product.id
         response.should redirect_to attachment_path(Attachment.last)
       end
+    end
+  end
+
+  describe "download_sample" do
+    before do
+      sign_in FactoryGirl.create :user
+      Attachment.any_instance.stub(:save_attached_files).and_return(true)
+      @product = FactoryGirl.create :product
+      Product.any_instance.stub_chain(:sample, :expiring_url).and_return('app/assets/images/product/stars1.png')
+      URI.stub(:parse).and_return('app/assets/images/product/stars1.png')
+      File.any_instance.stub(:content_type).and_return('png')
+    end
+    it "downloads the product attachment" do
+      controller.should_receive(:send_data).and_return{controller.render :nothing => true}
+      get :download_sample, permalink: @product.permalink
     end
   end
 

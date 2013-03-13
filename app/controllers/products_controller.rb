@@ -38,24 +38,23 @@ class ProductsController < ApplicationController
     @product.user = current_user
 
     respond_to do |format|
-      if @product.save
+      if @product.save!
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
       else
         @product.attachments.build unless @product.attachments.present?
         @product.images.build unless @product.images.present?
-        format.html { render action: "new" }
+        format.html { render action: :new }
       end
     end
   end
 
   # PUT /sale/:permalink
   def update
-
     respond_to do |format|
       if @product.update_attributes(params[:product])
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
       else
-        format.html { render action: "edit" }
+        format.html { render action: :edit }
       end
     end
   end
