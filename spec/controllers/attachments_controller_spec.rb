@@ -13,7 +13,7 @@ describe AttachmentsController do
       end
       it "sends the attachment" do
         Attachment.any_instance.stub_chain(:item, :expiring_url).and_return('app/assets/images/stars0.png')
-        URI.stub(:parse).and_return('app/assets/images/stars0.png')
+        URI.stub(:parse).and_return('app/assets/images/product/stars1.png')
         File.any_instance.stub(:content_type).and_return('png')
         controller.should_receive(:send_data).and_return{controller.render :nothing => true}
         get 'show', id: Attachment.last

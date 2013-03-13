@@ -103,6 +103,7 @@ describe ProductsController do
       @product = FactoryGirl.create :product, attachments: [(FactoryGirl.create :attachment)]
       User.any_instance.stub_chain(:payment, :access_token).and_return(123)
       Stripe::Charge.stub(:create).and_return(true)
+      Transaction.stub(:create).and_return(true)
     end
     context "when the charge is successful" do
       it "downloads the attachment" do

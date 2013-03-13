@@ -1,15 +1,20 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the CommentsHelper. For example:
-#
-# describe CommentsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe CommentsHelper do
+
+  #describe "#author_image" do
+  #  context "when signed in user created the comment" do
+  #    before do
+  #      @comment = FactoryGirl.create :comment
+  #    end
+  #    it "generates a user image"
+  #  end
+  #  context "when a lead created the comment"
+  #end
+  #
+  #describe "#author_name" do
+  #  context "when signed in user created the comment"
+  #  context "when a lead created the comment"
+  #end
 
 end
