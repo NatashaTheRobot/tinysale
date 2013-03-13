@@ -28,4 +28,10 @@ describe ApplicationHelper do
     end
   end
 
+  describe "#gravator_for" do
+    it "returns the image tag with the user's gravatar" do
+      gravatar_for('nmurashev@gmail.com').should == "<img alt=\"user image\" class=\"avatar\" src=\"https://secure.gravatar.com/avatar/ef80d15dc032d1c0adf9547c5dd333b6?d=https://s3.amazonaws.com/tinysale/mrdefault.png\" />"
+    end
+  end
+
 end

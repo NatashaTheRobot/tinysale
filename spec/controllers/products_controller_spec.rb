@@ -4,7 +4,7 @@ describe ProductsController do
 
   describe "index" do
     before do
-      get "index"
+      get :index
     end
     it "returns a success response" do
       response.should be_success
@@ -18,7 +18,7 @@ describe ProductsController do
     before do
       Attachment.any_instance.stub(:save_attached_files).and_return(true)
       @product = FactoryGirl.create :product
-      get "show", id: @product.permalink
+      get :show, id: @product.permalink
     end
     it "returns a success response" do
       response.should be_success
@@ -31,7 +31,7 @@ describe ProductsController do
   describe "new" do
     before do
       sign_in FactoryGirl.create :user
-      get 'new'
+      get :new
     end
     it "returns a success response" do
       response.should be_success
@@ -46,7 +46,7 @@ describe ProductsController do
       sign_in FactoryGirl.create :user
       Attachment.any_instance.stub(:save_attached_files).and_return(true)
       @product = FactoryGirl.build :product
-      post 'create', product: @product
+      post :create, product: @product
     end
     it "successfully creates the product" do
       response.should be_success
@@ -59,7 +59,7 @@ describe ProductsController do
       sign_in user
       Attachment.any_instance.stub(:save_attached_files).and_return(true)
       @product = FactoryGirl.create :product, user: user
-      get 'edit', id: @product.permalink
+      get :edit, id: @product.permalink
     end
     it "returns a success response" do
       response.should be_success
@@ -75,7 +75,7 @@ describe ProductsController do
       Attachment.any_instance.stub(:save_attached_files).and_return(true)
       @product = FactoryGirl.create :product
       @product.title = "my other book"
-      put 'update', id: @product.permalink
+      put :update, id: @product.permalink
     end
     it "successfully updates the product" do
       response.should be_true
@@ -89,11 +89,12 @@ describe ProductsController do
       sign_in user
       Attachment.any_instance.stub(:save_attached_files).and_return(true)
       @product = FactoryGirl.create :product, user: user
-      put 'destroy', id: @product.permalink
     end
-    it "successfully updates the product" do
-      response.should be_true
-      expect { Product.find(@product.id)}.to raise_error ActiveRecord::RecordNotFound
+    it "successfully deletes the product" do
+      Attachment.any_instance.stub(:prepare_for_destroy).and_return(true)
+      expect {
+        delete :destroy, id: @product.permalink
+      }.to change(Product, :count).by(-1)
     end
   end
 

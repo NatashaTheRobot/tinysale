@@ -22,5 +22,7 @@ describe CommentsController do
         response.status.should == 200
       end
     end
+    context "TODO: when comment is spam"
+    context "TODO: when the comment is not saved"
   end
 end

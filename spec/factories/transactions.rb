@@ -3,6 +3,5 @@
 FactoryGirl.define do
   factory :transaction do
     email "natasha@natashatherobot.com"
-    product FactoryGirl.create(:product)
   end
 end

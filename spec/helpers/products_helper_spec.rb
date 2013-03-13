@@ -26,9 +26,7 @@ describe ProductsHelper do
 
   describe "#average_rating" do
     before do
-      comment1 = FactoryGirl.build :comment, rating: 4, commentable: @product
-      comment2 = FactoryGirl.build :comment, rating: 3, commentable: @product
-      @comments = [comment1, comment2]
+      @comments = reviews
     end
     it "calculates the correct average rating" do
       average_rating.should == 3.5
@@ -39,5 +37,33 @@ describe ProductsHelper do
         average_rating.should == 0
       end
     end
+  end
+
+  describe "#product_url" do
+    it "returns the product link" do
+      product_url.should == "http://test.host/sale/my-book"
+    end
+  end
+
+  describe "#num_ratings" do
+    before do
+      @comments = reviews
+    end
+    it "returns the number of ratings for a given product" do
+      num_ratings.should == 2
+    end
+    context "when there are no ratings for a given product" do
+      it "returns 0" do
+        @comments = []
+        num_ratings.should == 0
+      end
+    end
+  end
+
+  private
+  def reviews
+    review1 = FactoryGirl.build :comment, rating: 4, subtype: 'review', commentable: @product
+    review2 = FactoryGirl.build :comment, rating: 3, subtype: 'review', commentable: @product
+    [review1, review2]
   end
 end

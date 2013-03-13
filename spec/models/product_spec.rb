@@ -65,10 +65,21 @@ describe Product do
 
   describe "#to_param" do
     it "overrides the route to go to the permalink instead of id" do
-      Attachment.any_instance.stub(:save_attached_files).and_return(true)
-      product = FactoryGirl.create :product
       product.to_param.should == 'my-book'
     end
+  end
+
+  describe "#price_in_dollars" do
+    it "correctly converts the product's price from cents to dollars" do
+      product.price_in_dollars.should == "$100.00"
+    end
+  end
+
+  private
+
+  def product
+    Attachment.any_instance.stub(:save_attached_files).and_return(true)
+    FactoryGirl.create :product
   end
 
 end
