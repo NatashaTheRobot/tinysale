@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Thank you!
+    %p
+      = "You just purchased #{@product.title} from #{@product.user.username} for #{@product.price_in_dollars}."
+      = "You can <a href='#{@product.attachments.first.item.expiring_url(604800)}' target='_blank'> download your copy here.</a> (This link expires in a week, so make sure you save the attachment!)".html_safe
+      %br/
+    %p Enjoy!

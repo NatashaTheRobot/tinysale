@@ -1,0 +1,6 @@
+Thank you!
+
+= "You just purchased #{@product.title} from #{@product.user.username} for #{@product.price_in_dollars}."
+= "You can download your copy here: #{@product.attachments.first.item.expiring_url(604800)}. (This link expires in a week, so make sure you save the attachment!)"
+
+Enjoy!
