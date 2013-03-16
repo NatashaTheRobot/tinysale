@@ -77,6 +77,8 @@ Tinysale::Application.configure do
      }
   }
 
+  Paperclip::Attachment.default_options[:s3_protocol] = ""
+
   #stripe
   config.stripe.api_key = ENV['STRIPE_SECRET']
 
