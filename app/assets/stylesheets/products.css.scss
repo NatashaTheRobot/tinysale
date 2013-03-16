@@ -846,3 +846,36 @@ h3 {
 h2,
 h3 {
   page-break-after: avoid; } }
+
+// edit / new
+.new, .edit {
+  padding-left: 10px;
+  #product_description, #product_title, #product_price_in_cents {
+    font-family: "casperregular", sans-serif;
+    font-size: 1.2em;
+    font-weight: 100;
+    outline: none;
+    bottom: 1em;
+    height: 55px;
+    width: 60%;
+    padding: 4px 12px;
+    margin-left: 0px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: inset 0px 3px 6px 0px rgba(2, 2, 2, 0.1);
+    -moz-box-shadow: inset 0px 3px 6px 0px rgba(2, 2, 2, 0.1);
+    -ms-box-shadow: inset 0px 3px 6px 0px rgba(2, 2, 2, 0.1);
+    -o-box-shadow: inset 0px 3px 6px 0px rgba(2, 2, 2, 0.1);
+    box-shadow: inset 0px 3px 6px 0px rgba(2, 2, 2, 0.1);
+    border: 2px solid #bdbdbd;
+    background: #f1f1e7;
+    color: #646964;
+    outline: none;
+  }
+  #product_description {
+    height:  125px;
+  }
+}
